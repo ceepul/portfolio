@@ -1,16 +1,19 @@
-import { forwardRef } from "react";
+'use client'
+
+import { FunctionComponent } from "react";
 import Image from 'next/image';
 
 interface CardProps {
   id: string;
   media: string;
   mediaAlt: string;
+  className?: string;
 }
 
-const Card = forwardRef<HTMLDivElement, CardProps>(({ id, media, mediaAlt }, ref) => {
+const Card: FunctionComponent<CardProps> = ({ id, media, mediaAlt, className }) => {
   return (
-    <div className='card' id={id} ref={ref}>
-      <div className="card-wrapper">
+    <div className={`card ${className}`} id={id}>
+      <div className='card-wrapper'>
         <div className="card-media">
           <Image 
             priority
@@ -23,6 +26,6 @@ const Card = forwardRef<HTMLDivElement, CardProps>(({ id, media, mediaAlt }, ref
       </div>
     </div>
   );
-});
+};
 
 export default Card;
