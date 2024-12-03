@@ -1,11 +1,11 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent } from 'react';
 
 interface HeroProps {
   state: 'hero' | 'content';
 }
 
 const Hero: FunctionComponent<HeroProps> = ({ state }) => {
-  console.log(state)
+  console.log(state);
   return (
     <div className={`hero-state ${state === 'hero' ? 'opacity-100' : 'opacity-0'}`}>
       <h1 className="text-4xl font-bold text-center text-white">Hi, I'm Russell</h1>
@@ -14,6 +14,6 @@ const Hero: FunctionComponent<HeroProps> = ({ state }) => {
       </div>
     </div>
   );
-}
+};
 
 export default Hero;

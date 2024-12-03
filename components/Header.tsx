@@ -6,7 +6,7 @@ export default function Header() {
   const githubURL = 'https://github.com/ceepul';
 
   return (
-    <header className="fixed top-0 w-full h-20 p-4 sm:p-8">
+    <header className="fixed top-0 z-50 w-full h-20 p-4 sm:p-8">
       <nav className="max-w-screen-2xl mx-auto flex justify-between items-center">
         <div>
           <Link href="/">
