@@ -48,13 +48,13 @@ export default function Home() {
   return (
     <div className="relative h-screen flex flex-col items-center justify-center">
       {/* Header Text */}
-      <div className={`z-40 pointer-events-none mt-32 absolute text-[156px] font-light leading-[0.8] tracking-tighter transition-opacity duration-500 ease-in-out ${fanUp ? 'opacity-0' : 'opacity-100'}`}>
+      <div className={`z-40 pointer-events-none mt-16 absolute text-[156px] font-light leading-[0.8] tracking-tighter transition-opacity duration-500 ease-in-out ${fanUp ? 'opacity-0' : 'opacity-100'}`}>
           <h1 className=''>{headingLineOne}</h1>
           <h1 className='ml-48'>{headingLineTwo}</h1>
           <h1 className='ml-96'>{headingLineThree}</h1>
         </div>
       <div
-        className={'mt-48 w-full h-[600px] flex justify-center items-start'}
+        className={'w-full h-[600px] flex justify-center items-start'}
       >
         {/* Cards */}
         <Card
@@ -75,7 +75,7 @@ export default function Home() {
             },
           ]}
           className={`z-30
-            ${fanUp ? 'transform translate-y-[-15vh]' : 'transform translate-y-0 translate-x-[0%]'}
+            ${fanUp ? 'transform -translate-y-32' : 'transform translate-y-0 translate-x-[0%]'}
             ${fanOut ? 'translate-x-[-30vw]' : ''}
           `}
         />
@@ -88,7 +88,7 @@ export default function Home() {
           subtitle = "MECHANICAL"
           dropDownItems={[]}
           className={`z-20
-            ${fanUp ? `transform translate-y-[-15vh] ${!fanOut && 'rotate-1 translate-x-1'}` : ''} 
+            ${fanUp ? `transform -translate-y-32 ${!fanOut && 'rotate-1 translate-x-1'}` : ''} 
             ${fanOut ? 'translate-x-[-10vw] rotate-0' : ''}
           `}
         />
@@ -101,7 +101,7 @@ export default function Home() {
           subtitle = "FULL-STACK"
           dropDownItems={[]}
           className={`z-10 
-            ${fanUp ? `transform translate-y-[-15vh] ${!fanOut && 'rotate-2 translate-x-2'}` : ''}
+            ${fanUp ? `transform -translate-y-32 ${!fanOut && 'rotate-2 translate-x-2'}` : ''}
             ${fanOut ? 'translate-x-[10vw] rotate-0' : ''}
           `}
         />
@@ -114,7 +114,7 @@ export default function Home() {
           subtitle = "MISC PROJECTS"
           dropDownItems={[]}
           className={` 
-            ${fanUp ? `transform translate-y-[-15vh] ${!fanOut && 'rotate-3 translate-x-3'}` : ''}
+            ${fanUp ? `transform -translate-y-32 ${!fanOut && 'rotate-3 translate-x-3'}` : ''}
             ${fanOut ? 'translate-x-[30vw] rotate-0' : ''}
           `}
         />
