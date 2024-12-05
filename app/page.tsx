@@ -1,24 +1,32 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSwipeable } from 'react-swipeable';
 import Card from '@/components/Card';
+import Header from '@/components/Header';
 
-export default function Home() {
-  /* const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+const useScreenSize = () => {
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      console.log('scrolled');
-    };
+    const mediaQuery = window.matchMedia('(min-width: 640px)');
+    const handleResize = () => setIsLargeScreen(mediaQuery.matches);
 
-    const scrollContainer = scrollContainerRef.current;
+    // Set initial value
+    handleResize();
 
-    scrollContainer?.addEventListener('scroll', handleScroll)
+    // Add listener
+    mediaQuery.addEventListener('change', handleResize);
 
-    return () => {
-      scrollContainer?.removeEventListener('scroll', handleScroll)
-    }
-  }, []); */
+    // Cleanup listener on unmount
+    return () => mediaQuery.removeEventListener('change', handleResize);
+  }, []);
+
+  return isLargeScreen;
+};
+
+export default function Home() {
+  const isLargeScreen = useScreenSize();
 
   const headingLineOne = "HELLO, I'M";
   const headingLineTwo = 'RUSSELL';
@@ -27,104 +35,233 @@ export default function Home() {
   const [fanUp, setfanUp] = useState<boolean>(false);
   const [fanOut, setfanOut] = useState<boolean>(false);
 
-  const handleClick = () => {
-    const timer = setTimeout(() => {
-      if (fanUp) {
-        setfanUp(false);
-      } else {
-        setfanOut(true);
-      }
-    }, 500);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [animationInProgress, setAnimationInProgress] = useState(false);
 
-    if (fanUp) {
-      setfanOut(false);
-    } else {
+  const handleScroll = () => {
+    if (animationInProgress) return;
+    setAnimationInProgress(true);
+
+    const scrollTop = window.scrollY; // Use `window.scrollY` for the outer page scroll.
+
+    if (!fanUp) {
       setfanUp(true);
+      setTimeout(() => (setfanOut(true)), 500); // Smooth transition.
+    } else if (fanUp) {
+      setfanOut(false);
+      setfanUp(false);
     }
 
-    return () => clearTimeout(timer);
+    setTimeout(() => (setAnimationInProgress(false)), 500);
   };
 
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  });
+
+  const swipeHandlers = useSwipeable({
+    onSwipedUp: () => {
+      if (!fanUp) {
+        setfanUp(true);
+        setTimeout(() => setfanOut(true), 500); // Smooth transition for swipe up
+      }
+    },
+    onSwipedDown: () => {
+      if (fanUp) {
+        setfanOut(false);
+        setfanUp(false);
+      }
+    },
+    onSwipedLeft: () => {
+      if (fanOut && currentIndex < 4 - 1) setCurrentIndex(currentIndex + 1);
+    },
+    onSwipedRight: () => {
+      if (fanOut && currentIndex > 0) setCurrentIndex(currentIndex - 1);
+    },
+    preventScrollOnSwipe: false,
+    trackMouse: true,
+  });
+
+  const CARD_DATA = [
+    {
+      id: 'about',
+      media: '/headshot.png',
+      mediaHover: '/headshot-smiley.png',
+      mediaAlt: 'Card 1',
+      title: 'ABOUT',
+      subtitle: 'ME',
+      dropDownItems: [
+        {
+          heading: 'EDUCATION',
+          body: [
+            'BE, Mechanical Engineering, Sep 19 - Apr 24',
+            'Study Abroad, Australian National University, Feb 23 - Jun 23',
+          ],
+        },
+        {
+          heading: 'EXPERIENCE',
+          body: [
+            'Captain, TDot Water Taxi, Jul 20 - Oct 24',
+            'Fenton Lawn Care, May 17 - Sep 20',
+          ],
+        },
+      ],
+    },
+    {
+      id: 'engineering',
+      media: '/gears-photo.jpg',
+      mediaHover: '/gears-photo.jpg',
+      mediaAlt: 'Card 2',
+      title: 'ENGINEERING',
+      subtitle: 'MECHANICAL',
+      dropDownItems: [
+        {
+          heading: 'ELECTROMECHANICAL HARVESTER',
+          body: [
+            'harness energy from animal movement',
+            'perpetually power GPS tracker',
+            'design team of 4',
+          ],
+        },
+        {
+          heading: 'COMPOUND PLANETARY GEARBOX',
+          body: [
+            '3D printed gearbox for use in a machine prototype',
+            'designed in SolidWorks with 3D printing tolerances in mind',
+          ],
+        },
+        {
+          heading: 'NOTABLE COURSES',
+          body: [
+            'Adv Mechatronic System Design',
+            'Robotic Systems',
+            'Applied Fluids & Thermodynamics',
+          ],
+        },
+      ],
+    },
+    {
+      id: 'dev',
+      media: '/three-concept-photo.png',
+      mediaHover: '/three-concept-video-md.mp4',
+      isVideo: true,
+      mediaAlt: 'Card 3',
+      title: 'DEV',
+      subtitle: 'FULL-STACK',
+      dropDownItems: [
+        {
+          heading: 'SHOPMATE AI',
+          body: [
+            'shopify app - virtual sales assistant',
+            'JS, React, AWS, PineconeDB, OpenAI',
+          ],
+        },
+        {
+          heading: '3D VIRTUAL TRY-ON',
+          body: [
+            'virtual try-on for ecommerce using avatars',
+            'hobby project to evaluate idea',
+            'ThreeJS',
+          ],
+        },
+        {
+          heading: 'SOLANA PAY',
+          body: [
+            'developed an online store using blockchain transactions on Solana',
+            'Buildspace project',
+          ],
+        },
+      ],
+    },
+    {
+      id: 'hobbies',
+      media: '/led-panels.jpg',
+      mediaHover: '/led-panels-video.mp4',
+      isVideo: true,
+      mediaAlt: 'Card 4',
+      title: 'HOBBIES',
+      subtitle: 'MISC PROJECTS',
+      dropDownItems: [
+        {
+          heading: 'FAUX-NANOLEAF',
+          body: [
+            'designed, built, and coded nanoleaf-like LED panels',
+            'arduino hardware / software',
+          ],
+        },
+        {
+          heading: '3D PRINTING',
+          body: ['5+ years designing 3D prints'],
+        },
+        {
+          heading: 'DIY DRONE',
+          body: [
+            'spec & soldered components for a racing drone',
+            'configured software',
+          ],
+        },
+        {
+          heading: 'BOAT UPHOLSTERY',
+          body: ['fast learner', 'complex patterning'],
+        },
+      ],
+    },
+  ];
+
   return (
-    <div className="relative h-screen flex flex-col items-center justify-center">
-      {/* Header Text */}
-      <div className={`z-40 pointer-events-none mt-16 absolute text-[156px] font-light leading-[0.8] tracking-tighter transition-opacity duration-500 ease-in-out ${fanUp ? 'opacity-0' : 'opacity-100'}`}>
-          <h1 className=''>{headingLineOne}</h1>
-          <h1 className='ml-48'>{headingLineTwo}</h1>
-          <h1 className='ml-96'>{headingLineThree}</h1>
-        </div>
+    <div>
+      <Header/>
       <div
-        className={'w-full h-[600px] flex justify-center items-start'}
-      >
-        {/* Cards */}
-        <Card
-          id="about"
-          media="/Headshot-no-bg.png"
-          mediaAlt="Card 1"
-          showInfo={fanOut}
-          title = "ABOUT"
-          subtitle = "ME"
-          dropDownItems={[
-            {
-              heading: 'EDUCATION',
-              body: ['BE, Mechanical Engineering, Sep 19 - Apr 24', 'Study Abroad, Australian National University, Feb 23 - Jun 23'],
-            },
-            {
-              heading: 'EXPERIENCE',
-              body: ['Captain, TDot Water Taxi, Jul 20 - Oct 24', 'Fenton Lawn Care, May 17 - Sep 20'],
-            },
-          ]}
-          className={`z-30
-            ${fanUp ? 'transform -translate-y-32' : 'transform translate-y-0 translate-x-[0%]'}
-            ${fanOut ? 'translate-x-[-30vw]' : ''}
-          `}
-        />
-        <Card
-          id="engineering"
-          media="/Headshot-1200-800.jpg"
-          mediaAlt="Card 2"
-          showInfo={fanOut}
-          title = "ENGINEERING"
-          subtitle = "MECHANICAL"
-          dropDownItems={[]}
-          className={`z-20
-            ${fanUp ? `transform -translate-y-32 ${!fanOut && 'rotate-1 translate-x-1'}` : ''} 
-            ${fanOut ? 'translate-x-[-10vw] rotate-0' : ''}
-          `}
-        />
-        <Card
-          id="dev"
-          media="/Headshot-1200-800.jpg"
-          mediaAlt="Card 3"
-          showInfo={fanOut}
-          title = "DEV"
-          subtitle = "FULL-STACK"
-          dropDownItems={[]}
-          className={`z-10 
-            ${fanUp ? `transform -translate-y-32 ${!fanOut && 'rotate-2 translate-x-2'}` : ''}
-            ${fanOut ? 'translate-x-[10vw] rotate-0' : ''}
-          `}
-        />
-        <Card
-          id="hobbies"
-          media="/Headshot-1200-800.jpg"
-          mediaAlt="Card 4"
-          showInfo={fanOut}
-          title = "HOBBIES"
-          subtitle = "MISC PROJECTS"
-          dropDownItems={[]}
-          className={` 
-            ${fanUp ? `transform -translate-y-32 ${!fanOut && 'rotate-3 translate-x-3'}` : ''}
-            ${fanOut ? 'translate-x-[30vw] rotate-0' : ''}
-          `}
-        />
+        {...swipeHandlers}
+        className="relative h-screen flex flex-col items-center justify-center overflow-x-hidden">
+        {/* Header Text */}
+        <div className={`z-40 pointer-events-none mt-16 absolute text-[4.5em] sm:text-[6.5em] md:text-[8em] lg:text-[148px] font-light leading-[0.8] tracking-tighter 
+        transition-opacity duration-500 ease-in-out 
+          ${fanUp ? 'opacity-0' : 'opacity-100'}`}>
+          <h1 className=''>{headingLineOne}</h1>
+          <h1 className='ml-[12vw] lg:ml-48'>{headingLineTwo}</h1>
+          <h1 className='ml-[24vw] lg:ml-96'>{headingLineThree}</h1>
+        </div>
+        <div
+          className={'w-full h-[600px]'}
+        >
+          {/* Cards */}
+          {CARD_DATA.map((card, index) => {
+            const mobileTransformValue = `${(110 * index) - (110 * currentIndex)}`;
+            const mobileStyle = (fanOut && !isLargeScreen)
+              ? { transform: `translateX(${mobileTransformValue}%) translateY(-7rem)` }
+              : {};
+            return (
+              <div
+                key={card.id}
+                className='flex justify-center items-start transition-transform duration-500 ease-in-out'
+              >
+                <Card
+                  id={card.id}
+                  media={card.media}
+                  mediaHover={card.mediaHover}
+                  isVideo={card.isVideo}
+                  mediaAlt={card.mediaAlt}
+                  showInfo={fanOut}
+                  activeCardMobile={!isLargeScreen && index === currentIndex}
+                  title={card.title}
+                  subtitle={card.subtitle}
+                  dropDownItems={card.dropDownItems}
+                  className={`z-${30 - index * 10} transform 
+                    ${fanUp ? `transform -translate-y-32 ${!fanOut && `rotate-${index} translate-x-${index}`}` : ''} 
+                    ${fanOut && isLargeScreen && `translate-x-[${-30 + index * 20}vw]`}
+                  `}
+                  style={mobileStyle}
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
-      <button
-        onClick={handleClick}
-        className="mt-8 px-4 py-2 bg-blue-500 text-white rounded-lg shadow-lg hover:bg-blue-600 transition"
-      >
-        {fanUp ? 'Reset Cards' : 'Fan Out Cards'}
-      </button>
     </div>
   );
 }

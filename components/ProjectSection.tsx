@@ -1,6 +1,8 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
-import { FunctionComponent } from 'react';
+import { useState, useEffect, FunctionComponent } from 'react';
 
 interface ProjectProps {
   title: string;
@@ -9,12 +11,35 @@ interface ProjectProps {
   imgSrc: string;
   imgAlt: string;
   imgLink?: string;
+  flip?: boolean;
   className?: string;
 }
 
+const useScreenSize = () => {
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 640px)');
+    const handleResize = () => setIsLargeScreen(mediaQuery.matches);
+
+    // Set initial value
+    handleResize();
+
+    // Add listener
+    mediaQuery.addEventListener('change', handleResize);
+
+    // Cleanup listener on unmount
+    return () => mediaQuery.removeEventListener('change', handleResize);
+  }, []);
+
+  return isLargeScreen;
+};
+
 const ProjectSection: FunctionComponent<ProjectProps> = ({
-  title, description, details, imgSrc, imgAlt, imgLink, className,
+  title, description, details, imgSrc, imgAlt, imgLink, flip, className,
 }) => {
+  const isLargeScreen = useScreenSize();
+
   const imageJSX = (
     imgLink ? <Link href={imgLink}>
       <Image
@@ -22,6 +47,7 @@ const ProjectSection: FunctionComponent<ProjectProps> = ({
         alt={imgAlt}
         width={400}
         height={600}
+        priority
       />
     </Link>
       : <Image
@@ -29,25 +55,27 @@ const ProjectSection: FunctionComponent<ProjectProps> = ({
         alt={imgAlt}
         width={400}
         height={600}
+        priority
       />
   );
 
   return (
   <div className={className}>
-    <div className='flex flex-col sm:flex-row justify-between gap-4 sm:gap-12'>
-      <div className=''>
+    <div className='flex flex-col sm:flex-row justify-between items-center sm:items-start gap-4 sm:gap-12'>
+      {(!flip || !isLargeScreen) && <div className='w-96 object-cover'>
         {imageJSX}
-      </div>
+      </div>}
       <div>
-        <div className='text-2xl sm:text-3xl font-light'>{title}</div>
-        <div className='mt-1 text-neutral-400 text-sm sm:text-md'>{description}</div>
-        {details && <div
-          className='mt-6 text-sm sm:text-md'
-        >Details</div>}
+        <div className='h1'>{title}</div>
+        <div className='h3 mt-1'>{description}</div>
+        {details && <div className='h2 mt-10'>Details</div>}
         {details?.map((detail, index) => (
-          <div key={index} className='text-sm sm:text-md mt-1 text-neutral-400'>{`- ${detail}`}</div>
+          <div key={index} className='p mt-1'>{`- ${detail}`}</div>
         ))}
       </div>
+      {flip && isLargeScreen && <div className='w-96 object-cover'>
+        {imageJSX}
+      </div>}
     </div>
   </div>
   );

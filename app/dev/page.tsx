@@ -1,3 +1,4 @@
+import Footer from '@/components/Footer';
 import IconSkills from '@/components/IconSkills';
 import PageTitle from '@/components/PageTitle';
 import ProjectSection from '@/components/ProjectSection';
@@ -21,34 +22,50 @@ export default function DevPage() {
   ];
 
   return (
-    <div className="m-4 flex justify-center min-h-screen">
-      <div className="m-4 max-w-4xl w-full">
-        <PageTitle
-          bgText='SKILLS'
-          headingText='MECHANICAL ENGINEERING'
-          className='mt-4'
-        />
-        <IconSkills
-          skills={skills}
-          className='mt-12'
-        />
-        <PageTitle
-          bgText='EXPERIENCE'
-          headingText='PROJECTS'
-          className='mt-32'
-        />
-        <ProjectSection
-          title='ShopMate AI'
-          description='ShopMate is a lorem ipsum who cares idk one sec ill fix this later okay? Sounds good.'
-          details={[
-            'Pinecone AWS to IDK you know.',
-            'Automatically synced product and store data from Shopify GraphQL',
-          ]}
-          imgSrc='/Headshot-1200-800.jpg'
-          imgAlt='temp'
-          className='mt-12'
-        />
+    <div>
+      <div className="m-4 flex flex-col items-center min-h-screen">
+        <div className="m-4 max-w-4xl w-full">
+          <PageTitle
+            bgText='SKILLS'
+            headingText='MECHANICAL ENGINEERING'
+            className='mt-4'
+          />
+          <IconSkills
+            skills={skills}
+            className='mt-12'
+          />
+          <PageTitle
+            bgText='EXPERIENCE'
+            headingText='PROJECTS'
+            className='mt-32'
+          />
+          <ProjectSection
+            title='ShopMate AI'
+            description='ShopMate is a lorem ipsum who cares idk one sec ill fix this later okay? Sounds good.'
+            details={[
+              'Pinecone AWS to IDK you know.',
+              'Automatically synced product and store data from Shopify GraphQL',
+            ]}
+            imgSrc='/Headshot-1200-800.jpg'
+            imgAlt='temp'
+            className='mt-12'
+          />
+          <div className="mt-8 border-t-2 border-neutral-600"></div>
+          <ProjectSection
+            title='ShopMate AI'
+            description='ShopMate is a lorem ipsum who cares idk one sec ill fix this later okay? Sounds good.'
+            details={[
+              'Pinecone AWS to IDK you know.',
+              'Automatically synced product and store data from Shopify GraphQL',
+            ]}
+            imgSrc='/Headshot-1200-800.jpg'
+            imgAlt='temp'
+            flip
+            className='mt-16'
+          />
+        </div>
       </div>
+      <Footer />
     </div>
   );
 }

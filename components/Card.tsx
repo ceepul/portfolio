@@ -1,8 +1,10 @@
 'use client';
 
-import { FunctionComponent, useState } from 'react';
+import {
+  FunctionComponent, useState, useEffect, CSSProperties,
+} from 'react';
 import Image from 'next/image';
-import Link from 'next/link'; // Import Next.js Link for navigation
+import Link from 'next/link';
 
 interface DropDownItem {
   heading: string;
@@ -12,16 +14,21 @@ interface DropDownItem {
 interface CardProps {
   id: string;
   media: string;
+  mediaHover: string;
+  isVideo?: boolean;
   mediaAlt: string;
   showInfo: boolean;
+  activeCardMobile: boolean;
   title: string;
   subtitle: string;
   dropDownItems: DropDownItem[];
   className?: string;
+  style?: CSSProperties;
 }
 
 const Card: FunctionComponent<CardProps> = ({
-  id, media, mediaAlt, showInfo, title, subtitle, dropDownItems, className,
+  id, media, mediaHover, isVideo, mediaAlt,
+  showInfo, activeCardMobile, title, subtitle, dropDownItems, className, style,
 }) => {
   const [isDropdownVisible, setDropDownVisible] = useState(false);
 
@@ -33,12 +40,21 @@ const Card: FunctionComponent<CardProps> = ({
     setDropDownVisible(false);
   };
 
+  useEffect(() => {
+    if (activeCardMobile) {
+      setDropDownVisible(true);
+    } else {
+      setDropDownVisible(false);
+    }
+  }, [activeCardMobile]);
+
   // The target link for the title and image
   const targetLink = `/${title.toLowerCase()}`;
 
   return (
     <div
       className={`card ${className}`}
+      style={style}
       id={id}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -47,58 +63,81 @@ const Card: FunctionComponent<CardProps> = ({
         {/* Conditional wrapper for Image */}
         {showInfo ? (
           <Link href={targetLink}>
-            <div className="card-media">
-              <Image
-                className='rounded-xl bg-red-400'
-                priority
-                src={isDropdownVisible ? '/headshot-Smiley-1200-800.jpg' : media}
-                width={400}
-                height={600}
-                alt={mediaAlt}
-              />
+            <div className="card-media shadow-lg">
+              {isVideo && isDropdownVisible ? (
+                <video
+                  className="rounded-xl"
+                  width={400}
+                  height={600}
+                  autoPlay
+                  loop
+                  muted
+                  preload='auto'
+                  playsInline
+                  poster={media}
+                >
+                  <source src={mediaHover} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                <Image
+                  className="rounded-xl bg-red-400"
+                  priority
+                  src={isDropdownVisible ? mediaHover : media}
+                  width={400}
+                  height={600}
+                  alt={mediaAlt}
+                />
+              )}
             </div>
           </Link>
         ) : (
           <div className="card-media">
-            <Image
-              className='rounded-xl bg-red-400'
-              priority
-              src={isDropdownVisible ? '/headshot-Smiley-1200-800.jpg' : media}
-              width={400}
-              height={600}
-              alt={mediaAlt}
-            />
+              <Image
+                className="rounded-xl bg-red-400"
+                priority
+                src={media}
+                width={360}
+                height={540}
+                alt={mediaAlt}
+              />
           </div>
         )}
 
         {/* Title and Subtitle */}
         <div className={`m-3 transition-opacity duration-500 ease-in-out ${showInfo ? 'opacity-100' : 'opacity-0'}`}>
-          <div className="text-sm font-extralight text-white">{title}</div>
-          <div className="text-sm font-extralight text-gray-300">{subtitle}</div>
+          <h3 className='h2'>{title}</h3>
+          <h4 className='h4'>{subtitle}</h4>
         </div>
 
         {/* Dropdown Items */}
         {showInfo && (
-          <ul className="m-3 space-y-4">
+          <ul className="m-3 space-y-5">
             {dropDownItems.map((item, index) => (
               <li
                 key={index}
-                className={
-                  isDropdownVisible
-                    ? `opacity-100 translate-y-2 transition-all duration-500 ease-in-out delay-[${index * 0.2}s]`
-                    : `opacity-0 -translate-y-4 transition-all duration-500 ease-in-out delay-[${index * 0.2}s]`
-                }
+                style={{
+                  transition: 'all 0.5s ease-in-out',
+                  opacity: isDropdownVisible ? 1 : 0,
+                  transform: isDropdownVisible
+                    ? 'translateY(0)'
+                    : 'translateY(-16px)',
+                  transitionDelay: `${index * 0.15}s`,
+                }}
               >
                 {showInfo ? (
                   <Link href={`${targetLink}#${item.heading.toLowerCase()}`}>
-                    <h4 className="text-sm font-extralight text-white">{item.heading}</h4>
+                    <h3 className="text-sm text-white">{item.heading}</h3>
                   </Link>
                 ) : (
-                  <h4 className="text-sm font-extralight text-white">{item.heading}</h4>
+                  <h3 className="text-sm text-white">{item.heading}</h3>
                 )}
-                <ul className="mt-1 space-y-1">
+                <ul className="mt-2 space-y-2">
                   {item.body.map((text, bodyIndex) => (
-                    <p key={bodyIndex} className="text-sm font-extralight text-gray-400">{text}</p>
+                    <div key={bodyIndex} className='flex items-start gap-1'>
+                      <p className='p'>{'-'}</p>
+                      <p className="p">{`${text}`}</p>
+                    </div>
                   ))}
                 </ul>
               </li>

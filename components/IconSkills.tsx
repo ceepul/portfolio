@@ -12,8 +12,8 @@ interface SkillsProps {
 
 const IconSkills: FunctionComponent<SkillsProps> = ({ skills, className }) => (
   <div className={className}>
-    <h3 className="text-xl tracking-normal">Skills Summary</h3>
-    <div className="flex flex-wrap gap-8 p-4 mt-2 rounded-lg border-2 border-neutral-800 bg-neutral-900">
+   {/*  <h3 className="text-xl tracking-normal">Skills Summary</h3> */}
+    <div className="flex flex-wrap gap-8 p-4 mt-2 rounded-lg shadow-lg bg-neutral-800">
       {skills.map((skill, index) => (
         <div
           key={index}

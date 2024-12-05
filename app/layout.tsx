@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 // import localFont from "next/font/local";
 import { Josefin_Sans } from 'next/font/google';
+import React from 'react';
 import './globals.css';
-import Header from '../components/Header';
 
 /* const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -34,7 +34,6 @@ export default function RootLayout({
       <body
         className={`${josefinSans.variable} font-sans`}
       >
-        <Header/>
         {children}
       </body>
     </html>
