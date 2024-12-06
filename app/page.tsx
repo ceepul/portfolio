@@ -252,7 +252,7 @@ export default function Home() {
           {CARD_DATA.map((card, index) => {
             const mobileTransformValue = `${(110 * index) - (110 * currentIndex)}`;
             const mobileStyle = (fanOut && !isLargeScreen)
-              ? { transform: `translateX(${mobileTransformValue}%) translateY(-7rem)` }
+              ? { transform: `translateX(${mobileTransformValue}%) translateY(-5rem)` }
               : {};
             return (
               <div
@@ -273,7 +273,7 @@ export default function Home() {
                   style={{
                     zIndex: 30 - index * 10,
                     transform: `${fanUp
-                      ? `translateY(-8rem) ${!fanOut ? `rotate(${index * 1}deg) translateX(${index * 4}px)` : ''}`
+                      ? `${isLargeScreen ? 'translateY(-8rem)' : 'translateY(-5rem)'} ${!fanOut ? `rotate(${index * 1}deg) translateX(${index * 4}px)` : ''}`
                       : ''} ${fanOut && isLargeScreen ? `translateX(${-30 + index * 20}vw)` : ''}`,
                     ...mobileStyle,
                   }}
