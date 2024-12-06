@@ -9,7 +9,7 @@ const useScreenSize = () => {
   const [isLargeScreen, setIsLargeScreen] = useState(false);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(min-width: 640px)');
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
     const handleResize = () => setIsLargeScreen(mediaQuery.matches);
 
     // Set initial value
@@ -57,7 +57,7 @@ export default function Home() {
       const atTop = scrollY === 0;
       const atBottom = scrollY + clientHeight === scrollHeight;
 
-      if (atTop && fanUp) {
+      if (isLargeScreen && atTop && fanUp) {
         setAnimationInProgress(true);
         setFanOut(false);
         setTimeout(() => {
@@ -80,7 +80,7 @@ export default function Home() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [fanUp, fanOut, animationInProgress]);
+  }, [fanUp, fanOut, animationInProgress, isLargeScreen]);
 
   // Swipe handlers
   const swipeHandlers = useSwipeable({
@@ -97,7 +97,7 @@ export default function Home() {
       }
     },
     onSwipedDown: () => {
-      if (fanUp && !animationInProgress) {
+      if (isLargeScreen && fanUp && !animationInProgress) {
         setAnimationInProgress(true);
         setFanOut(false);
         setTimeout(() => {
