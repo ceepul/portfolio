@@ -112,7 +112,7 @@ export default function Home() {
     onSwipedRight: () => {
       if (fanOut) setCurrentIndex((prev) => Math.max(prev - 1, 0));
     },
-    preventScrollOnSwipe: true,
+    preventScrollOnSwipe: false,
     trackMouse: true,
   });
 
