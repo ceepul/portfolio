@@ -85,13 +85,15 @@ export default function Home() {
   // Swipe handlers
   const swipeHandlers = useSwipeable({
     onSwipedUp: () => {
-      if (!fanUp && !animationInProgress) {
-        setAnimationInProgress(true);
-        setFanUp(true);
-        setTimeout(() => {
-          setFanOut(true);
-          setAnimationInProgress(false);
-        }, 500);
+      if (window.scrollY === 0 && !animationInProgress) {
+        if (fanUp) {
+          setAnimationInProgress(true);
+          setFanOut(false);
+          setTimeout(() => {
+            setFanUp(false);
+            setAnimationInProgress(false);
+          }, 500);
+        }
       }
     },
     onSwipedDown: () => {
