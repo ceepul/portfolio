@@ -32,57 +32,85 @@ export default function Home() {
   const headingLineTwo = 'RUSSELL';
   const headingLineThree = 'FENTON';
 
-  const [fanUp, setfanUp] = useState<boolean>(false);
-  const [fanOut, setfanOut] = useState<boolean>(false);
+  const [fanUp, setFanUp] = useState<boolean>(false);
+  const [fanOut, setFanOut] = useState<boolean>(false);
+  const [animationInProgress, setAnimationInProgress] = useState<boolean>(false);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [animationInProgress, setAnimationInProgress] = useState(false);
-
-  const handleScroll = () => {
-    if (animationInProgress) return;
-    setAnimationInProgress(true);
-
-    // const scrollTop = window.scrollY;
-
-    if (!fanUp) {
-      setfanUp(true);
-      setTimeout(() => (setfanOut(true)), 500); // Smooth transition.
-    } else if (fanUp) {
-      setfanOut(false);
-      setfanUp(false);
-    }
-
-    setTimeout(() => (setAnimationInProgress(false)), 500);
+  // Debounce function
+  const debounce = (func: (...args: unknown[]) => void, delay: number) => {
+    let timeout: number;
+    return (...args: unknown[]) => {
+      clearTimeout(timeout);
+      timeout = window.setTimeout(() => func(...args), delay);
+    };
   };
 
+  // Handle scroll with debounce and animation control
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    const debouncedHandleScroll = debounce(() => {
+      if (animationInProgress) return;
 
+      const { scrollY } = window;
+      const { scrollHeight, clientHeight } = document.documentElement;
+
+      const atTop = scrollY === 0;
+      const atBottom = scrollY + clientHeight === scrollHeight;
+
+      if (atTop && fanUp) {
+        setAnimationInProgress(true);
+        setFanOut(false);
+        setTimeout(() => {
+          setFanUp(false);
+          setAnimationInProgress(false);
+        }, 500);
+      } else if (atBottom && !fanUp) {
+        setAnimationInProgress(true);
+        setFanUp(true);
+        setTimeout(() => {
+          setFanOut(true);
+          setAnimationInProgress(false);
+        }, 500);
+      }
+    }, 100);
+
+    const handleScroll = () => debouncedHandleScroll();
+
+    window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  });
+  }, [fanUp, fanOut, animationInProgress]);
 
+  // Swipe handlers
   const swipeHandlers = useSwipeable({
     onSwipedUp: () => {
-      if (!fanUp) {
-        setfanUp(true);
-        setTimeout(() => setfanOut(true), 500); // Smooth transition for swipe up
+      if (!fanUp && !animationInProgress) {
+        setAnimationInProgress(true);
+        setFanUp(true);
+        setTimeout(() => {
+          setFanOut(true);
+          setAnimationInProgress(false);
+        }, 500);
       }
     },
     onSwipedDown: () => {
-      if (fanUp) {
-        setfanOut(false);
-        setfanUp(false);
+      if (fanUp && !animationInProgress) {
+        setAnimationInProgress(true);
+        setFanOut(false);
+        setTimeout(() => {
+          setFanUp(false);
+          setAnimationInProgress(false);
+        }, 500);
       }
     },
     onSwipedLeft: () => {
-      if (fanOut && currentIndex < 4 - 1) setCurrentIndex(currentIndex + 1);
+      if (fanOut) setCurrentIndex((prev) => Math.min(prev + 1, 3));
     },
     onSwipedRight: () => {
-      if (fanOut && currentIndex > 0) setCurrentIndex(currentIndex - 1);
+      if (fanOut) setCurrentIndex((prev) => Math.max(prev - 1, 0));
     },
-    preventScrollOnSwipe: false,
+    preventScrollOnSwipe: true,
     trackMouse: true,
   });
 

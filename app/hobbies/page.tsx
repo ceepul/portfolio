@@ -13,7 +13,7 @@ export default function HobbiesPage() {
       {/* Above the fold */}
       <div className="flex flex-col items-center">
         <div className="max-w-4xl w-full p-4">
-          <div className='h-[calc(100svh-7rem)] flex flex-col justify-center items-start'>
+          <div className='min-h-[calc(100svh-7rem)] flex flex-col justify-center items-start'>
           <PageTitle
               bgText='HOBBIES'
               headingText='MISC PROJECTS'
