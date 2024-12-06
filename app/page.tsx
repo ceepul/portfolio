@@ -35,6 +35,7 @@ export default function Home() {
   const [fanUp, setFanUp] = useState<boolean>(false);
   const [fanOut, setFanOut] = useState<boolean>(false);
   const [animationInProgress, setAnimationInProgress] = useState<boolean>(false);
+  const [hasOpenedOnMobile, setHasOpenedOnMobile] = useState(false);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   // Debounce function
@@ -48,16 +49,16 @@ export default function Home() {
 
   // Handle scroll with debounce and animation control
   useEffect(() => {
-    const debouncedHandleScroll = debounce(() => {
-      if (animationInProgress) return;
+    const handleScroll = debounce(() => {
+      if (animationInProgress || !isLargeScreen) return;
 
       const { scrollY } = window;
       const { scrollHeight, clientHeight } = document.documentElement;
 
       const atTop = scrollY === 0;
-      const atBottom = scrollY + clientHeight === scrollHeight;
+      const atBottom = scrollY + clientHeight >= scrollHeight;
 
-      if (isLargeScreen && atTop && fanUp) {
+      if (atTop && fanUp) {
         setAnimationInProgress(true);
         setFanOut(false);
         setTimeout(() => {
@@ -74,34 +75,22 @@ export default function Home() {
       }
     }, 100);
 
-    const handleScroll = () => debouncedHandleScroll();
-
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [fanUp, fanOut, animationInProgress, isLargeScreen]);
+  }, [fanUp, fanOut, animationInProgress, isLargeScreen, hasOpenedOnMobile]);
 
   // Swipe handlers
   const swipeHandlers = useSwipeable({
     onSwipedUp: () => {
-      if (window.scrollY === 0 && !animationInProgress) {
-        if (fanUp) {
-          setAnimationInProgress(true);
-          setFanOut(false);
-          setTimeout(() => {
-            setFanUp(false);
-            setAnimationInProgress(false);
-          }, 500);
-        }
-      }
-    },
-    onSwipedDown: () => {
-      if (isLargeScreen && fanUp && !animationInProgress) {
+      if (!hasOpenedOnMobile && !animationInProgress && !isLargeScreen) {
+        // Only allow the first swipe up to open the fan on mobile
         setAnimationInProgress(true);
-        setFanOut(false);
+        setFanUp(true);
+        setHasOpenedOnMobile(true); // Lock the state to prevent further closing
         setTimeout(() => {
-          setFanUp(false);
+          setFanOut(true);
           setAnimationInProgress(false);
         }, 500);
       }
@@ -112,7 +101,7 @@ export default function Home() {
     onSwipedRight: () => {
       if (fanOut) setCurrentIndex((prev) => Math.max(prev - 1, 0));
     },
-    preventScrollOnSwipe: false,
+    preventScrollOnSwipe: !hasOpenedOnMobile,
     trackMouse: true,
   });
 

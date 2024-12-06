@@ -20,7 +20,7 @@ const useScreenSize = () => {
   const [isLargeScreen, setIsLargeScreen] = useState(false);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    const mediaQuery = window.matchMedia('(min-width: 640px)');
     const handleResize = () => setIsLargeScreen(mediaQuery.matches);
 
     // Set initial value
