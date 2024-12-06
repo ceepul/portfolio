@@ -3,6 +3,10 @@ import PageTitle from '@/components/PageTitle';
 import Image from 'next/image';
 
 export default function ContactPage() {
+  const linkedinURL = 'https://www.linkedin.com/in/russell-fenton-760a7a299/';
+  const githubURL = 'https://github.com/ceepul';
+  const instagramURL = 'https://www.instagram.com/russell_fenton/';
+
   return (
     <div>
       <Header />
@@ -34,9 +38,33 @@ export default function ContactPage() {
                 <p className='p'>+1 (647) 575-8203</p>
               </div>
               <h2 className='h2 mt-14'>SOCIALS</h2>
-              <p className='h3 mt-4'>LinkedIn</p>
-              <p className='h3 mt-2'>Github</p>
-              <p className='h3 mt-2'>Instagram</p>
+              <div className='mt-4'>
+                <a
+                  href={linkedinURL}
+                  target="_blank"
+                  className="p hover:text-gray-200"
+                >
+                  LinkedIn
+                </a>
+              </div>
+              <div className='mt-2'>
+                <a
+                  href={githubURL}
+                  target="_blank"
+                  className="p hover:text-gray-200"
+                >
+                  Github
+                </a>
+              </div>
+              <div className='mt-2'>
+                <a
+                  href={instagramURL}
+                  target="_blank"
+                  className="p hover:text-gray-200"
+                >
+                  Instagram
+                </a>
+              </div>
             </div>
           </div>
         </div>
