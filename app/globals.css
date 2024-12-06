@@ -32,7 +32,7 @@ img {
 }
 
 .h1 {
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 400;
   color: #ffffff;
 }
@@ -44,19 +44,19 @@ img {
 }
 
 .h3 {
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   font-weight: 300;
   color: #a3a3a3;
 }
 
 .h4 {
-  font-size: 0.875rem;
-  font-weight: 300;
+  font-size: 1rem;
+  font-weight: 200;
   color: #a3a3a3;
 }
 
 .p {
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 400;
   color: #a3a3a3;  
 }

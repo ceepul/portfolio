@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useState, useEffect, FunctionComponent } from 'react';
 
 interface ProjectProps {
+  id?: string;
   title: string;
   description: string;
   details?: string[];
@@ -36,7 +37,7 @@ const useScreenSize = () => {
 };
 
 const ProjectSection: FunctionComponent<ProjectProps> = ({
-  title, description, details, imgSrc, imgAlt, imgLink, flip, className,
+  id, title, description, details, imgSrc, imgAlt, imgLink, flip, className,
 }) => {
   const isLargeScreen = useScreenSize();
 
@@ -60,7 +61,7 @@ const ProjectSection: FunctionComponent<ProjectProps> = ({
   );
 
   return (
-  <div className={className}>
+  <div id={id} className={className}>
     <div className='flex flex-col sm:flex-row justify-between items-center sm:items-start gap-4 sm:gap-12'>
       {(!flip || !isLargeScreen) && <div className='w-96 object-cover'>
         {imageJSX}

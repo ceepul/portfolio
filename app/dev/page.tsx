@@ -1,3 +1,4 @@
+import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import IconSkills from '@/components/IconSkills';
 import PageTitle from '@/components/PageTitle';
@@ -23,11 +24,12 @@ export default function DevPage() {
 
   return (
     <div>
+      <Header />
       <div className="m-4 flex flex-col items-center min-h-screen">
         <div className="m-4 max-w-4xl w-full">
           <PageTitle
-            bgText='SKILLS'
-            headingText='MECHANICAL ENGINEERING'
+            bgText='FULL-STACK'
+            headingText='DEV'
             className='mt-4'
           />
           <IconSkills
@@ -40,6 +42,7 @@ export default function DevPage() {
             className='mt-32'
           />
           <ProjectSection
+            id='shopmate ai'
             title='ShopMate AI'
             description='ShopMate is a lorem ipsum who cares idk one sec ill fix this later okay? Sounds good.'
             details={[
@@ -48,11 +51,12 @@ export default function DevPage() {
             ]}
             imgSrc='/Headshot-1200-800.jpg'
             imgAlt='temp'
-            className='mt-12'
+            className='pt-12'
           />
           <div className="mt-8 border-t-2 border-neutral-600"></div>
           <ProjectSection
-            title='ShopMate AI'
+            id='3d virtual try-on'
+            title='3D Virtual Try-On'
             description='ShopMate is a lorem ipsum who cares idk one sec ill fix this later okay? Sounds good.'
             details={[
               'Pinecone AWS to IDK you know.',
@@ -61,7 +65,19 @@ export default function DevPage() {
             imgSrc='/Headshot-1200-800.jpg'
             imgAlt='temp'
             flip
-            className='mt-16'
+            className='pt-16'
+          />
+          <ProjectSection
+            id='solana pay'
+            title='Solana Pay'
+            description='ShopMate is a lorem ipsum who cares idk one sec ill fix this later okay? Sounds good.'
+            details={[
+              'Pinecone AWS to IDK you know.',
+              'Automatically synced product and store data from Shopify GraphQL',
+            ]}
+            imgSrc='/Headshot-1200-800.jpg'
+            imgAlt='temp'
+            className='pt-16'
           />
         </div>
       </div>

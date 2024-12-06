@@ -42,7 +42,7 @@ export default function Home() {
     if (animationInProgress) return;
     setAnimationInProgress(true);
 
-    const scrollTop = window.scrollY; // Use `window.scrollY` for the outer page scroll.
+    // const scrollTop = window.scrollY;
 
     if (!fanUp) {
       setfanUp(true);
@@ -198,7 +198,7 @@ export default function Home() {
           body: ['5+ years designing 3D prints'],
         },
         {
-          heading: 'DIY DRONE',
+          heading: 'DIY FPV DRONE',
           body: [
             'spec & soldered components for a racing drone',
             'configured software',
@@ -251,12 +251,14 @@ export default function Home() {
                   title={card.title}
                   subtitle={card.subtitle}
                   dropDownItems={card.dropDownItems}
-                  className={`z-${30 - index * 10} transform 
-                    ${fanUp ? `transform -translate-y-32 ${!fanOut && `rotate-${index} translate-x-${index}`}` : ''} 
-                    ${fanOut && isLargeScreen && `translate-x-[${-30 + index * 20}vw]`}
-                  `}
-                  style={mobileStyle}
-                />
+                  style={{
+                    zIndex: 30 - index * 10,
+                    transform: `${fanUp
+                      ? `translateY(-8rem) ${!fanOut ? `rotate(${index * 1}deg) translateX(${index * 4}px)` : ''}`
+                      : ''} ${fanOut && isLargeScreen ? `translateX(${-30 + index * 20}vw)` : ''}`,
+                    ...mobileStyle,
+                  }}
+              />
               </div>
             );
           })}
