@@ -13,7 +13,7 @@ export default function EnginneringPage() {
       {/* Above the fold */}
       <div className="flex flex-col items-center">
         <div className="max-w-4xl w-full p-4">
-          <div className='h-[calc(100svh-7rem)] flex flex-col justify-center items-center'>
+          <div className='h-[calc(100svh-7rem)] flex flex-col justify-center items-start'>
           <PageTitle
               bgText='ENGINEERING'
               headingText='MECHANICAL'
@@ -26,11 +26,12 @@ export default function EnginneringPage() {
               and precision manufacturing,Your Name has honed skills in both analytical
               problem-solving and hands-on prototyping. They are proficient in using advanced
               CAD tools, simulation software, and project management techniques to bring concepts
-               to life efficiently and effectively.'
+              to life efficiently and effectively.'
+              className='mt-4'
             />
             <TextSkills
               skills={['SolidWorks - Associate', 'CAD', '3D Printing', 'Design', 'Soldering', 'GD&T']}
-              className='mt-16'
+              className='mt-12 mb-12'
             />
           </div>
         </div>
