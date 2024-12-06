@@ -13,7 +13,7 @@ export default function EnginneringPage() {
       {/* Above the fold */}
       <div className="flex flex-col items-center">
         <div className="max-w-4xl w-full p-4">
-          <div className='min-h-[calc(100svh-12rem)] mt-20 flex flex-col justify-center items-start'>
+          <div className='min-h-[calc(100svh-12rem)] flex flex-col justify-center items-start'>
           <PageTitle
               bgText='ENGINEERING'
               headingText='MECHANICAL'
