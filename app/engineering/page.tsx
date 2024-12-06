@@ -51,7 +51,7 @@ export default function EnginneringPage() {
           <ProjectSection
             id='electromechanical harvester'
             title='Electro-Mechanical Harvester'
-            description='ShopMate is a lorem ipsum who cares idk one sec ill fix this later okay? Sounds good.'
+            description='ShopMate is a lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum.'
             details={[
               'Pinecone AWS to IDK you know.',
               'Automatically synced product and store data from Shopify GraphQL',
@@ -64,7 +64,7 @@ export default function EnginneringPage() {
           <ProjectSection
             id='compound planetary gearbox'
             title='Compound Planetary Gearbox'
-            description='ShopMate is a lorem ipsum who cares idk one sec ill fix this later okay? Sounds good.'
+            description='ShopMate is a lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum.'
             details={[
               'Pinecone AWS to IDK you know.',
               'Automatically synced product and store data from Shopify GraphQL',
