@@ -48,7 +48,6 @@ const ProjectSection: FunctionComponent<ProjectProps> = ({
         alt={imgAlt}
         width={400}
         height={600}
-        priority
       />
     </Link>
       : <Image
@@ -56,7 +55,6 @@ const ProjectSection: FunctionComponent<ProjectProps> = ({
         alt={imgAlt}
         width={400}
         height={600}
-        priority
       />
   );
 

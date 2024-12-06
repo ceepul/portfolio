@@ -58,8 +58,8 @@ export default function HobbiesPage() {
               'Pinecone AWS to IDK you know.',
               'Automatically synced product and store data from Shopify GraphQL',
             ]}
-            imgSrc='/headshot-smiley-600-400.jpg'
-            imgAlt='temp'
+            imgSrc='/led-panels.jpg'
+            imgAlt='Photo of triangular LED Panels on wall'
             className='pt-12 sm:pt-20'
           />
           <div className="mt-8 border-t-2 border-neutral-600"></div>
