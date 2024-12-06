@@ -51,12 +51,12 @@ export default function AboutPage() {
           <ProjectSection
             id='electromechanical harvester'
             title='Electro-Mechanical Harvester'
-            description='ShopMate is a lorem ipsum who cares idk one sec ill fix this later okay? Sounds good.'
+            description='ShopMate is a lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum.'
             details={[
               'Pinecone AWS to IDK you know.',
               'Automatically synced product and store data from Shopify GraphQL',
             ]}
-            imgSrc='/Headshot-1200-800.jpg'
+            imgSrc='/headshot-smiley-600-400.jpg'
             imgAlt='temp'
             className='pt-12 sm:pt-20'
           />
@@ -64,12 +64,12 @@ export default function AboutPage() {
           <ProjectSection
             id='compound planetary gearbox'
             title='Compound Planetary Gearbox'
-            description='ShopMate is a lorem ipsum who cares idk one sec ill fix this later okay? Sounds good.'
+            description='ShopMate is a lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum.'
             details={[
               'Pinecone AWS to IDK you know.',
               'Automatically synced product and store data from Shopify GraphQL',
             ]}
-            imgSrc='/Headshot-1200-800.jpg'
+            imgSrc='/headshot-smiley-600-400.jpg'
             imgAlt='temp'
             flip
             className='py-16'

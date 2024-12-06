@@ -16,7 +16,7 @@ export default function ContactPage() {
           <ProjectSection
             title='Contact Information'
             description='I am currently looking for work and would love to hear from you! Please feel free to reach out.'
-            imgSrc='/Headshot-1200-800.jpg'
+            imgSrc='/headshot-smiley-600-400.jpg'
             imgAlt='Photo of Russell Fenton'
             details={['✉ Russell1837@gmail.com', '+1 (647) 575-8203', 'Linkedin', 'Instagram']}
             className="mt-12"

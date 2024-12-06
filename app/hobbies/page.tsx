@@ -53,12 +53,12 @@ export default function HobbiesPage() {
           <ProjectSection
             id='faux-nanoleaf'
             title='Faux Nanoleaf LED Panels'
-            description='ShopMate is a lorem ipsum who cares idk one sec ill fix this later okay? Sounds good.'
+            description='ShopMate is a lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum.'
             details={[
               'Pinecone AWS to IDK you know.',
               'Automatically synced product and store data from Shopify GraphQL',
             ]}
-            imgSrc='/Headshot-1200-800.jpg'
+            imgSrc='/headshot-smiley-600-400.jpg'
             imgAlt='temp'
             className='pt-12 sm:pt-20'
           />
@@ -66,12 +66,12 @@ export default function HobbiesPage() {
           <ProjectSection
             id='3d printing'
             title='3D Printing'
-            description='ShopMate is a lorem ipsum who cares idk one sec ill fix this later okay? Sounds good.'
+            description='ShopMate is a lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum.'
             details={[
               'Pinecone AWS to IDK you know.',
               'Automatically synced product and store data from Shopify GraphQL',
             ]}
-            imgSrc='/Headshot-1200-800.jpg'
+            imgSrc='/headshot-smiley-600-400.jpg'
             imgAlt='temp'
             flip
             className='pt-16'
@@ -80,12 +80,12 @@ export default function HobbiesPage() {
           <ProjectSection
             id='diy fpv drone'
             title='DIY FPV Drone'
-            description='ShopMate is a lorem ipsum who cares idk one sec ill fix this later okay? Sounds good.'
+            description='ShopMate is a lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum.'
             details={[
               'Pinecone AWS to IDK you know.',
               'Automatically synced product and store data from Shopify GraphQL',
             ]}
-            imgSrc='/Headshot-1200-800.jpg'
+            imgSrc='/headshot-smiley-600-400.jpg'
             imgAlt='temp'
             className='pt-16'
           />
@@ -93,12 +93,12 @@ export default function HobbiesPage() {
           <ProjectSection
             id='boat upholstery'
             title='Boat Upholstery'
-            description='ShopMate is a lorem ipsum who cares idk one sec ill fix this later okay? Sounds good.'
+            description='ShopMate is a lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum.'
             details={[
               'Pinecone AWS to IDK you know.',
               'Automatically synced product and store data from Shopify GraphQL',
             ]}
-            imgSrc='/Headshot-1200-800.jpg'
+            imgSrc='/headshot-smiley-600-400.jpg'
             imgAlt='temp'
             flip
             className='py-16'

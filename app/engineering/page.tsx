@@ -13,7 +13,7 @@ export default function EnginneringPage() {
       {/* Above the fold */}
       <div className="flex flex-col items-center">
         <div className="max-w-4xl w-full p-4">
-          <div className='h-[calc(100svh-7rem)] flex flex-col justify-center items-start'>
+          <div className='min-h-[calc(100svh-12rem)] mt-20 flex flex-col justify-center items-start'>
           <PageTitle
               bgText='ENGINEERING'
               headingText='MECHANICAL'
@@ -56,7 +56,7 @@ export default function EnginneringPage() {
               'Pinecone AWS to IDK you know.',
               'Automatically synced product and store data from Shopify GraphQL',
             ]}
-            imgSrc='/Headshot-1200-800.jpg'
+            imgSrc='/headshot-smiley-600-400.jpg'
             imgAlt='temp'
             className='pt-12 sm:pt-20'
           />
@@ -69,7 +69,7 @@ export default function EnginneringPage() {
               'Pinecone AWS to IDK you know.',
               'Automatically synced product and store data from Shopify GraphQL',
             ]}
-            imgSrc='/Headshot-1200-800.jpg'
+            imgSrc='/headshot-smiley-600-400.jpg'
             imgAlt='temp'
             flip
             className='py-16'

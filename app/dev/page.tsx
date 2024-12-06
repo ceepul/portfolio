@@ -58,7 +58,7 @@ export default function DevPage() {
               'Pinecone AWS to IDK you know.',
               'Automatically synced product and store data from Shopify GraphQL',
             ]}
-            imgSrc='/Headshot-1200-800.jpg'
+            imgSrc='/headshot-smiley-600-400.jpg'
             imgAlt='temp'
             className='pt-12 sm:pt-20'
           />
@@ -71,7 +71,7 @@ export default function DevPage() {
               'Pinecone AWS to IDK you know.',
               'Automatically synced product and store data from Shopify GraphQL',
             ]}
-            imgSrc='/Headshot-1200-800.jpg'
+            imgSrc='/headshot-smiley-600-400.jpg'
             imgAlt='temp'
             flip
             className='pt-16'
@@ -85,7 +85,7 @@ export default function DevPage() {
               'Pinecone AWS to IDK you know.',
               'Automatically synced product and store data from Shopify GraphQL',
             ]}
-            imgSrc='/Headshot-1200-800.jpg'
+            imgSrc='/headshot-smiley-600-400.jpg'
             imgAlt='temp'
             className='py-16'
           />
