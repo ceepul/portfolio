@@ -23,8 +23,9 @@ export default function AboutPage() {
                 <TextBox
                   text="
                     Hi, I'm Russell! I'm a mechanical engineering student with a passion for building,
-                    fixing, and understanding how things work. I specialize in web development using JavaScript,
-                    TypeScript, React, and Next.js, and I love bringing ideas to life through code and hands-on projects.
+                    fixing, and understanding how things work. As a self-taught web developer,
+                    I specialize in JavaScript, TypeScript, React, and Next.js,
+                    and I love bringing ideas to life through code and hands-on projects.
                   "
                   className='mt-4 p'
                 />
@@ -43,7 +44,7 @@ export default function AboutPage() {
                   className='p'
                 />
                 <TextSkills
-                  skills={['SolidWorks - Associate', 'CAD', '3D Printing', 'Design', 'Soldering', 'GD&T',
+                  skills={['SolidWorks - Associate', 'COMSOL', 'MATLAB', '3D Printing', 'Design', 'GD&T',
                     'JavaScript', 'TypeScript', 'React', 'NextJS', 'NodeJS', 'AWS',
                   ]}
                   className='mt-12'

@@ -20,13 +20,14 @@ export default function DevPage() {
               className='mt-4'
             />
             <TextBox
-              text='[Your Name] has a strong background in mechanical engineering,
-              with a focus on designing and developing innovative solutions for complex systems.
-              With experience spanning areas such as thermal systems, structural design,
-              and precision manufacturing,Your Name has honed skills in both analytical
-              problem-solving and hands-on prototyping. They are proficient in using advanced
-              CAD tools, simulation software, and project management techniques to bring concepts
-              to life efficiently and effectively.'
+              text='As a self-taught web developer, I have built full-stack applications that integrate
+                seamless frontends with reliable backend systems. I developed a Shopify app for an AI
+                virtual sales assistant, leveraging vector encoding and semantic search with the
+                Pinecone vector database, an AWS backend, PostgreSQL for data storage, and REST APIs
+                for efficient communication. The app integrates into the Shopify admin panel and embeds
+                as a storefront widget. I also explored 3D web development with Three.js, creating a
+                proof-of-concept virtual try-on tool. My experience spans building scalable systems,
+                RESTful APIs, and interactive interfaces using tools like React, Next.js, and PostgreSQL.'
               className='mt-4'
             />
             <TextSkills

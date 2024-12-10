@@ -20,17 +20,17 @@ export default function EnginneringPage() {
               className='mt-4'
             />
             <TextBox
-              text='[Your Name] has a strong background in mechanical engineering,
-              with a focus on designing and developing innovative solutions for complex systems.
-              With experience spanning areas such as thermal systems, structural design,
-              and precision manufacturing,Your Name has honed skills in both analytical
-              problem-solving and hands-on prototyping. They are proficient in using advanced
-              CAD tools, simulation software, and project management techniques to bring concepts
-              to life efficiently and effectively.'
+              text='As a mechanical engineering student, I have developed expertise in designing
+                and optimizing electromechanical systems, CAD modeling, and prototyping innovative solutions.
+                I led the development of an animal tracking collar, leading the design and simulation of an
+                electromagnetic harvester in COMSOL and integrating it into a reliable final system.
+                My project experience includes maze-navigating robots, automated seed planters,
+                and high-torque gear systems, leveraging tools like SolidWorks, MATLAB,
+                and Arduino to create functional and innovative designs.'
               className='mt-4'
             />
             <TextSkills
-              skills={['SolidWorks - Associate', 'CAD', '3D Printing', 'Design', 'Soldering', 'GD&T']}
+              skills={['SolidWorks - Associate', 'COMSOL', 'MATLAB', 'Simulink', 'Design', '3D Printing', 'GD&T']}
               className='mt-12 mb-12'
             />
           </div>

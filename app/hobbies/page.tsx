@@ -20,17 +20,16 @@ export default function HobbiesPage() {
               className='mt-4'
             />
             <TextBox
-              text='[Your Name] has a strong background in mechanical engineering,
-              with a focus on designing and developing innovative solutions for complex systems.
-              With experience spanning areas such as thermal systems, structural design,
-              and precision manufacturing,Your Name has honed skills in both analytical
-              problem-solving and hands-on prototyping. They are proficient in using advanced
-              CAD tools, simulation software, and project management techniques to bring concepts
-              to life efficiently and effectively.'
+              text='I enjoy working on hands-on projects that challenge me to learn new skills and
+                solve problems creatively. From designing faux Nanoleaf-style LED panels to add character
+                to my room without breaking the bank, to building DIY FPV drones, 3D printing custom parts,
+                and tackling boat upholstery, I thrive on projects that keep me experimenting and improving.
+                Beyond the shop, I love spending time with friends, balancing social outings with side
+                projects that keep me learning and growing.'
               className='mt-4'
             />
             <TextSkills
-              skills={['SMD Soldering', 'Circuit Design', '3D Printing', 'Arduino', 'LEDs', 'Sewing..', 'FPV',
+              skills={['SMD Soldering', 'Circuit Design', '3D Printing', 'Arduino', 'LEDs', 'FPV', 'Sewing',
                 'Wood Working',
               ]}
               className='mt-12 mb-12'
