@@ -63,7 +63,7 @@ const Card: FunctionComponent<CardProps> = ({
         {/* Conditional wrapper for Image */}
         {showInfo ? (
           <Link href={targetLink}>
-            <div className="card-media shadow-lg">
+            <div className={`card-media ${isDropdownVisible && 'scale-105 shadow-lg'}`}>
               {isVideo && isDropdownVisible ? (
                 <video
                   className="rounded-xl"
@@ -105,7 +105,7 @@ const Card: FunctionComponent<CardProps> = ({
         )}
 
         {/* Title and Subtitle */}
-        <div className={`m-3 transition-opacity duration-500 ease-in-out ${showInfo ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`m-3 transition-opacity duration-500 ease-in-out ${showInfo ? 'opacity-100' : 'opacity-0'} ${isDropdownVisible && 'mt-5'}`}>
           <h3 className='h2'>{title}</h3>
           <h4 className='h4'>{subtitle}</h4>
         </div>

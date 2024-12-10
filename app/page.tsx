@@ -28,9 +28,9 @@ const useScreenSize = () => {
 export default function Home() {
   const isLargeScreen = useScreenSize();
 
-  const headingLineOne = "HELLO, I'M";
-  const headingLineTwo = 'RUSSELL';
-  const headingLineThree = 'FENTON';
+  const headingLineOne = 'RUSSELL';
+  const headingLineTwo = 'FENTON';
+  // const headingLineThree = 'FENTON';
 
   const [fanUp, setFanUp] = useState<boolean>(false);
   const [fanOut, setFanOut] = useState<boolean>(false);
@@ -242,14 +242,14 @@ export default function Home() {
       <Header/>
       <div
         {...swipeHandlers}
-        className="relative h-screen flex flex-col items-center justify-center overflow-x-hidden">
+        className="scrollbar-hide relative h-screen flex flex-col items-center justify-center overflow-x-hidden">
         {/* Header Text */}
         <div className={`z-40 pointer-events-none mt-16 absolute text-[4.5em] sm:text-[6.5em] md:text-[8em] lg:text-[148px] font-light leading-[0.8] tracking-tighter 
         transition-opacity duration-500 ease-in-out 
           ${fanUp ? 'opacity-0' : 'opacity-100'}`}>
-          <h1 className=''>{headingLineOne}</h1>
+          <h1 className='mt-20'>{headingLineOne}</h1>
           <h1 className='ml-[12vw] lg:ml-48'>{headingLineTwo}</h1>
-          <h1 className='ml-[24vw] lg:ml-96'>{headingLineThree}</h1>
+          {/* <h1 className='ml-[24vw] lg:ml-96'>{headingLineThree}</h1> */}
         </div>
         <div
           className={'w-full h-[600px]'}
