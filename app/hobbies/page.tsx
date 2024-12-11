@@ -34,16 +34,18 @@ export default function HobbiesPage() {
               ]}
               className='mt-12 mb-12'
             />
+            <div className='w-full flex justify-center'>
+              <ScrollCTA
+                text='Projects'
+                className='mt-10'
+              />
+            </div>
           </div>
         </div>
       </div>
       {/* Below the fold */}
       <div className="flex flex-col items-center bg-neutral-900">
         <div className="max-w-4xl w-full p-4">
-          <ScrollCTA
-            text='Projects'
-            className='-mt-32'
-          />
           <PageTitle
             bgText='PROJECTS'
             headingText='HOBBIES'

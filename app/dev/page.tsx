@@ -14,7 +14,7 @@ export default function DevPage() {
       <div className="flex flex-col items-center">
         <div className="max-w-4xl w-full p-4">
           <div className='min-h-[calc(100svh-7rem)] flex flex-col justify-center items-start'>
-          <PageTitle
+            <PageTitle
               bgText='FULL-STACK'
               headingText='DEV'
               className='mt-4'
@@ -36,16 +36,18 @@ export default function DevPage() {
               ]}
               className='mt-12 mb-12'
             />
+            <div className='w-full flex justify-center'>
+              <ScrollCTA
+                text='Experience'
+                className='mt-10'
+              />
+            </div>
           </div>
         </div>
       </div>
       {/* Below the fold */}
       <div className="flex flex-col items-center bg-neutral-900">
         <div className="max-w-4xl w-full p-4">
-          <ScrollCTA
-            text='Experience'
-            className='-mt-32'
-          />
           <PageTitle
             bgText='EXPERIENCE'
             headingText='PROJECTS'

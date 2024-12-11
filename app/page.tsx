@@ -4,29 +4,41 @@ import { useState, useEffect } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import Card from '@/components/Card';
 import Header from '@/components/Header';
+import ScrollCTA from '@/components/ScrollCTA';
 
 const useScreenSize = () => {
-  const [isLargeScreen, setIsLargeScreen] = useState(false);
+  const [screenSize, setScreenSize] = useState({ isLargeScreen: false, isExtraLargeScreen: false });
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(min-width: 768px)');
-    const handleResize = () => setIsLargeScreen(mediaQuery.matches);
+    const lgMediaQuery = window.matchMedia('(min-width: 1024px)');
+    const xlMediaQuery = window.matchMedia('(min-width: 1280px)');
+
+    const handleResize = () => {
+      setScreenSize({
+        isLargeScreen: lgMediaQuery.matches,
+        isExtraLargeScreen: xlMediaQuery.matches,
+      });
+    };
 
     // Set initial value
     handleResize();
 
-    // Add listener
-    mediaQuery.addEventListener('change', handleResize);
+    // Add listeners
+    lgMediaQuery.addEventListener('change', handleResize);
+    xlMediaQuery.addEventListener('change', handleResize);
 
-    // Cleanup listener on unmount
-    return () => mediaQuery.removeEventListener('change', handleResize);
+    // Cleanup listeners on unmount
+    return () => {
+      lgMediaQuery.removeEventListener('change', handleResize);
+      xlMediaQuery.removeEventListener('change', handleResize);
+    };
   }, []);
 
-  return isLargeScreen;
+  return screenSize;
 };
 
 export default function Home() {
-  const isLargeScreen = useScreenSize();
+  const { isLargeScreen, isExtraLargeScreen } = useScreenSize();
 
   const headingLineOne = 'RUSSELL';
   const headingLineTwo = 'FENTON';
@@ -35,7 +47,7 @@ export default function Home() {
   const [fanUp, setFanUp] = useState<boolean>(false);
   const [fanOut, setFanOut] = useState<boolean>(false);
   const [animationInProgress, setAnimationInProgress] = useState<boolean>(false);
-  const [hasOpenedOnMobile, setHasOpenedOnMobile] = useState(false);
+  const [hasOpened, setHasOpened] = useState<boolean>(false);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   // Debounce function
@@ -68,6 +80,7 @@ export default function Home() {
       } else if (atBottom && !fanUp) {
         setAnimationInProgress(true);
         setFanUp(true);
+        setHasOpened(true);
         setTimeout(() => {
           setFanOut(true);
           setAnimationInProgress(false);
@@ -79,16 +92,16 @@ export default function Home() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [fanUp, fanOut, animationInProgress, isLargeScreen, hasOpenedOnMobile]);
+  }, [fanUp, fanOut, animationInProgress, isLargeScreen, hasOpened]);
 
   // Swipe handlers
   const swipeHandlers = useSwipeable({
     onSwipedUp: () => {
-      if (!hasOpenedOnMobile && !animationInProgress && !isLargeScreen) {
+      if (!hasOpened && !animationInProgress && !isLargeScreen) {
         // Only allow the first swipe up to open the fan on mobile
         setAnimationInProgress(true);
         setFanUp(true);
-        setHasOpenedOnMobile(true); // Lock the state to prevent further closing
+        setHasOpened(true); // Lock the state to prevent further closing
         setTimeout(() => {
           setFanOut(true);
           setAnimationInProgress(false);
@@ -101,7 +114,7 @@ export default function Home() {
     onSwipedRight: () => {
       if (fanOut) setCurrentIndex((prev) => Math.max(prev - 1, 0));
     },
-    preventScrollOnSwipe: !hasOpenedOnMobile,
+    preventScrollOnSwipe: !hasOpened,
     trackMouse: true,
   });
 
@@ -242,9 +255,9 @@ export default function Home() {
       <Header/>
       <div
         {...swipeHandlers}
-        className="scrollbar-hide relative h-screen flex flex-col items-center justify-center overflow-x-hidden">
+        className="scrollbar-hide relative h-screen flex flex-col items-center overflow-x-hidden">
         {/* Header Text */}
-        <div className={`z-40 pointer-events-none mt-16 absolute text-[4.5em] sm:text-[6.5em] md:text-[8em] lg:text-[148px] font-light leading-[0.8] tracking-tighter 
+        <div className={`z-40 mt-[calc(25svh+100px)] pointer-events-none absolute text-[4.5em] sm:text-[6.5em] md:text-[8em] lg:text-[148px] font-light leading-[0.8] tracking-tighter 
         transition-opacity duration-500 ease-in-out 
           ${fanUp ? 'opacity-0' : 'opacity-100'}`}>
           <h1 className='mt-20'>{headingLineOne}</h1>
@@ -252,13 +265,13 @@ export default function Home() {
           {/* <h1 className='ml-[24vw] lg:ml-96'>{headingLineThree}</h1> */}
         </div>
         <div
-          className={'w-full h-[600px]'}
+          className={'w-full mt-[calc(25svh-100px)]'}
         >
           {/* Cards */}
           {CARD_DATA.map((card, index) => {
             const mobileTransformValue = `${(110 * index) - (110 * currentIndex)}`;
             const mobileStyle = (fanOut && !isLargeScreen)
-              ? { transform: `translateX(${mobileTransformValue}%) translateY(-4rem)` }
+              ? { transform: `translateX(${mobileTransformValue}%) translateY(calc(-25svh + 128px))` }
               : {};
             return (
               <div
@@ -279,8 +292,8 @@ export default function Home() {
                   style={{
                     zIndex: 30 - index * 10,
                     transform: `${fanUp
-                      ? `${isLargeScreen ? 'translateY(-8rem)' : 'translateY(-4rem)'} ${!fanOut ? `rotate(${index * 1}deg) translateX(${index * 4}px)` : ''}`
-                      : ''} ${fanOut && isLargeScreen ? `translateX(${-30 + index * 20}vw)` : ''}`,
+                      ? `${isLargeScreen ? 'translateY(calc(-25svh + 160px))' : 'translateY(calc(-25svh + 140px))'} ${!fanOut ? `rotate(${index * 1}deg) translateX(${index * 4}px)` : ''}`
+                      : ''} ${fanOut ? `${isExtraLargeScreen ? `translateX(${-450 + index * 300}px)` : `translateX(${-382 + index * 252}px)`}` : ''}`,
                     ...mobileStyle,
                   }}
               />
@@ -288,6 +301,13 @@ export default function Home() {
             );
           })}
         </div>
+        {/* Conditionally render scroll bar */}
+        {!hasOpened
+          && <ScrollCTA
+            text={`${isLargeScreen ? 'Scroll Down' : 'Swipe'}`}
+            className='mt-[540px]'
+          />
+        }
       </div>
     </div>
   );

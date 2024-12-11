@@ -13,7 +13,7 @@ export default function EnginneringPage() {
       {/* Above the fold */}
       <div className="flex flex-col items-center">
         <div className="max-w-4xl w-full p-4">
-          <div className='min-h-[calc(100svh-12rem)] flex flex-col justify-center items-start'>
+          <div className='min-h-[calc(100svh-7rem)] flex flex-col justify-center items-start'>
           <PageTitle
               bgText='ENGINEERING'
               headingText='MECHANICAL'
@@ -33,16 +33,18 @@ export default function EnginneringPage() {
               skills={['SolidWorks - Associate', 'COMSOL', 'MATLAB', 'Simulink', 'Design', '3D Printing', 'GD&T']}
               className='mt-12 mb-12'
             />
+            <div className='w-full flex justify-center'>
+              <ScrollCTA
+                text='Experience'
+                className='mt-10'
+              />
+            </div>
           </div>
         </div>
       </div>
       {/* Below the fold */}
       <div className="flex flex-col items-center bg-neutral-900">
         <div className="max-w-4xl w-full p-4">
-          <ScrollCTA
-            text='Experience'
-            className='-mt-32'
-          />
           <PageTitle
             bgText='EXPERIENCE'
             headingText='PROJECTS'
