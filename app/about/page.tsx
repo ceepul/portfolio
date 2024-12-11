@@ -35,16 +35,14 @@ export default function AboutPage() {
                     or snowboarding in the winter. I'm always curious and driven to learn, constantly growing my skills by
                     tackling challenges and finding creative solutions.
                   "
-                  className='p'
                 />
                 <TextBox
                   text="
                     Let's build something amazing together!
                   "
-                  className='p'
                 />
                 <TextSkills
-                  skills={['SolidWorks - Associate', 'COMSOL', 'MATLAB', '3D Printing', 'Design', 'GD&T',
+                  skills={['SolidWorks - Associate', 'COMSOL', 'MATLAB', '3D Printing', 'Design',
                     'JavaScript', 'TypeScript', 'React', 'NextJS', 'NodeJS', 'AWS',
                   ]}
                   className='mt-12'

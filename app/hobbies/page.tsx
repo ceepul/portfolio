@@ -52,57 +52,63 @@ export default function HobbiesPage() {
             className='mt-20 sm:mt-28 '
           />
           <ProjectSection
-            id='faux-nanoleaf'
-            title='Faux Nanoleaf LED Panels'
-            description='ShopMate is a lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum.'
+            id="faux-nanoleaf"
+            title="Faux Nanoleaf LED Panels"
+            description="3D-printed LED panels with segmented WS2811 LED control for customizable patterns and effects."
             details={[
-              'Pinecone AWS to IDK you know.',
-              'Automatically synced product and store data from Shopify GraphQL',
+              'Designed modular 3D-printed bases with diffusers for a sleek appearance and flexible configurations.',
+              'Implemented Arduino Nano with custom software for precise segmented control of individual panels.',
+              'Created patterns like firework effects, selectable using physical dimmers and buttons.',
+              'Mounted securely with 3M double-sided tape for easy installation.',
             ]}
-            imgSrc='/led-panels.jpg'
-            imgAlt='Photo of triangular LED Panels on wall'
-            className='pt-12 sm:pt-20'
+            imgSrc="/led-panels.jpg"
+            imgAlt="Photo of triangular LED Panels on wall"
+            className="pt-12 sm:pt-20"
           />
           <div className="mt-8 border-t-2 border-neutral-600"></div>
           <ProjectSection
-            id='3d printing'
-            title='3D Printing'
-            description='ShopMate is a lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum.'
+            id="3d printing"
+            title="3D Printing"
+            description="Extensive experience designing functional and aesthetic components for 3D printing."
             details={[
-              'Pinecone AWS to IDK you know.',
-              'Automatically synced product and store data from Shopify GraphQL',
+              '5+ years of experience using an Ender 3 Pro with a focus on material efficient, support-free designs.',
+              'Examples: boat stereo mount, outboard shifter handle, planetary gearbox, Nanoleaf frames',
+              'Optimized tolerances for precise mating parts and minimized print time while maintaining strength.',
             ]}
-            imgSrc='/headshot-smiley-600-400.jpg'
-            imgAlt='temp'
+            imgSrc="/headshot-smiley-600-400.jpg"
+            imgAlt="Image of 3D printing project"
             flip
-            className='pt-16'
+            className="pt-16"
           />
           <div className="mt-8 border-t-2 border-neutral-600"></div>
           <ProjectSection
-            id='diy fpv drone'
-            title='DIY FPV Drone'
-            description='ShopMate is a lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum.'
+            id="diy fpv drone"
+            title="DIY FPV Drone"
+            description="Built a custom racing drone from sourced components with fully soldered and configured electronics."
             details={[
-              'Pinecone AWS to IDK you know.',
-              'Automatically synced product and store data from Shopify GraphQL',
+              'Assembled a 210mm frame with brushless motors, ESCs, FPV transmitter, antenna, and flight controller.',
+              'Soldered and wired components, including PDB and flight controller, ensuring clean connections and optimal layout.',
+              'Configured flight software (Betaflight) and tuned PID values for improved flight stability and responsiveness.',
+              'Developed proficiency in FPV drone piloting, maintenance, and tuning.',
             ]}
-            imgSrc='/headshot-smiley-600-400.jpg'
-            imgAlt='temp'
-            className='pt-16'
+            imgSrc="/headshot-smiley-600-400.jpg"
+            imgAlt="Image of FPV Drone project"
+            className="pt-16"
           />
           <div className="mt-8 border-t-2 border-neutral-600"></div>
           <ProjectSection
-            id='boat upholstery'
-            title='Boat Upholstery'
-            description='ShopMate is a lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum.'
+            id="marine upholstery"
+            title="Marine Upholstery"
+            description="Completed a marine upholstery project involving fabric selection, patterning, and installation."
             details={[
-              'Pinecone AWS to IDK you know.',
-              'Automatically synced product and store data from Shopify GraphQL',
+              'Learned to cut and sew complex patterns with decorative stitching and fabric pulls for a professional finish.',
+              'Refurbished and shaped plywood bases, stretched and stapled fabric for durability.',
+              'Installed completed upholstery into boat, ensuring aesthetics.',
             ]}
-            imgSrc='/headshot-smiley-600-400.jpg'
-            imgAlt='temp'
+            imgSrc="/headshot-smiley-600-400.jpg"
+            imgAlt="Image of boat upholstery project"
             flip
-            className='py-16'
+            className="py-16"
           />
         </div>
       </div>

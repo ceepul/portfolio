@@ -35,7 +35,7 @@ export default function EnginneringPage() {
             />
             <div className='w-full flex justify-center'>
               <ScrollCTA
-                text='Experience'
+                text='Course Projects'
                 className='mt-10'
               />
             </div>
@@ -47,34 +47,53 @@ export default function EnginneringPage() {
         <div className="max-w-4xl w-full p-4">
           <PageTitle
             bgText='EXPERIENCE'
-            headingText='PROJECTS'
+            headingText='COURSE PROJECTS'
             className='mt-20 sm:mt-28 '
           />
           <ProjectSection
-            id='electromechanical harvester'
-            title='Electro-Mechanical Harvester'
-            description='ShopMate is a lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum.'
+            id="electromechanical-harvester"
+            title="Electro-Mechanical Harvester"
+            description="Led the development of an energy harvester for an animal tracking collar, enabling sustainable power generation from animal movement."
             details={[
-              'Pinecone AWS to IDK you know.',
-              'Automatically synced product and store data from Shopify GraphQL',
+              'Developed an electromagnetic energy harvester capable of generating 19.3mW under simulated animal motion.',
+              'Performed simulations in COMSOL to optimize coil windings and dimensions for maximum energy output.',
+              'Integrated a magnetic spring mechanism to enhance durability and reliability under repeated motion.',
+              'Designed a test rig to validate real-world performance, ensuring the system met durability requirements.',
             ]}
-            imgSrc='/headshot-smiley-600-400.jpg'
-            imgAlt='temp'
-            className='pt-12 sm:pt-20'
+            imgSrc="/headshot-smiley-600-400.jpg"
+            imgAlt="Image of the Electro-Mechanical Harvester prototype"
+            className="pt-12 sm:pt-20"
           />
           <div className="mt-8 border-t-2 border-neutral-600"></div>
           <ProjectSection
-            id='compound planetary gearbox'
-            title='Compound Planetary Gearbox'
-            description='ShopMate is a lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum.'
+            id="compound-planetary-gearbox"
+            title="Compound Planetary Gearbox"
+            description="Designed and prototyped a 3D printed high-torque compound planetary gearbox for a bucket elevator prototype, achieving precise speed reduction using only the materials availble."
             details={[
-              'Pinecone AWS to IDK you know.',
-              'Automatically synced product and store data from Shopify GraphQL',
+              'Created a 148:1 compound planetary gearbox using SolidWorks, ensuring efficient and reliable power transmission.',
+              'Applied precise tolerancing techniques to eliminate play while maintaining smooth operation under load.',
+              'Fabricated and tested the prototype to validate the design, demonstrating excellent performance and durability.',
+              'Optimized gear dimensions and material selection to meet high torque requirements within compact constraints.',
             ]}
-            imgSrc='/headshot-smiley-600-400.jpg'
-            imgAlt='temp'
+            imgSrc="/gearbox-thumbnail.jpg"
+            imgAlt="Image of the Compound Planetary Gearbox prototype"
             flip
-            className='py-16'
+            className="pt-16"
+          />
+          <div className="mt-8 border-t-2 border-neutral-600"></div>
+          <ProjectSection
+            id="maze-navigating-robot"
+            title="Maze-Navigating Robot"
+            description="Developed a high-performance robot capable of autonomously navigating complex mazes using advanced sensor calibration and control algorithms."
+            details={[
+              'Designed the robot’s layout, including 3D-printed components, wiring diagrams, and sensor integration for efficient navigation.',
+              'Programmed motor control algorithms in Arduino, enabling precise and responsive movement for optimal maze traversal.',
+              'Calibrated sensors to detect walls and turns, ensuring the fastest pathfinding and completion time in competition.',
+              'Integrated mechanical and electrical systems to create a cohesive and reliable final design.',
+            ]}
+            imgSrc="/gearbox-thumbnail.jpg"
+            imgAlt="Image of the Maze-Navigating Robot prototype"
+            className="py-16"
           />
         </div>
       </div>

@@ -243,7 +243,7 @@ export default function Home() {
           ],
         },
         {
-          heading: 'BOAT UPHOLSTERY',
+          heading: 'MARINE UPHOLSTERY',
           body: ['fast learner', 'complex patterning'],
         },
       ],

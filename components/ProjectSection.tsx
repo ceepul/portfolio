@@ -42,26 +42,29 @@ const ProjectSection: FunctionComponent<ProjectProps> = ({
   const isLargeScreen = useScreenSize();
 
   const imageJSX = (
-    imgLink ? <Link href={imgLink}>
-      <Image
-        src={imgSrc}
-        alt={imgAlt}
-        width={400}
-        height={600}
-      />
-    </Link>
+    imgLink
+      ? <Link href={imgLink}>
+        <Image
+          src={imgSrc}
+          alt={imgAlt}
+          width={480}
+          height={600}
+          className='mt-1 rounded-lg object-cover'
+        />
+      </Link>
       : <Image
         src={imgSrc}
         alt={imgAlt}
-        width={400}
+        width={480}
         height={600}
+        className='mt-1 rounded-lg object-cover'
       />
   );
 
   return (
   <div id={id} className={className}>
-    <div className='flex flex-col sm:flex-row justify-between items-center sm:items-start gap-4 sm:gap-12'>
-      {(!flip || !isLargeScreen) && <div className='w-96 object-cover'>
+    <div className='flex flex-col sm:flex-row justify-between items-center sm:items-start gap-8 sm:gap-12'>
+      {(!flip || !isLargeScreen) && <div className='w-80 h-[400px] shrink-0 flex'>
         {imageJSX}
       </div>}
       <div>
@@ -69,10 +72,13 @@ const ProjectSection: FunctionComponent<ProjectProps> = ({
         <div className='h3 mt-1'>{description}</div>
         {details && <div className='h2 mt-10'>Details</div>}
         {details?.map((detail, index) => (
-          <div key={index} className='p mt-1'>{`- ${detail}`}</div>
+          <div key={index} className='flex items-start gap-1'>
+            <p className='mt-[0.4rem]'>-</p>
+            <div className='p mt-2'>{detail}</div>
+          </div>
         ))}
       </div>
-      {flip && isLargeScreen && <div className='w-96 object-cover'>
+      {flip && isLargeScreen && <div className='w-80 h-[400px] shrink-0 flex'>
         {imageJSX}
       </div>}
     </div>
