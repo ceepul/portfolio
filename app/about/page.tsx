@@ -62,6 +62,7 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
+      {/* Below the fold */}
       <Footer />
     </div>
   );

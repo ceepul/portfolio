@@ -48,7 +48,7 @@ const Card: FunctionComponent<CardProps> = ({
     }
   }, [activeCardMobile]);
 
-  // The target link for the title and image
+  // The target link for the image
   const targetLink = `/${title.toLowerCase()}`;
 
   return (

@@ -1,19 +1,8 @@
 import type { Metadata } from 'next';
-// import localFont from "next/font/local";
 import { Josefin_Sans } from 'next/font/google';
 import React from 'react';
 import './globals.css';
 
-/* const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-}); */
 const josefinSans = Josefin_Sans({
   subsets: ['latin'],
   variable: '--font-josefin-sans',

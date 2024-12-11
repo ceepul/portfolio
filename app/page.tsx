@@ -42,7 +42,6 @@ export default function Home() {
 
   const headingLineOne = 'RUSSELL';
   const headingLineTwo = 'FENTON';
-  // const headingLineThree = 'FENTON';
 
   const [fanUp, setFanUp] = useState<boolean>(false);
   const [fanOut, setFanOut] = useState<boolean>(false);
@@ -262,7 +261,6 @@ export default function Home() {
           ${fanUp ? 'opacity-0' : 'opacity-100'}`}>
           <h1 className='mt-20'>{headingLineOne}</h1>
           <h1 className='ml-[12vw] lg:ml-48'>{headingLineTwo}</h1>
-          {/* <h1 className='ml-[24vw] lg:ml-96'>{headingLineThree}</h1> */}
         </div>
         <div
           className={'w-full mt-[calc(25svh-100px)]'}
