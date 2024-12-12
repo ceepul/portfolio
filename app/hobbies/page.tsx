@@ -69,7 +69,7 @@ export default function HobbiesPage() {
             ]}
             className="pt-12 sm:pt-20"
           />
-          <div className="mt-8 border-t-2 border-neutral-600"></div>
+          <div className="mt-16 border-t-2 border-neutral-600"></div>
           <ProjectSection
             id="3d printing"
             title="3D Printing"
@@ -86,7 +86,7 @@ export default function HobbiesPage() {
             flip
             className="pt-16"
           />
-          <div className="mt-8 border-t-2 border-neutral-600"></div>
+          <div className="mt-16 border-t-2 border-neutral-600"></div>
           {/* <ProjectSection
             id="diy fpv drone"
             title="DIY FPV Drone"

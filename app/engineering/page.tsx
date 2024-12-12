@@ -68,7 +68,7 @@ export default function EnginneringPage() {
             ]}
             className="pt-12 sm:pt-20"
           />
-          <div className="mt-8 border-t-2 border-neutral-600"></div>
+          <div className="mt-16 border-t-2 border-neutral-600"></div>
           <ProjectSection
             id="compound planetary gearbox"
             title="Compound Planetary Gearbox"
@@ -87,7 +87,7 @@ export default function EnginneringPage() {
             flip
             className="pt-16"
           />
-          <div className="mt-8 border-t-2 border-neutral-600"></div>
+          <div className="mt-16 border-t-2 border-neutral-600"></div>
           <ProjectSection
             id="maze-navigating-robot"
             title="Maze-Navigating Robot"
