@@ -13,6 +13,16 @@ interface ProjectProps {
   className?: string;
 }
 
+interface ImageProps {
+  src: string;
+  alt: string;
+}
+
+interface VideoProps {
+  src: string;
+  alt?: string;
+}
+
 const useScreenSize = () => {
   const [isLargeScreen, setIsLargeScreen] = useState(false);
 
@@ -38,7 +48,7 @@ const ProjectSection: FunctionComponent<ProjectProps> = ({
 }) => {
   const isLargeScreen = useScreenSize();
 
-  const renderImage = (image) => (
+  const renderImage = (image: ImageProps) => (
     <Image
       src={image.src}
       alt={image.alt}
@@ -48,7 +58,7 @@ const ProjectSection: FunctionComponent<ProjectProps> = ({
     />
   );
 
-  const renderVideo = (video) => (
+  const renderVideo = (video: VideoProps) => (
     <video
       className="object-cover h-full rounded-lg"
       width={600}
@@ -56,7 +66,7 @@ const ProjectSection: FunctionComponent<ProjectProps> = ({
       autoPlay
       loop
       muted
-      preload='auto'
+      preload="auto"
       playsInline
       poster={video.src}
     >

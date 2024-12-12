@@ -29,15 +29,19 @@ export default function ContactPage() {
               <h2 className='h2 mt-4'>CONTACT</h2>
               <div className='mt-6 flex items-center gap-4'>
                 <div className="w-5 h-5">
-                  <Image src="/email-icon.svg" alt="Down Chevron" width={64} height={64} />
+                  <Image src="/email-icon.svg" alt="Email Icon" width={64} height={64} />
                 </div>
-                <p className='p'>Russell1837@gmail.com</p>
+                <a href="mailto:Russell1837@gmail.com" className="p hover:text-gray-200">
+                  Russell1837@gmail.com
+                </a>
               </div>
               <div className='mt-4 flex items-center gap-4'>
                 <div className="w-6 h-6">
-                  <Image src="/phone-icon.svg" alt="Down Chevron" width={64} height={64} />
+                  <Image src="/phone-icon.svg" alt="Phone Icon" width={64} height={64} />
                 </div>
-                <p className='p'>+1 (647) 575-8203</p>
+                <a href="tel:+16475758203" className='p hover:text-gray-200'>
+                  +1 (647) 575-8203
+                </a>
               </div>
               <h2 className='h2 mt-14'>SOCIALS</h2>
               <div className='mt-4'>
