@@ -52,7 +52,7 @@ export default function HobbiesPage() {
             className='mt-20 sm:mt-28 '
           />
           <ProjectSection
-            id="faux-nanoleaf"
+            id="faux nanoleaf"
             title="Faux Nanoleaf LED Panels"
             description="3D-printed LED panels with segmented WS2811 LED control for customizable patterns and effects."
             details={[
@@ -61,8 +61,12 @@ export default function HobbiesPage() {
               'Created patterns like firework effects, selectable using physical dimmers and buttons.',
               'Mounted securely with 3M double-sided tape for easy installation.',
             ]}
-            imgSrc="/led-panels.jpg"
-            imgAlt="Photo of triangular LED Panels on wall"
+            images={[
+              { src: '/hobbies/leds-4.jpg', alt: 'Image of triangular LED panels lit up in red and white' },
+              { src: '/hobbies/leds-video.mp4', alt: 'Video of LED panels showing a moving rainbow effect', video: true },
+              { src: '/hobbies/leds-7.jpg', alt: 'Image of triangular LED panels lit up in purple and white' },
+              { src: '/hobbies/leds-3.jpg', alt: 'Close up image of LED panels lit up in red and white' },
+            ]}
             className="pt-12 sm:pt-20"
           />
           <div className="mt-8 border-t-2 border-neutral-600"></div>
@@ -75,27 +79,37 @@ export default function HobbiesPage() {
               'Examples: boat stereo mount, outboard shifter handle, planetary gearbox, Nanoleaf frames',
               'Optimized tolerances for precise mating parts and minimized print time while maintaining strength.',
             ]}
-            imgSrc="/headshot-smiley-600-400.jpg"
-            imgAlt="Image of 3D printing project"
+            images={[
+              { src: '/hobbies/3dprint-1.jpg', alt: 'Image showing CAD model of outboard motor shifter handle in SolidWorks' },
+              { src: '/hobbies/3dprint-3.jpg', alt: 'Image of printed outboard motor shifter handle installed on engine' },
+            ]}
             flip
             className="pt-16"
           />
           <div className="mt-8 border-t-2 border-neutral-600"></div>
-          <ProjectSection
+          {/* <ProjectSection
             id="diy fpv drone"
             title="DIY FPV Drone"
-            description="Built a custom racing drone from sourced components with fully soldered and configured electronics."
+            description="
+              Built a custom racing drone from sourced components
+              with fully soldered and configured electronics."
             details={[
-              'Assembled a 210mm frame with brushless motors, ESCs, FPV transmitter, antenna, and flight controller.',
-              'Soldered and wired components, including PDB and flight controller, ensuring clean connections and optimal layout.',
-              'Configured flight software (Betaflight) and tuned PID values for improved flight stability and responsiveness.',
+              'Assembled a 210mm frame with brushless motors, ESCs, FPV transmitter,
+              antenna, and flight controller.',
+              'Soldered and wired components, including PDB and flight controller,
+              ensuring clean connections and optimal layout.',
+              'Configured flight software (Betaflight) and tuned PID values for
+              improved flight stability and responsiveness.',
               'Developed proficiency in FPV drone piloting, maintenance, and tuning.',
             ]}
-            imgSrc="/headshot-smiley-600-400.jpg"
-            imgAlt="Image of FPV Drone project"
+            images={[
+              { src: '/engineering/gearbox-1.jpg', alt: 'three' },
+              { src: '/engineering/gearbox-animation.mp4', alt: 'three', video: true },
+              { src: '/engineering/gearbox-5.jpg', alt: 'three' },
+            ]}
             className="pt-16"
           />
-          <div className="mt-8 border-t-2 border-neutral-600"></div>
+          <div className="mt-8 border-t-2 border-neutral-600"></div> */}
           <ProjectSection
             id="marine upholstery"
             title="Marine Upholstery"
@@ -105,9 +119,12 @@ export default function HobbiesPage() {
               'Refurbished and shaped plywood bases, stretched and stapled fabric for durability.',
               'Installed completed upholstery into boat, ensuring aesthetics.',
             ]}
-            imgSrc="/headshot-smiley-600-400.jpg"
-            imgAlt="Image of boat upholstery project"
-            flip
+            images={[
+              { src: '/hobbies/upholstery-6a.jpg', alt: 'Image showing stern of inboard outboard boat with new upholstery' },
+              { src: '/hobbies/upholstery-video.mp4', alt: 'three-sixty video showing a completed L-shaped bow cusion', video: true },
+              { src: '/hobbies/upholstery-1a.jpg', alt: 'Image of in-progress replacement of bow cushions, showing one new cushion amongst the old cushions' },
+              { src: '/hobbies/upholstery-14a.jpg', alt: 'Image of completed upholstery in the bow of a bowrider boat' },
+            ]}
             className="py-16"
           />
         </div>

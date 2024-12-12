@@ -51,7 +51,7 @@ export default function EnginneringPage() {
             className='mt-20 sm:mt-28 '
           />
           <ProjectSection
-            id="electromechanical-harvester"
+            id="electromechanical harvester"
             title="Electro-Mechanical Harvester"
             description="Led the development of an energy harvester for an animal tracking collar, enabling sustainable power generation from animal movement."
             details={[
@@ -60,13 +60,17 @@ export default function EnginneringPage() {
               'Integrated a magnetic spring mechanism to enhance durability and reliability under repeated motion.',
               'Designed a test rig to validate real-world performance, ensuring the system met durability requirements.',
             ]}
-            imgSrc="/headshot-smiley-600-400.jpg"
-            imgAlt="Image of the Electro-Mechanical Harvester prototype"
+            images={[
+              { src: '/engineering/harvester-2.png', alt: 'Image of "InfiniTrack" prototype' },
+              { src: '/engineering/harvester-3.png', alt: 'Image of "InfiniTrack" prototype on dog collar' },
+              { src: '/engineering/harvester-1.png', alt: 'Image of a COMSOL simulation showcasing the magnetic field of a magnet in a copper coil' },
+              { src: '/engineering/harvester-4.png', alt: 'Block diagram of component interactions' },
+            ]}
             className="pt-12 sm:pt-20"
           />
           <div className="mt-8 border-t-2 border-neutral-600"></div>
           <ProjectSection
-            id="compound-planetary-gearbox"
+            id="compound planetary gearbox"
             title="Compound Planetary Gearbox"
             description="Designed and prototyped a 3D printed high-torque compound planetary gearbox for a bucket elevator prototype, achieving precise speed reduction using only the materials availble."
             details={[
@@ -75,8 +79,11 @@ export default function EnginneringPage() {
               'Fabricated and tested the prototype to validate the design, demonstrating excellent performance and durability.',
               'Optimized gear dimensions and material selection to meet high torque requirements within compact constraints.',
             ]}
-            imgSrc="/gearbox-thumbnail.jpg"
-            imgAlt="Image of the Compound Planetary Gearbox prototype"
+            images={[
+              { src: '/engineering/gearbox-1.jpg', alt: 'Image of assembled 3D printed gearbox' },
+              { src: '/engineering/gearbox-animation.mp4', alt: 'Animation of gearbox in operation', video: true },
+              { src: '/engineering/gearbox-5.jpg', alt: 'Image of diassembled gearbox compoenents' },
+            ]}
             flip
             className="pt-16"
           />
@@ -91,8 +98,11 @@ export default function EnginneringPage() {
               'Calibrated sensors to detect walls and turns, ensuring the fastest pathfinding and completion time in competition.',
               'Integrated mechanical and electrical systems to create a cohesive and reliable final design.',
             ]}
-            imgSrc="/gearbox-thumbnail.jpg"
-            imgAlt="Image of the Maze-Navigating Robot prototype"
+            images={[
+              { src: '/engineering/robot-1.jpg', alt: 'Image of completed, four wheeled robot' },
+              { src: '/engineering/robot-2.jpg', alt: 'Image of wiring and soldered circuit board' },
+              { src: '/engineering/robot-video.mp4', alt: 'Video of robot completing maze autonomously', video: true },
+            ]}
             className="py-16"
           />
         </div>

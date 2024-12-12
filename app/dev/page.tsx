@@ -54,7 +54,7 @@ export default function DevPage() {
             className='mt-20 sm:mt-28 '
           />
           <ProjectSection
-            id="shopmate-ai"
+            id="shopmate ai"
             title="ShopMate AI"
             description="A Shopify app utilizing AI for intelligent product recommendations and automated customer support, designed to enhance e-commerce stores."
             details={[
@@ -68,13 +68,16 @@ export default function DevPage() {
               'Enabled UI customization for the widget to align with store branding, enhancing integration and usability.',
               'Provided scalable solutions for cross-selling and improved customer engagement through real-time recommendations.',
             ]}
-            imgSrc="/headshot-smiley-600-400.jpg"
-            imgAlt="Image of ShopMate AI interface"
+            images={[
+              { src: '/dev/shopmate-4.png', alt: 'Image of ShopMate AI poster with ShopMate as a header and three chat boxes overlapping' },
+              { src: '/dev/shopmate-6.png', alt: 'Image of a blue chat box' },
+              { src: '/dev/shopmate-3.png', alt: 'Image of the payment plan page' },
+            ]}
             className="pt-12 sm:pt-20"
           />
-          <div className="mt-8 border-t-2 border-neutral-600"></div>
+          <div className="mt-16 border-t-2 border-neutral-600"></div>
           <ProjectSection
-            id="solana-pay"
+            id="solana pay storefront"
             title="Solana Pay Storefront"
             description="A decentralized storefront built on the Solana blockchain using Solana Pay for cryptocurrency payments."
             details={[
@@ -83,14 +86,17 @@ export default function DevPage() {
               "Implemented real-time cryptocurrency payments through Solana Pay, leveraging the blockchain's low fees and fast transaction speeds.",
               'Queried blockchain data for transaction confirmations and built a React-based storefront for an interactive user experience.',
             ]}
-            imgSrc="/headshot-smiley-600-400.jpg"
-            imgAlt="Image of Solana Pay project interface"
+            images={[
+              { src: '/dev/solana-2.png', alt: 'Image of solana music store website with prompt to connect wallet' },
+              /* { src: '/dev/solana-3.png', alt: 'three' },
+              { src: '/dev/solana-video.mp4', alt: 'three', video: true }, */
+            ]}
             flip
-            className="py-16"
+            className="pt-16"
           />
-          <div className="mt-8 border-t-2 border-neutral-600"></div>
+          <div className="mt-16 border-t-2 border-neutral-600"></div>
           <ProjectSection
-            id="3d-virtual-try-on"
+            id="3d virtual try-on"
             title="3D Virtual Try-On"
             description="A proof-of-concept application using Three.js for interactive 3D clothing visualization on avatars."
             details={[
@@ -98,9 +104,11 @@ export default function DevPage() {
               'Mapped 2D images to texture maps applied to 3D models, enabling real-time updates for color and style changes.',
               'Implemented interactive controls for rotating avatars and viewing outfit combinations.',
             ]}
-            imgSrc="/headshot-smiley-600-400.jpg"
-            imgAlt="Image of 3D Virtual Try-On interface"
-            className="pt-16"
+            images={[
+              { src: '/dev/vto-1.png', alt: 'Image of eccomerce product page with 3D virtual try-on viewer' },
+              { src: '/dev/vto-2.png', alt: 'Image of eccomerce product page with 3D virtual try-on viewer' },
+            ]}
+            className="py-16"
           />
         </div>
       </div>

@@ -122,7 +122,7 @@ export default function Home() {
       id: 'about',
       media: '/headshot.png',
       mediaHover: '/headshot-smiley.png',
-      mediaAlt: 'Card 1',
+      mediaAlt: 'Image of Russell Fenton, transitions to smiling when hovering cursor',
       title: 'ABOUT',
       subtitle: 'ME',
       dropDownItems: [
@@ -144,10 +144,10 @@ export default function Home() {
     },
     {
       id: 'engineering',
-      media: '/gearbox-thumbnail.jpg',
-      mediaHover: '/gearbox-animation.mp4',
+      media: '/engineering/gearbox-thumbnail.jpg',
+      mediaHover: '/engineering/gearbox-animation.mp4',
       isVideo: true,
-      mediaAlt: 'Card 2',
+      mediaAlt: 'Image showing CAD model of compound planetary gearbox, animated when hovering cursor',
       title: 'ENGINEERING',
       subtitle: 'MECHANICAL',
       dropDownItems: [
@@ -183,10 +183,10 @@ export default function Home() {
     },
     {
       id: 'dev',
-      media: '/three-concept-photo.png',
-      mediaHover: '/three-concept-video-md.mp4',
+      media: '/dev/three-concept-photo.png',
+      mediaHover: '/dev/three-concept-video-md.mp4',
       isVideo: true,
-      mediaAlt: 'Card 3',
+      mediaAlt: '3D avatar wearing a t-shirt on an e-commerce page, with a video showcasing a 360-degree spin when hovered over with the cursor.',
       title: 'DEV',
       subtitle: 'FULL-STACK',
       dropDownItems: [
@@ -198,6 +198,13 @@ export default function Home() {
           ],
         },
         {
+          heading: 'SOLANA PAY STOREFRONT',
+          body: [
+            'developed an online store using blockchain transactions on Solana',
+            'Buildspace project',
+          ],
+        },
+        {
           heading: '3D VIRTUAL TRY-ON',
           body: [
             'virtual try-on for ecommerce using avatars',
@@ -205,26 +212,19 @@ export default function Home() {
             'ThreeJS',
           ],
         },
-        {
-          heading: 'SOLANA PAY',
-          body: [
-            'developed an online store using blockchain transactions on Solana',
-            'Buildspace project',
-          ],
-        },
       ],
     },
     {
       id: 'hobbies',
-      media: '/led-panels.jpg',
-      mediaHover: '/led-panels-video.mp4',
+      media: '/hobbies/led-panels.jpg',
+      mediaHover: '/hobbies/led-panels-video.mp4',
       isVideo: true,
-      mediaAlt: 'Card 4',
+      mediaAlt: 'Image of triangular LED panels on wall, changes color when hovering cursor.',
       title: 'HOBBIES',
       subtitle: 'MISC PROJECTS',
       dropDownItems: [
         {
-          heading: 'FAUX-NANOLEAF',
+          heading: 'FAUX NANOLEAF',
           body: [
             'designed, built, and coded nanoleaf-like LED panels',
             'arduino hardware / software',
