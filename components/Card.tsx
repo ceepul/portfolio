@@ -72,7 +72,7 @@ const Card: FunctionComponent<CardProps> = ({
             <div className={`${isDropdownVisible && 'scale-105'}`}>
               {isVideo && isDropdownVisible ? (
                 <video
-                  className="rounded-xl shadow-md"
+                  className="w-60 h-[360px] rounded-xl shadow-md"
                   width={400}
                   height={600}
                   autoPlay
@@ -87,7 +87,7 @@ const Card: FunctionComponent<CardProps> = ({
                 </video>
               ) : (
                 <Image
-                  className={`rounded-xl shadow-md ${addBG && 'bg-red-400'}`}
+                  className={`w-60 h-[360px] rounded-xl shadow-md ${addBG && 'bg-red-400'}`}
                   priority
                   src={isDropdownVisible ? mediaHover : media}
                   width={400}
@@ -100,7 +100,7 @@ const Card: FunctionComponent<CardProps> = ({
         ) : (
           <div>
               <Image
-                className={`rounded-xl shadow-md ${addBG && 'bg-red-400'}`}
+                className={`w-60 h-[360px] rounded-xl shadow-md ${addBG && 'bg-red-400'}`}
                 priority
                 src={media}
                 width={360}
