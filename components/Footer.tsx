@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Footer: FunctionComponent = () => (
 
-  <footer className="shadow-inner p-10 w-full">
+  <footer className="shadow-md p-10 w-full">
     <div className="flex flex-col items-center text-center space-y-6">
       <div>
         <h1 className="h1">{'I\'m currently looking for work.'}</h1>
