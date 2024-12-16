@@ -3,6 +3,7 @@ import { Josefin_Sans } from 'next/font/google';
 import React from 'react';
 import './globals.css';
 import { ThemeProvider } from 'next-themes';
+import { Analytics } from '@vercel/analytics/next';
 
 const josefinSans = Josefin_Sans({
   subsets: ['latin'],
@@ -26,6 +27,7 @@ export default function RootLayout({
       >
         <ThemeProvider enableSystem={false} defaultTheme='dark'>
           {children}
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
