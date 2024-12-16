@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --background: #ededed;
+  --background: #ffffff;
   --foreground: #1a1a1a;
 }
 
@@ -27,7 +27,7 @@ body {
 }
 
 .bg-secondary {
-  background-color: #ffffff;
+  background-color: #ededed;
 }
 
 [data-theme='dark'] .bg-secondary {
