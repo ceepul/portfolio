@@ -7,8 +7,8 @@ interface TextBoxProps {
 
 const TextBox: FunctionComponent<TextBoxProps> = ({ text, className }) => (
 
-  <div className={`${className} p py-4`}>
-    <p>{text}</p>
+  <div className={`${className} py-4`}>
+    <p className='p'>{text}</p>
   </div>
 );
 

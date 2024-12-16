@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Josefin_Sans } from 'next/font/google';
 import React from 'react';
 import './globals.css';
+import { ThemeProvider } from 'next-themes';
 
 const josefinSans = Josefin_Sans({
   subsets: ['latin'],
@@ -19,11 +20,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${josefinSans.variable} font-sans`}
       >
-        {children}
+        <ThemeProvider defaultTheme='dark'>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

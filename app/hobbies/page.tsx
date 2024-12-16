@@ -44,7 +44,7 @@ export default function HobbiesPage() {
         </div>
       </div>
       {/* Below the fold */}
-      <div className="flex flex-col items-center bg-neutral-900">
+      <div className="flex flex-col items-center bg-secondary">
         <div className="max-w-4xl w-full p-4">
           <PageTitle
             bgText='PROJECTS'
@@ -69,7 +69,7 @@ export default function HobbiesPage() {
             ]}
             className="pt-12 sm:pt-20"
           />
-          <div className="mt-16 border-t-2 border-neutral-600"></div>
+          <div className="divider mt-16"></div>
           <ProjectSection
             id="3d printing"
             title="3D Printing"
@@ -86,7 +86,7 @@ export default function HobbiesPage() {
             flip
             className="pt-16"
           />
-          <div className="mt-16 border-t-2 border-neutral-600"></div>
+          <div className="divider mt-16"></div>
           {/* <ProjectSection
             id="diy fpv drone"
             title="DIY FPV Drone"
@@ -109,7 +109,7 @@ export default function HobbiesPage() {
             ]}
             className="pt-16"
           />
-          <div className="mt-8 border-t-2 border-neutral-600"></div> */}
+          <div className="divider mt-16"></div> */}
           <ProjectSection
             id="marine upholstery"
             title="Marine Upholstery"

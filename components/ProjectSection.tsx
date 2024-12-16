@@ -52,7 +52,7 @@ const ProjectSection: FunctionComponent<ProjectProps> = ({
     <Image
       src={image.src}
       alt={image.alt}
-      className="object-cover h-full rounded-lg"
+      className="object-cover h-full rounded-lg shadow-md"
       width={600}
       height={800}
     />
@@ -60,7 +60,7 @@ const ProjectSection: FunctionComponent<ProjectProps> = ({
 
   const renderVideo = (video: VideoProps) => (
     <video
-      className="object-cover h-full rounded-lg"
+      className="object-cover h-full rounded-lg shadow-md"
       width={600}
       height={800}
       autoPlay
@@ -135,11 +135,11 @@ const ProjectSection: FunctionComponent<ProjectProps> = ({
       </div>}
       <div>
         <div className='h1'>{title}</div>
-        <div className='h3 mt-1'>{description}</div>
-        {details && <div className='h2 mt-10'>Details</div>}
+        <h4 className='h4 mt-1'>{description}</h4>
+        {details && <h2 className='h2 mt-10'>Details</h2>}
         {details?.map((detail, index) => (
           <div key={index} className='flex items-start gap-1'>
-            <p className='mt-[0.4rem]'>-</p>
+            <p className='p mt-[0.4rem]'>-</p>
             <div className='p mt-2'>{detail}</div>
           </div>
         ))}

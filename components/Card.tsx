@@ -17,6 +17,7 @@ interface CardProps {
   mediaHover: string;
   isVideo?: boolean;
   mediaAlt: string;
+  addBG?: boolean;
   showInfo: boolean;
   activeCardMobile: boolean;
   title: string;
@@ -27,7 +28,7 @@ interface CardProps {
 }
 
 const Card: FunctionComponent<CardProps> = ({
-  id, media, mediaHover, isVideo, mediaAlt,
+  id, media, mediaHover, isVideo, mediaAlt, addBG,
   showInfo, activeCardMobile, title, subtitle, dropDownItems, className, style,
 }) => {
   const [isDropdownVisible, setDropDownVisible] = useState(false);
@@ -53,20 +54,20 @@ const Card: FunctionComponent<CardProps> = ({
 
   return (
     <div
-      className={`card ${className}`}
+      className={`absolute transition-transform duration-700 ease-in-out w-60 ${className}`}
       style={style}
       id={id}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="">
+      <div>
         {/* Conditional wrapper for Image */}
         {showInfo ? (
           <Link href={targetLink}>
-            <div className={`card-media ${isDropdownVisible && 'scale-105 shadow-lg'}`}>
+            <div className={`${isDropdownVisible && 'scale-105'}`}>
               {isVideo && isDropdownVisible ? (
                 <video
-                  className="rounded-xl"
+                  className="rounded-xl shadow-md"
                   width={400}
                   height={600}
                   autoPlay
@@ -81,7 +82,7 @@ const Card: FunctionComponent<CardProps> = ({
                 </video>
               ) : (
                 <Image
-                  className="rounded-xl bg-red-400"
+                  className={`rounded-xl shadow-md ${addBG && 'bg-red-400'}`}
                   priority
                   src={isDropdownVisible ? mediaHover : media}
                   width={400}
@@ -92,9 +93,9 @@ const Card: FunctionComponent<CardProps> = ({
             </div>
           </Link>
         ) : (
-          <div className="card-media">
+          <div>
               <Image
-                className="rounded-xl bg-red-400"
+                className={`rounded-xl shadow-md ${addBG && 'bg-red-400'}`}
                 priority
                 src={media}
                 width={360}
@@ -106,13 +107,13 @@ const Card: FunctionComponent<CardProps> = ({
 
         {/* Title and Subtitle */}
         <div className={`m-3 transition-opacity duration-500 ease-in-out ${showInfo ? 'opacity-100' : 'opacity-0'} ${isDropdownVisible && 'mt-5'}`}>
-          <h3 className='h2'>{title}</h3>
-          <h4 className='h4'>{subtitle}</h4>
+          <h2 className='h2'>{title}</h2>
+          <h5 className='h5'>{subtitle}</h5>
         </div>
 
         {/* Dropdown Items */}
         {showInfo && (
-          <ul className="m-3 mb-10 space-y-5">
+          <ul className="m-3 mt-4 mb-10 space-y-5">
             {dropDownItems.map((item, index) => (
               <li
                 key={index}
@@ -125,13 +126,9 @@ const Card: FunctionComponent<CardProps> = ({
                   transitionDelay: `${index * 0.15}s`,
                 }}
               >
-                {showInfo ? (
-                  <Link href={`${targetLink}#${item.heading.toLowerCase()}`}>
-                    <h3 className="text-sm text-white">{item.heading}</h3>
-                  </Link>
-                ) : (
-                  <h3 className="text-sm text-white">{item.heading}</h3>
-                )}
+                <Link href={`${targetLink}#${item.heading.toLowerCase()}`}>
+                  <h3 className="h3 text-white">{item.heading}</h3>
+                </Link>
                 <ul className="mt-2 space-y-2">
                   {item.body.map((text, bodyIndex) => (
                     <div key={bodyIndex} className='flex items-start gap-1'>

@@ -20,7 +20,7 @@ export default function ContactPage() {
                 headingText='CONTACT INFO'
                 className='mt-4'
               />
-              <p className='mt-10 text-2xl font-light text-neutral-400'>
+              <p className='mt-10 large-body-text'>
                 I am currently seeking employment and would love to hear from you!
                 Please feel free to reach out on any of my platforms.
               </p>
@@ -31,7 +31,7 @@ export default function ContactPage() {
                 <div className="w-5 h-5">
                   <Image src="/email-icon.svg" alt="Email Icon" width={64} height={64} />
                 </div>
-                <a href="mailto:Russell1837@gmail.com" className="p hover:text-gray-200">
+                <a href="mailto:Russell1837@gmail.com" className="p body-hover">
                   Russell1837@gmail.com
                 </a>
               </div>
@@ -39,7 +39,7 @@ export default function ContactPage() {
                 <div className="w-6 h-6">
                   <Image src="/phone-icon.svg" alt="Phone Icon" width={64} height={64} />
                 </div>
-                <a href="tel:+16475758203" className='p hover:text-gray-200'>
+                <a href="tel:+16475758203" className='p body-hover'>
                   +1 (647) 575-8203
                 </a>
               </div>
@@ -48,7 +48,7 @@ export default function ContactPage() {
                 <a
                   href={linkedinURL}
                   target="_blank"
-                  className="p hover:text-gray-200"
+                  className="p body-hover"
                 >
                   LinkedIn
                 </a>
@@ -57,7 +57,7 @@ export default function ContactPage() {
                 <a
                   href={githubURL}
                   target="_blank"
-                  className="p hover:text-gray-200"
+                  className="p body-hover"
                 >
                   Github
                 </a>
@@ -66,7 +66,7 @@ export default function ContactPage() {
                 <a
                   href={instagramURL}
                   target="_blank"
-                  className="p hover:text-gray-200"
+                  className="p body-hover"
                 >
                   Instagram
                 </a>

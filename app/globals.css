@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 :root {
+  --background: #ededed;
+  --foreground: #1a1a1a;
+}
+
+[data-theme='dark'] {
   --background: #1a1a1a;
   --foreground: #ededed;
 }
@@ -21,49 +26,135 @@ body {
   display: none; /* Chrome, Safari, and Opera */
 }
 
-.img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.bg-secondary {
+  background-color: #ffffff;
 }
 
-.card {
-  position: absolute;
-  transition: transform 0.7s ease;
-  width: 240px;
+[data-theme='dark'] .bg-secondary {
+  background-color: #171717;
 }
 
-.card-media {
-  width: 240px;
-  height: 360px;
+.bg-text {
+  color: #d4d4d4
+}
+
+[data-theme='dark'] .bg-text {
+  color: #404040;
 }
 
 .h1 {
   font-size: 1.75rem;
   font-weight: 400;
-  color: #ffffff;
+  color: #000000;
 }
 
 .h2 {
   font-size: 1rem;
   font-weight: 400;
-  color: #ffffff;
+  color: #000000;
 }
 
 .h3 {
-  font-size: 1.25rem;
-  font-weight: 300;
-  color: #a3a3a3;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: #000000
 }
 
 .h4 {
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: #525252;
+}
+
+.h5 {
   font-size: 1rem;
-  font-weight: 200;
-  color: #a3a3a3;
+  font-weight: 300;
+  color: #525252;
 }
 
 .p {
   font-size: 1rem;
   font-weight: 400;
-  color: #a3a3a3;  
+  color: #525252;  
+}
+
+.large-body-text {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 300;
+  color: #525252;
+}
+
+[data-theme='dark'] .h1,
+[data-theme='dark'] .h2,
+[data-theme='dark'] .h3 {
+  color: #ffffff;
+}
+
+[data-theme='dark'] .h4,
+[data-theme='dark'] .h5,
+[data-theme='dark'] .p,
+[data-theme='dark'] .large-body-text {
+  color: #a3a3a3;
+}
+
+.heading-hover:hover {
+  color: #525252;
+}
+
+[data-theme='dark'] .heading-hover:hover {
+  color: #d4d4d4;
+}
+
+.body-hover:hover {
+  color: #737373;
+}
+
+[data-theme='dark'] .body-hover:hover {
+  color: #d4d4d4;
+}
+
+.button {
+  border-color: #262626;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #000000;
+}
+
+[data-theme='dark'] .button {
+  border-color: #ffffff;
+  border-width: 1px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.button:hover {
+  background-color: #262626;
+  color: #ffffff;
+}
+
+[data-theme='dark'] .button:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.text-bubble {
+  background-color: #d4d4d4;
+  color: #000000;
+  font-weight: 300;
+}
+
+[data-theme='dark'] .text-bubble {
+  background-color: #262626;
+  color: #ffffff;
+}
+
+.divider {
+  border-top-width: 2px;
+  border-color: #d4d4d4;
+}
+
+[data-theme='dark'] .divider {
+  border-color: #404040;
 }

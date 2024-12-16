@@ -32,7 +32,7 @@ const ScrollCTA: FunctionComponent<ScrollCTAProps> = ({ text, className }) => {
       } ${className}`}
     >
       <div className="p-4 flex flex-col justify-center items-center">
-        <h3 className="h3 text-neutral-400">{text}</h3>
+        <h4 className="h4 text-neutral-400">{text}</h4>
         <div className="w-8 h-8">
           <Image src="/down-chevron.svg" alt="Down Chevron" width={64} height={64} />
         </div>

@@ -46,7 +46,7 @@ export default function DevPage() {
         </div>
       </div>
       {/* Below the fold */}
-      <div className="flex flex-col items-center bg-neutral-900">
+      <div className="flex flex-col items-center bg-secondary">
         <div className="max-w-4xl w-full p-4">
           <PageTitle
             bgText='EXPERIENCE'
@@ -75,7 +75,7 @@ export default function DevPage() {
             ]}
             className="pt-12 sm:pt-20"
           />
-          <div className="mt-16 border-t-2 border-neutral-600"></div>
+          <div className="mt-16 divider"></div>
           <ProjectSection
             id="solana pay storefront"
             title="Solana Pay Storefront"
@@ -94,7 +94,7 @@ export default function DevPage() {
             flip
             className="pt-16"
           />
-          <div className="mt-16 border-t-2 border-neutral-600"></div>
+          <div className="mt-16 divider"></div>
           <ProjectSection
             id="3d virtual try-on"
             title="3D Virtual Try-On"

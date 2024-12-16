@@ -43,7 +43,7 @@ export default function EnginneringPage() {
         </div>
       </div>
       {/* Below the fold */}
-      <div className="flex flex-col items-center bg-neutral-900">
+      <div className="flex flex-col items-center bg-secondary">
         <div className="max-w-4xl w-full p-4">
           <PageTitle
             bgText='EXPERIENCE'
@@ -68,7 +68,7 @@ export default function EnginneringPage() {
             ]}
             className="pt-12 sm:pt-20"
           />
-          <div className="mt-16 border-t-2 border-neutral-600"></div>
+          <div className="mt-16 divider"></div>
           <ProjectSection
             id="compound planetary gearbox"
             title="Compound Planetary Gearbox"
@@ -87,7 +87,7 @@ export default function EnginneringPage() {
             flip
             className="pt-16"
           />
-          <div className="mt-16 border-t-2 border-neutral-600"></div>
+          <div className="mt-16 divider"></div>
           <ProjectSection
             id="maze-navigating-robot"
             title="Maze-Navigating Robot"

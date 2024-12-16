@@ -7,7 +7,10 @@ import Header from '@/components/Header';
 import ScrollCTA from '@/components/ScrollCTA';
 
 const useScreenSize = () => {
-  const [screenSize, setScreenSize] = useState({ isLargeScreen: false, isExtraLargeScreen: false });
+  const [screenSize, setScreenSize] = useState({
+    isLargeScreen: false,
+    isExtraLargeScreen: false,
+  });
 
   useEffect(() => {
     const lgMediaQuery = window.matchMedia('(min-width: 1024px)');
@@ -87,6 +90,9 @@ export default function Home() {
       }
     }, 100);
 
+    // Call handleScroll immediately on component mount to ensure animation reflects scroll state
+    handleScroll();
+
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -122,7 +128,9 @@ export default function Home() {
       id: 'about',
       media: '/headshot.png',
       mediaHover: '/headshot-smiley.png',
-      mediaAlt: 'Image of Russell Fenton, transitions to smiling when hovering cursor',
+      mediaAlt:
+        'Image of Russell Fenton, transitions to smiling when hovering cursor',
+      addBg: true,
       title: 'ABOUT',
       subtitle: 'ME',
       dropDownItems: [
@@ -147,7 +155,8 @@ export default function Home() {
       media: '/engineering/gearbox-thumbnail.jpg',
       mediaHover: '/engineering/gearbox-animation.mp4',
       isVideo: true,
-      mediaAlt: 'Image showing CAD model of compound planetary gearbox, animated when hovering cursor',
+      mediaAlt:
+        'Image showing CAD model of compound planetary gearbox, animated when hovering cursor',
       title: 'ENGINEERING',
       subtitle: 'MECHANICAL',
       dropDownItems: [
@@ -186,7 +195,8 @@ export default function Home() {
       media: '/dev/three-concept-photo.png',
       mediaHover: '/dev/three-concept-video-md.mp4',
       isVideo: true,
-      mediaAlt: '3D avatar wearing a t-shirt on an e-commerce page, with a video showcasing a 360-degree spin when hovered over with the cursor.',
+      mediaAlt:
+        '3D avatar wearing a t-shirt on an e-commerce page, with a video showcasing a 360-degree spin when hovered over with the cursor.',
       title: 'DEV',
       subtitle: 'FULL-STACK',
       dropDownItems: [
@@ -219,7 +229,8 @@ export default function Home() {
       media: '/hobbies/led-panels.jpg',
       mediaHover: '/hobbies/led-panels-video.mp4',
       isVideo: true,
-      mediaAlt: 'Image of triangular LED panels on wall, changes color when hovering cursor.',
+      mediaAlt:
+        'Image of triangular LED panels on wall, changes color when hovering cursor.',
       title: 'HOBBIES',
       subtitle: 'MISC PROJECTS',
       dropDownItems: [
@@ -251,30 +262,33 @@ export default function Home() {
 
   return (
     <div>
-      <Header/>
+      <Header />
       <div
         {...swipeHandlers}
-        className="scrollbar-hide relative h-screen flex flex-col items-center overflow-x-hidden">
+        className="scrollbar-hide relative h-screen flex flex-col items-center overflow-x-hidden"
+      >
         {/* Header Text */}
-        <div className={`z-40 mt-[calc(25svh+100px)] pointer-events-none absolute text-[4.5em] sm:text-[6.5em] md:text-[8em] lg:text-[148px] font-light leading-[0.8] tracking-tighter 
-        transition-opacity duration-500 ease-in-out 
-          ${fanUp ? 'opacity-0' : 'opacity-100'}`}>
-          <h1 className='mt-20'>{headingLineOne}</h1>
-          <h1 className='ml-[12vw] lg:ml-48'>{headingLineTwo}</h1>
-        </div>
         <div
-          className={'w-full mt-[calc(25svh-100px)]'}
+          className={`z-40 mt-[calc(25svh+100px)] pointer-events-none absolute text-[4.5em] sm:text-[6.5em] md:text-[8em] lg:text-[148px] font-light leading-[0.8] tracking-tighter 
+        transition-opacity duration-500 ease-in-out 
+          ${fanUp ? 'opacity-0' : 'opacity-100'}`}
         >
+          <h1 className="mt-20">{headingLineOne}</h1>
+          <h1 className="ml-[12vw] lg:ml-48">{headingLineTwo}</h1>
+        </div>
+        <div className={'w-full mt-[calc(25svh-100px)]'}>
           {/* Cards */}
           {CARD_DATA.map((card, index) => {
-            const mobileTransformValue = `${(110 * index) - (110 * currentIndex)}`;
-            const mobileStyle = (fanOut && !isLargeScreen)
-              ? { transform: `translateX(${mobileTransformValue}%) translateY(calc(-25svh + 128px))` }
+            const mobileTransformValue = `${110 * index - 110 * currentIndex}`;
+            const mobileStyle = fanOut && !isLargeScreen
+              ? {
+                transform: `translateX(${mobileTransformValue}%) translateY(calc(-25svh + 128px))`,
+              }
               : {};
             return (
               <div
                 key={card.id}
-                className='flex justify-center items-start transition-transform duration-500 ease-in-out'
+                className="flex justify-center items-start transition-transform duration-500 ease-in-out"
               >
                 <Card
                   id={card.id}
@@ -282,6 +296,7 @@ export default function Home() {
                   mediaHover={card.mediaHover}
                   isVideo={card.isVideo}
                   mediaAlt={card.mediaAlt}
+                  addBG={card.addBg}
                   showInfo={fanOut}
                   activeCardMobile={!isLargeScreen && index === currentIndex}
                   title={card.title}
@@ -289,23 +304,43 @@ export default function Home() {
                   dropDownItems={card.dropDownItems}
                   style={{
                     zIndex: 30 - index * 10,
-                    transform: `${fanUp
-                      ? `${isLargeScreen ? 'translateY(calc(-25svh + 160px))' : 'translateY(calc(-25svh + 140px))'} ${!fanOut ? `rotate(${index * 1}deg) translateX(${index * 4}px)` : ''}`
-                      : ''} ${fanOut ? `${isExtraLargeScreen ? `translateX(${-450 + index * 300}px)` : `translateX(${-382 + index * 252}px)`}` : ''}`,
+                    transform: `${
+                      fanUp
+                        ? `${
+                          isLargeScreen
+                            ? 'translateY(calc(-25svh + 160px))'
+                            : 'translateY(calc(-25svh + 140px))'
+                        } ${
+                          !fanOut
+                            ? `rotate(${index * 1}deg) translateX(${
+                              index * 4
+                            }px)`
+                            : ''
+                        }`
+                        : ''
+                    } ${
+                      fanOut
+                        ? `${
+                          isExtraLargeScreen
+                            ? `translateX(${-450 + index * 300}px)`
+                            : `translateX(${-382 + index * 252}px)`
+                        }`
+                        : ''
+                    }`,
                     ...mobileStyle,
                   }}
-              />
+                />
               </div>
             );
           })}
         </div>
         {/* Conditionally render scroll bar */}
-        {!hasOpened
-          && <ScrollCTA
+        {!hasOpened && (
+          <ScrollCTA
             text={`${isLargeScreen ? 'Scroll Down' : 'Swipe'}`}
-            className='mt-[540px]'
+            className="mt-[540px]"
           />
-        }
+        )}
       </div>
     </div>
   );
