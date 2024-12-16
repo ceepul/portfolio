@@ -60,6 +60,11 @@ const Card: FunctionComponent<CardProps> = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
+      {/* {showInfo && isDropdownVisible
+      && <Link href={targetLink} className='w-full flex justify-center'>
+          <h3 className='h3 -mt-7 mb-2'>- Click for more Info -</h3>
+        </Link>
+      } */}
       <div>
         {/* Conditional wrapper for Image */}
         {showInfo ? (

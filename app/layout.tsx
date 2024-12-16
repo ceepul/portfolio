@@ -24,7 +24,7 @@ export default function RootLayout({
       <body
         className={`${josefinSans.variable} font-sans`}
       >
-        <ThemeProvider defaultTheme='dark'>
+        <ThemeProvider enableSystem={false} defaultTheme='dark'>
           {children}
         </ThemeProvider>
       </body>

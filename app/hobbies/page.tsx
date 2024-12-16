@@ -87,29 +87,24 @@ export default function HobbiesPage() {
             className="pt-16"
           />
           <div className="divider mt-16"></div>
-          {/* <ProjectSection
+          <ProjectSection
             id="diy fpv drone"
             title="DIY FPV Drone"
             description="
               Built a custom racing drone from sourced components
               with fully soldered and configured electronics."
             details={[
-              'Assembled a 210mm frame with brushless motors, ESCs, FPV transmitter,
-              antenna, and flight controller.',
-              'Soldered and wired components, including PDB and flight controller,
-              ensuring clean connections and optimal layout.',
-              'Configured flight software (Betaflight) and tuned PID values for
-              improved flight stability and responsiveness.',
+              'Assembled a 210mm frame with brushless motors, ESCs, FPV transmitter, antenna, and flight controller.',
+              'Soldered and wired components, including PDB and flight controller, ensuring clean connections and optimal layout.',
+              'Configured flight software (Betaflight) and tuned PID values for improved flight stability and responsiveness.',
               'Developed proficiency in FPV drone piloting, maintenance, and tuning.',
             ]}
             images={[
-              { src: '/engineering/gearbox-1.jpg', alt: 'three' },
-              { src: '/engineering/gearbox-animation.mp4', alt: 'three', video: true },
-              { src: '/engineering/gearbox-5.jpg', alt: 'three' },
+              { src: '/hobbies/fpv.jpg', alt: 'Image of an FPV drone with orange propellers.' },
             ]}
             className="pt-16"
           />
-          <div className="divider mt-16"></div> */}
+          <div className="divider mt-16"></div>
           <ProjectSection
             id="marine upholstery"
             title="Marine Upholstery"
@@ -117,7 +112,7 @@ export default function HobbiesPage() {
             details={[
               'Learned to cut and sew complex patterns with decorative stitching and fabric pulls for a professional finish.',
               'Refurbished and shaped plywood bases, stretched and stapled fabric for durability.',
-              'Installed completed upholstery into boat, ensuring aesthetics.',
+              'Installed completed upholstery into boat.',
             ]}
             images={[
               { src: '/hobbies/upholstery-6a.jpg', alt: 'Image showing stern of inboard outboard boat with new upholstery' },
@@ -125,6 +120,7 @@ export default function HobbiesPage() {
               { src: '/hobbies/upholstery-1a.jpg', alt: 'Image of in-progress replacement of bow cushions, showing one new cushion amongst the old cushions' },
               { src: '/hobbies/upholstery-14a.jpg', alt: 'Image of completed upholstery in the bow of a bowrider boat' },
             ]}
+            flip
             className="py-16"
           />
         </div>
