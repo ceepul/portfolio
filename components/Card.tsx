@@ -118,7 +118,7 @@ const Card: FunctionComponent<CardProps> = ({
 
         {/* Dropdown Items */}
         {showInfo && (
-          <ul className="m-3 mt-4 mb-10 space-y-5">
+          <ul className="m-3 mt-4 mb-40 space-y-5">
             {dropDownItems.map((item, index) => (
               <li
                 key={index}

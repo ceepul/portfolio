@@ -120,20 +120,16 @@ export default function Home() {
     onSwipedRight: () => {
       if (fanOut) setCurrentIndex((prev) => Math.max(prev - 1, 0));
     },
-    onSwiping: (eventData) => {
-      const {
-        deltaY, absX, absY, dir,
-      } = eventData;
-
-      if (fanOut) {
-        if ((dir === 'Up' || dir === 'Down') && absY > absX) {
-          console.log(!hasOpened || preventScroll);
-          setPreventScroll(Math.abs(deltaY) < 100);
-        }
-      }
+    onSwipeStart: () => {
+      // Prevent scrolling during swipe interaction
+      setPreventScroll(true);
     },
-    preventScrollOnSwipe: !hasOpened || preventScroll,
-    trackMouse: false,
+    onSwiped: () => {
+      // Allow scrolling again after swipe ends
+      setPreventScroll(false);
+    },
+    preventScrollOnSwipe: !hasOpened,
+    trackMouse: true,
   });
 
   const CARD_DATA = [
@@ -278,6 +274,7 @@ export default function Home() {
       <Header />
       <div
         {...swipeHandlers}
+        style={{ touchAction: preventScroll ? 'none' : 'auto' }}
         className="scrollbar-hide relative h-screen flex flex-col items-center overflow-x-hidden"
       >
         {/* Header Text */}
