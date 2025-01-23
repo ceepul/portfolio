@@ -119,8 +119,16 @@ export default function Home() {
     onSwipedRight: () => {
       if (fanOut) setCurrentIndex((prev) => Math.max(prev - 1, 0));
     },
+    onSwiping: (eventData) => {
+      // If a horizontal swipe is detected, prevent vertical scrolling
+      const { absX, absY } = eventData;
+
+      if (absX > absY) {
+        eventData.event.preventDefault();
+      }
+    },
     preventScrollOnSwipe: !hasOpened,
-    trackMouse: true,
+    trackMouse: false,
   });
 
   const CARD_DATA = [
