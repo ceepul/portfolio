@@ -51,7 +51,6 @@ export default function Home() {
   const [animationInProgress, setAnimationInProgress] = useState<boolean>(false);
   const [hasOpened, setHasOpened] = useState<boolean>(false);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [preventScroll, setPreventScroll] = useState<boolean>(false);
 
   // Debounce function
   const debounce = (func: (...args: unknown[]) => void, delay: number) => {
@@ -119,14 +118,6 @@ export default function Home() {
     },
     onSwipedRight: () => {
       if (fanOut) setCurrentIndex((prev) => Math.max(prev - 1, 0));
-    },
-    onSwipeStart: () => {
-      // Prevent scrolling during swipe interaction
-      setPreventScroll(true);
-    },
-    onSwiped: () => {
-      // Allow scrolling again after swipe ends
-      setPreventScroll(false);
     },
     preventScrollOnSwipe: !hasOpened,
     trackMouse: true,
@@ -274,7 +265,6 @@ export default function Home() {
       <Header />
       <div
         {...swipeHandlers}
-        style={{ touchAction: preventScroll ? 'none' : 'auto' }}
         className="scrollbar-hide relative h-screen flex flex-col items-center overflow-x-hidden"
       >
         {/* Header Text */}
@@ -348,7 +338,7 @@ export default function Home() {
         {!hasOpened && (
           <ScrollCTA
             text={`${isLargeScreen ? 'Scroll Down' : 'Swipe'}`}
-            className="mt-[540px]"
+            className={isLargeScreen ? 'mt-[540px]' : 'mt-[480px]'}
           />
         )}
       </div>
