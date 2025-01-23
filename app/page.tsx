@@ -51,6 +51,7 @@ export default function Home() {
   const [animationInProgress, setAnimationInProgress] = useState<boolean>(false);
   const [hasOpened, setHasOpened] = useState<boolean>(false);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [preventScroll, setPreventScroll] = useState<boolean>(false);
 
   // Debounce function
   const debounce = (func: (...args: unknown[]) => void, delay: number) => {
@@ -120,14 +121,18 @@ export default function Home() {
       if (fanOut) setCurrentIndex((prev) => Math.max(prev - 1, 0));
     },
     onSwiping: (eventData) => {
-      // If a horizontal swipe is detected, prevent vertical scrolling
-      const { absX, absY } = eventData;
+      const {
+        deltaY, absX, absY, dir,
+      } = eventData;
 
-      if (absX > absY) {
-        eventData.event.preventDefault();
+      if (fanOut) {
+        if ((dir === 'Up' || dir === 'Down') && absY > absX) {
+          console.log(!hasOpened || preventScroll);
+          setPreventScroll(Math.abs(deltaY) < 100);
+        }
       }
     },
-    preventScrollOnSwipe: !hasOpened,
+    preventScrollOnSwipe: !hasOpened || preventScroll,
     trackMouse: false,
   });
 
