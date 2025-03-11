@@ -144,6 +144,7 @@ export default function Home() {
         {
           heading: 'EXPERIENCE',
           body: [
+            'AI Trainer, DataAnnotation, Dec 24 - Present',
             'Captain, TDot Water Taxi, Jul 20 - Oct 24',
             'Self-Employed, Fenton Lawn Care, May 17 - Sep 20',
           ],
@@ -172,7 +173,7 @@ export default function Home() {
           heading: 'COMPOUND PLANETARY GEARBOX',
           body: [
             '3D printed gearbox for use in a machine prototype',
-            'designed in SolidWorks with 3D printing tolerances in mind',
+            'designed in SolidWorks with regard for 3D printing tolerances',
           ],
         },
         {
@@ -218,8 +219,7 @@ export default function Home() {
           heading: '3D VIRTUAL TRY-ON',
           body: [
             'virtual try-on for ecommerce using avatars',
-            'hobby project to evaluate idea',
-            'ThreeJS',
+            'hobby project incorporating Three.js',
           ],
         },
       ],

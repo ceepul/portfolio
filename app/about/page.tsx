@@ -10,7 +10,7 @@ export default function AboutPage() {
     <div>
       <Header />
       {/* Above the fold */}
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center bg-secondary">
         <div className="max-w-4xl w-full p-4">
           <div className='min-h-[calc(100svh-7rem)] flex flex-col justify-center items-start'>
             <div className='flex flex-col sm:flex-row gap-20'>
@@ -45,10 +45,10 @@ export default function AboutPage() {
                   skills={['SolidWorks - Associate', 'COMSOL', 'MATLAB', '3D Printing', 'Design',
                     'JavaScript', 'TypeScript', 'React', 'NextJS', 'NodeJS', 'AWS',
                   ]}
-                  className='mt-12'
+                  className='my-12'
                 />
               </div>
-              <div className='min-w-80 h-[480px]'>
+              <div className='min-w-80 h-[480px] mt-4'>
                 <Image
                   src='/headshot-smiley-600-400.jpg'
                   alt='Photo of Russell Fenton'

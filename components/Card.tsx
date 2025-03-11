@@ -60,16 +60,11 @@ const Card: FunctionComponent<CardProps> = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {/* {showInfo && isDropdownVisible
-      && <Link href={targetLink} className='w-full flex justify-center'>
-          <h3 className='h3 -mt-7 mb-2'>- Click for more Info -</h3>
-        </Link>
-      } */}
       <div>
         {/* Conditional wrapper for Image */}
         {showInfo ? (
           <Link href={targetLink}>
-            <div className={`${isDropdownVisible && 'scale-105'}`}>
+            <div className={`relative ${isDropdownVisible && 'scale-105'}`}>
               {isVideo && isDropdownVisible ? (
                 <video
                   className="w-60 h-[360px] rounded-xl shadow-md"
@@ -95,18 +90,25 @@ const Card: FunctionComponent<CardProps> = ({
                   alt={mediaAlt}
                 />
               )}
+
+              {/* Hover button - only shows when dropdown is visible */}
+              <div className={`absolute inset-x-0 bottom-4 flex justify-center transition-opacity duration-300 ${isDropdownVisible ? 'opacity-100' : 'opacity-0'} `}>
+                <button className="h3 px-4 py-2 bg-gray-400 bg-opacity-60 rounded-md hover:bg-opacity-80 transition-all duration-300">
+                  Click for More Info
+                </button>
+              </div>
             </div>
           </Link>
         ) : (
           <div>
-              <Image
-                className={`w-60 h-[360px] rounded-xl shadow-md ${addBG && 'bg-red-400'}`}
-                priority
-                src={media}
-                width={360}
-                height={540}
-                alt={mediaAlt}
-              />
+            <Image
+              className={`w-60 h-[360px] rounded-xl shadow-md ${addBG && 'bg-red-400'}`}
+              priority
+              src={media}
+              width={360}
+              height={540}
+              alt={mediaAlt}
+            />
           </div>
         )}
 
