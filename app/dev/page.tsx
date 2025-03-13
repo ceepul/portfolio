@@ -34,12 +34,12 @@ export default function DevPage() {
               skills={['JavaScript', 'TypeScript', 'React', 'NextJS', 'Tailwind', 'ThreeJS', 'NodeJS',
                 'AWS', 'Eslint', 'Fly.io', 'Pinecone DB', 'NPM', 'OpenAI', 'PostgreSQL',
               ]}
-              className='mt-12 sm:mb-12'
+              className='my-12'
             />
-            <div className='w-full flex justify-center'>
+            <div className='w-full hidden md:flex justify-center'>
               <ScrollCTA
                 text='Experience'
-                className='mt-4 sm:mt-10'
+                className='mt-10'
               />
             </div>
           </div>

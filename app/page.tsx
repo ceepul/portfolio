@@ -10,16 +10,19 @@ const useScreenSize = () => {
   const [screenSize, setScreenSize] = useState({
     isLargeScreen: false,
     isExtraLargeScreen: false,
+    hasHoverCapability: false,
   });
 
   useEffect(() => {
     const lgMediaQuery = window.matchMedia('(min-width: 1024px)');
     const xlMediaQuery = window.matchMedia('(min-width: 1280px)');
+    const hoverMediaQuery = window.matchMedia('(hover: hover)');
 
     const handleResize = () => {
       setScreenSize({
         isLargeScreen: lgMediaQuery.matches,
         isExtraLargeScreen: xlMediaQuery.matches,
+        hasHoverCapability: hoverMediaQuery.matches,
       });
     };
 
@@ -29,11 +32,13 @@ const useScreenSize = () => {
     // Add listeners
     lgMediaQuery.addEventListener('change', handleResize);
     xlMediaQuery.addEventListener('change', handleResize);
+    hoverMediaQuery.addEventListener('change', handleResize);
 
     // Cleanup listeners on unmount
     return () => {
       lgMediaQuery.removeEventListener('change', handleResize);
       xlMediaQuery.removeEventListener('change', handleResize);
+      hoverMediaQuery.removeEventListener('change', handleResize);
     };
   }, []);
 
@@ -41,7 +46,10 @@ const useScreenSize = () => {
 };
 
 export default function Home() {
-  const { isLargeScreen, isExtraLargeScreen } = useScreenSize();
+  const { isLargeScreen, isExtraLargeScreen, hasHoverCapability } = useScreenSize();
+
+  // Condition considers both screen size AND hover capability
+  const useDesktopLayout = isLargeScreen && hasHoverCapability;
 
   const headingLineOne = 'RUSSELL';
   const headingLineTwo = 'FENTON';
@@ -64,7 +72,7 @@ export default function Home() {
   // Handle scroll with debounce and animation control
   useEffect(() => {
     const handleScroll = debounce(() => {
-      if (animationInProgress || !isLargeScreen) return;
+      if (animationInProgress || !useDesktopLayout) return;
 
       const { scrollY } = window;
       const { scrollHeight, clientHeight } = document.documentElement;
@@ -97,12 +105,12 @@ export default function Home() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [fanUp, fanOut, animationInProgress, isLargeScreen, hasOpened]);
+  }, [fanUp, fanOut, animationInProgress, useDesktopLayout, hasOpened]);
 
   // Swipe handlers
   const swipeHandlers = useSwipeable({
     onSwipedUp: () => {
-      if (!hasOpened && !animationInProgress && !isLargeScreen) {
+      if (!hasOpened && !animationInProgress && !useDesktopLayout) {
         // Only allow the first swipe up to open the fan on mobile
         setAnimationInProgress(true);
         setFanUp(true);
@@ -280,7 +288,7 @@ export default function Home() {
           {/* Cards */}
           {CARD_DATA.map((card, index) => {
             const mobileTransformValue = `${110 * index - 110 * currentIndex}`;
-            const mobileStyle = fanOut && !isLargeScreen
+            const mobileStyle = fanOut && !useDesktopLayout
               ? {
                 transform: `translateX(${mobileTransformValue}%) translateY(calc(-25svh + 128px))`,
               }
@@ -298,7 +306,7 @@ export default function Home() {
                   mediaAlt={card.mediaAlt}
                   addBG={card.addBg}
                   showInfo={fanOut}
-                  activeCardMobile={!isLargeScreen && index === currentIndex}
+                  activeCardMobile={!useDesktopLayout && index === currentIndex}
                   title={card.title}
                   subtitle={card.subtitle}
                   dropDownItems={card.dropDownItems}
@@ -337,8 +345,8 @@ export default function Home() {
         {/* Conditionally render scroll bar */}
         {!hasOpened && (
           <ScrollCTA
-            text={`${isLargeScreen ? 'Scroll Down' : 'Swipe'}`}
-            className={isLargeScreen ? 'mt-[520px]' : 'mt-[460px]'}
+            text={`${useDesktopLayout ? 'Scroll Down' : 'Swipe'}`}
+            className={'mt-[440px] md:mt-[520px]'}
           />
         )}
       </div>
