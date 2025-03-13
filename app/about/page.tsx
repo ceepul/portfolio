@@ -13,7 +13,7 @@ export default function AboutPage() {
       <div className="flex flex-col items-center bg-secondary">
         <div className="max-w-4xl w-full p-4">
           <div className='min-h-[calc(100svh-7rem)] flex flex-col justify-center items-start'>
-            <div className='flex flex-col sm:flex-row gap-20'>
+            <div className='flex flex-col md:flex-row gap-16'>
               <div>
                 <PageTitle
                   bgText='RUSSELL FENTON'
@@ -45,17 +45,17 @@ export default function AboutPage() {
                   skills={['SolidWorks - Associate', 'COMSOL', 'MATLAB', '3D Printing', 'Design',
                     'JavaScript', 'TypeScript', 'React', 'NextJS', 'NodeJS', 'AWS',
                   ]}
-                  className='my-12'
+                  className='mt-12 md:my-12'
                 />
               </div>
-              <div className='min-w-80 h-[480px] mt-4'>
+              <div className='min-w-80 m-4'>
                 <Image
                   src='/headshot-smiley-600-400.jpg'
                   alt='Photo of Russell Fenton'
                   width={400}
                   height={600}
                   priority
-                  className='rounded-2xl'
+                  className='rounded-2xl justify-self-center'
                 />
               </div>
             </div>

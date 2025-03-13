@@ -32,12 +32,12 @@ export default function HobbiesPage() {
               skills={['SMD Soldering', 'Circuit Design', '3D Printing', 'Arduino', 'LEDs', 'FPV', 'Sewing',
                 'Wood Working',
               ]}
-              className='mt-12 mb-12'
+              className='mt-12 sm:mb-12'
             />
             <div className='w-full flex justify-center'>
               <ScrollCTA
                 text='Projects'
-                className='mt-10'
+                className='mt-4 sm:mt-10'
               />
             </div>
           </div>
@@ -49,7 +49,7 @@ export default function HobbiesPage() {
           <PageTitle
             bgText='PROJECTS'
             headingText='HOBBIES'
-            className='mt-20 sm:mt-28 '
+            className='mt-12 sm:mt-20'
           />
           <ProjectSection
             id="faux nanoleaf"

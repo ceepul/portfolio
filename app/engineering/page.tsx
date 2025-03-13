@@ -31,12 +31,12 @@ export default function EnginneringPage() {
             />
             <TextSkills
               skills={['SolidWorks - Associate', 'COMSOL', 'MATLAB', 'Simulink', 'Design', '3D Printing', 'GD&T']}
-              className='mt-12 mb-12'
+              className='mt-12 sm:mb-12'
             />
             <div className='w-full flex justify-center'>
               <ScrollCTA
                 text='Course Projects'
-                className='mt-10'
+                className='mt-4 sm:mt-10'
               />
             </div>
           </div>
@@ -48,7 +48,7 @@ export default function EnginneringPage() {
           <PageTitle
             bgText='EXPERIENCE'
             headingText='COURSE PROJECTS'
-            className='mt-20 sm:mt-28 '
+            className='mt-12 sm:mt-20 '
           />
           <ProjectSection
             id="electromechanical harvester"

@@ -338,7 +338,7 @@ export default function Home() {
         {!hasOpened && (
           <ScrollCTA
             text={`${isLargeScreen ? 'Scroll Down' : 'Swipe'}`}
-            className={isLargeScreen ? 'mt-[540px]' : 'mt-[480px]'}
+            className={isLargeScreen ? 'mt-[520px]' : 'mt-[460px]'}
           />
         )}
       </div>
