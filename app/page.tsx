@@ -346,7 +346,7 @@ export default function Home() {
         {!hasOpened && (
           <ScrollCTA
             text={`${useDesktopLayout ? 'Scroll Down' : 'Swipe'}`}
-            className={'mt-[440px] md:mt-[520px]'}
+            className={'mt-[420px] sm:mt-[460px] md:mt-[520px]'}
           />
         )}
       </div>
