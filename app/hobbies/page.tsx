@@ -29,7 +29,7 @@ export default function HobbiesPage() {
               className='mt-4'
             />
             <TextSkills
-              skills={['SMD Soldering', 'Circuit Design', '3D Printing', 'Arduino', 'LEDs', 'FPV', 'Sewing',
+              skills={['SMD Soldering', 'Circuit Design', 'PCB Design', 'LEDs', 'Prototyping', '3D Printing', 'Vacuum Forming', 'Arduino', 'FPV', 'Sewing', 'Material Patterning',
                 'Wood Working',
               ]}
               className='my-12'

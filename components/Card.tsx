@@ -1,7 +1,7 @@
 'use client';
 
 import {
-  FunctionComponent, useState, useEffect, CSSProperties,
+  FunctionComponent, useState, useEffect, CSSProperties, Fragment,
 } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -137,12 +137,17 @@ const Card: FunctionComponent<CardProps> = ({
                   <h3 className="h3 text-white">{item.heading}</h3>
                 </Link>
                 <ul className="mt-2 space-y-2">
-                  {item.body.map((text, bodyIndex) => (
-                    <div key={bodyIndex} className='flex items-start gap-1'>
-                      <p className='p'>{'-'}</p>
-                      <p className="p">{`${text}`}</p>
-                    </div>
-                  ))}
+                {item.body.map((text, bodyIndex) => (
+                  <div key={bodyIndex} className='flex items-start gap-1'>
+                    <p className='p'>{'-'}</p>
+                    <p className="p">{text.split('\n').map((line, i) => (
+                      <Fragment key={i}>
+                        {line}
+                        {i < text.split('\n').length - 1 && <br />}
+                      </Fragment>
+                    ))}</p>
+                  </div>
+                ))}
                 </ul>
               </li>
             ))}

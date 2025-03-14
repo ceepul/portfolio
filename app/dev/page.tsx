@@ -32,7 +32,7 @@ export default function DevPage() {
             />
             <TextSkills
               skills={['JavaScript', 'TypeScript', 'React', 'NextJS', 'Tailwind', 'ThreeJS', 'NodeJS',
-                'AWS', 'Eslint', 'Fly.io', 'Pinecone DB', 'NPM', 'OpenAI', 'PostgreSQL',
+                'AWS', 'Eslint', 'Fly.io', 'Pinecone DB', 'NPM', 'OpenAI', 'PostgreSQL', 'Git', 'Supabase',
               ]}
               className='my-12'
             />

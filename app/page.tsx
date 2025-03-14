@@ -145,16 +145,16 @@ export default function Home() {
         {
           heading: 'EDUCATION',
           body: [
-            'BE, Mechanical Engineering, University of Guelph, Sep 19 - Apr 24',
-            'Exchange, Australian National University, Feb 23 - Jun 23',
+            'BE, Mechanical Engineering, University of Guelph\nSep 19 - Apr 24',
+            'Exchange, Australian National University\nFeb 23 - Jun 23',
           ],
         },
         {
           heading: 'EXPERIENCE',
           body: [
-            'AI Trainer, DataAnnotation, Dec 24 - Present',
-            'Captain, TDot Water Taxi, Jul 20 - Oct 24',
-            'Self-Employed, Fenton Lawn Care, May 17 - Sep 20',
+            'AI Trainer, DataAnnotation\nDec 24 - Present',
+            'Captain, TDot Water Taxi\nJul 20 - Oct 24',
+            'Self-Employed, Fenton Lawn Care\nMay 17 - Sep 20',
           ],
         },
       ],
@@ -172,16 +172,15 @@ export default function Home() {
         {
           heading: 'ELECTROMECHANICAL HARVESTER',
           body: [
-            'harness energy from animal movement',
-            'perpetually power GPS tracker',
-            'design team of 4',
+            'Harness energy from animal movement to perpetually power GPS tracker.',
+            'Design team of 4. Built prototype. Presented to industry professionals.',
           ],
         },
         {
           heading: 'COMPOUND PLANETARY GEARBOX',
           body: [
-            '3D printed gearbox for use in a machine prototype',
-            'designed in SolidWorks with regard for 3D printing tolerances',
+            '3D printed gearbox for use in a bucket elevator prototype.',
+            'Designed in SolidWorks with regard for 3D printing tolerances.',
           ],
         },
         {
@@ -212,22 +211,22 @@ export default function Home() {
         {
           heading: 'SHOPMATE AI',
           body: [
-            'shopify app - virtual sales assistant',
+            'Virtual sales assistant for Shopify stores.',
             'JS, React, AWS, PineconeDB, OpenAI',
           ],
         },
         {
           heading: 'SOLANA PAY STOREFRONT',
           body: [
-            'developed an online store using blockchain transactions on Solana',
-            'Buildspace project',
+            'Developed an online store using blockchain transactions on Solana.',
+            'Buildspace project.',
           ],
         },
         {
           heading: '3D VIRTUAL TRY-ON',
           body: [
-            'virtual try-on for ecommerce using avatars',
-            'hobby project incorporating Three.js',
+            'Virtual try-on system for ecommerce, using avatars.',
+            'Hobby project incorporating Three.js for 3D web graphics.',
           ],
         },
       ],
@@ -245,24 +244,30 @@ export default function Home() {
         {
           heading: 'FAUX NANOLEAF',
           body: [
-            'designed, built, and coded nanoleaf-like LED panels',
-            'arduino hardware / software',
+            'Designed, built, and coded interactive LED wall panels.',
+            'Arduino hardware / software',
           ],
         },
         {
           heading: '3D PRINTING',
-          body: ['5+ years designing 3D prints'],
+          body: [
+            '5+ years designing and printing parts on Ender 3 Pro.',
+            'PLA, PETG, ABS',
+          ],
         },
         {
           heading: 'DIY FPV DRONE',
           body: [
-            'spec & soldered components for a racing drone',
-            'configured software',
+            'Spec\'d, built, and tuned a 210mm quadcopter.',
+            'Configured Betaflight and tuned PID settings.',
           ],
         },
         {
           heading: 'MARINE UPHOLSTERY',
-          body: ['fast learner', 'complex patterning'],
+          body: [
+            'Fast learner, able to design and sew custom boat cushions.',
+            'Complex patterns with piping and fabric pulls.',
+          ],
         },
       ],
     },

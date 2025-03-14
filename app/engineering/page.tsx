@@ -20,9 +20,9 @@ export default function EnginneringPage() {
               className='mt-4'
             />
             <TextBox
-              text='As a mechanical engineering student, I have developed expertise in designing
+              text='As a mechanical engineering student, I have practical experience in designing
                 and optimizing electromechanical systems, CAD modeling, and prototyping innovative solutions.
-                I led the development of an animal tracking collar, leading the design and simulation of an
+                With an engineering team, I developed a movement-powered animal tracking collar, leading the design and simulation of an
                 electromagnetic harvester in COMSOL and integrating it into a reliable final system.
                 My project experience includes maze-navigating robots, automated seed planters,
                 and high-torque gear systems, leveraging tools like SolidWorks, MATLAB,
@@ -30,7 +30,7 @@ export default function EnginneringPage() {
               className='mt-4'
             />
             <TextSkills
-              skills={['SolidWorks - Associate', 'COMSOL', 'MATLAB', 'Simulink', 'Design', '3D Printing', 'GD&T']}
+              skills={['SolidWorks - Associate', 'COMSOL', 'MATLAB', 'Simulink', 'Design', 'Prototyping', '3D Printing', 'GD&T']}
               className='my-12'
             />
             <div className='w-full hidden md:flex justify-center'>

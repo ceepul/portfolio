@@ -1,7 +1,6 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PageTitle from '@/components/PageTitle';
-import TextSkills from '@/components/TextSkills';
 import TextBox from '@/components/TextBox';
 import Image from 'next/image';
 
@@ -13,7 +12,7 @@ export default function AboutPage() {
       <div className="flex flex-col items-center bg-secondary">
         <div className="max-w-4xl w-full p-4">
           <div className='min-h-[calc(100svh-7rem)] flex flex-col justify-center items-start'>
-            <div className='flex flex-col md:flex-row gap-16'>
+            <div className='flex flex-col md:flex-row gap-4 md:gap-16'>
               <div>
                 <PageTitle
                   bgText='RUSSELL FENTON'
@@ -22,10 +21,10 @@ export default function AboutPage() {
                 />
                 <TextBox
                   text="
-                    Hi, I'm Russell! I'm a mechanical engineering student with a passion for building,
+                    Hi, I'm Russell! I'm a mechanical engineering graduate with a passion for building,
                     fixing, and understanding how things work. As a self-taught web developer,
-                    I specialize in JavaScript, TypeScript, React, and Next.js,
-                    and I love bringing ideas to life through code and hands-on projects.
+                    I specialize in creating modern web apps using TypeScript, Next.js, Tailwind CSS, and Node.js.
+                    I love bringing ideas to life through code and hands-on projects.
                   "
                   className='mt-4 p'
                 />
@@ -40,12 +39,6 @@ export default function AboutPage() {
                   text="
                     Let's build something amazing together!
                   "
-                />
-                <TextSkills
-                  skills={['SolidWorks - Associate', 'COMSOL', 'MATLAB', '3D Printing', 'Design',
-                    'JavaScript', 'TypeScript', 'React', 'NextJS', 'NodeJS', 'AWS',
-                  ]}
-                  className='mt-12 md:my-12'
                 />
               </div>
               <div className='min-w-80 m-4'>
