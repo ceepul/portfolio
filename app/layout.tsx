@@ -4,7 +4,7 @@ import React from 'react';
 import './globals.css';
 import { ThemeProvider } from 'next-themes';
 import { Analytics } from '@vercel/analytics/next';
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const josefinSans = Josefin_Sans({
   subsets: ['latin'],
@@ -29,6 +29,7 @@ export default function RootLayout({
         <ThemeProvider enableSystem={false} defaultTheme='dark'>
           {children}
           <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
