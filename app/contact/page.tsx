@@ -13,62 +13,55 @@ export default function ContactPage() {
       {/* Above the fold */}
       <div className="flex flex-col items-center">
         <div className="max-w-5xl w-full p-4 min-h-[calc(100svh-7rem)] flex items-center justify-center">
-          <div className='flex flex-col sm:flex-row items-start gap-10 sm:gap-20'>
-            <div className='max-w-lg'>
+          <div className="flex flex-col sm:flex-row items-start gap-10 sm:gap-20">
+            <div className="max-w-lg">
               <PageTitle
-                bgText='GET IN TOUCH'
-                headingText='CONTACT INFO'
-                className='mt-4'
+                bgText="GET IN TOUCH"
+                headingText="CONTACT INFO"
+                className="mt-4"
               />
-              <p className='mt-10 large-body-text'>
-                I am currently seeking employment and would love to hear from you!
-                Please feel free to reach out on any of my platforms.
+              <p className="mt-10 large-body-text">
+                I am currently seeking employment and would love to hear from
+                you! Please feel free to reach out on any of my platforms.
               </p>
             </div>
             <div>
-              <h2 className='h2 mt-4'>CONTACT</h2>
-              <div className='mt-6 flex items-center gap-4'>
+              <h2 className="h2 mt-4">CONTACT</h2>
+              <div className="mt-6 flex items-center gap-4">
                 <div className="w-5 h-5">
-                  <Image src="/email-icon.svg" alt="Email Icon" width={64} height={64} />
+                  <Image
+                    src="/email-icon.svg"
+                    alt="Email Icon"
+                    width={64}
+                    height={64}
+                  />
                 </div>
                 <a href="mailto:Russell1837@gmail.com" className="p body-hover">
                   Russell1837@gmail.com
                 </a>
               </div>
-              <div className='mt-4 flex items-center gap-4'>
+              <div className="mt-4 flex items-center gap-4">
                 <div className="w-6 h-6">
-                  <Image src="/phone-icon.svg" alt="Phone Icon" width={64} height={64} />
+                  <Image
+                    src="/phone-icon.svg"
+                    alt="Phone Icon"
+                    width={64}
+                    height={64}
+                  />
                 </div>
-                <a href="tel:+16475758203" className='p body-hover'>
+                <a href="tel:+16475758203" className="p body-hover">
                   +1 (647) 575-8203
                 </a>
               </div>
-              <h2 className='h2 mt-14'>SOCIALS</h2>
-              <div className='mt-4'>
-                <a
-                  href={linkedinURL}
-                  target="_blank"
-                  className="p body-hover"
-                >
+              <h2 className="h2 mt-14">SOCIALS</h2>
+              <div className="mt-4">
+                <a href={linkedinURL} target="_blank" className="p body-hover">
                   LinkedIn
                 </a>
               </div>
-              <div className='mt-2'>
-                <a
-                  href={githubURL}
-                  target="_blank"
-                  className="p body-hover"
-                >
+              <div className="mt-2">
+                <a href={githubURL} target="_blank" className="p body-hover">
                   Github
-                </a>
-              </div>
-              <div className='mt-2'>
-                <a
-                  href={instagramURL}
-                  target="_blank"
-                  className="p body-hover"
-                >
-                  Instagram
                 </a>
               </div>
             </div>

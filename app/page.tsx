@@ -46,7 +46,8 @@ const useScreenSize = () => {
 };
 
 export default function Home() {
-  const { isLargeScreen, isExtraLargeScreen, hasHoverCapability } = useScreenSize();
+  const { isLargeScreen, isExtraLargeScreen, hasHoverCapability } =
+    useScreenSize();
 
   // Condition considers both screen size AND hover capability
   const useDesktopLayout = isLargeScreen && hasHoverCapability;
@@ -56,7 +57,8 @@ export default function Home() {
 
   const [fanUp, setFanUp] = useState<boolean>(false);
   const [fanOut, setFanOut] = useState<boolean>(false);
-  const [animationInProgress, setAnimationInProgress] = useState<boolean>(false);
+  const [animationInProgress, setAnimationInProgress] =
+    useState<boolean>(false);
   const [hasOpened, setHasOpened] = useState<boolean>(false);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
@@ -152,8 +154,10 @@ export default function Home() {
         {
           heading: 'EXPERIENCE',
           body: [
-            'AI Trainer, DataAnnotation\nDec 24 - Present',
-            'Captain, TDot Water Taxi\nJul 20 - Oct 24',
+            'Mechanical Design Engineer, i4 Product Design\nJul 25 - Oct 25',
+            'Captain, Galcon Marine Ltd\nApr 25 - Jun 25',
+            'AI Trainer, DataAnnotation\nDec 24 - Apr 25',
+            'Captain, TDot Water Taxi\nJul 20 - Jun 25',
             'Self-Employed, Fenton Lawn Care\nMay 17 - Sep 20',
           ],
         },
@@ -251,14 +255,14 @@ export default function Home() {
         {
           heading: '3D PRINTING',
           body: [
-            '5+ years designing and printing parts on Ender 3 Pro.',
-            'PLA, PETG, ABS',
+            '5+ years designing and printing parts on Ender 3 Pro and Bambu printers.',
+            'Commisioned by clients for small manufacturing runs.',
           ],
         },
         {
           heading: 'DIY FPV DRONE',
           body: [
-            'Spec\'d, built, and tuned a 210mm quadcopter.',
+            "Spec'd, built, and tuned a 210mm quadcopter.",
             'Configured Betaflight and tuned PID settings.',
           ],
         },
@@ -293,11 +297,12 @@ export default function Home() {
           {/* Cards */}
           {CARD_DATA.map((card, index) => {
             const mobileTransformValue = `${110 * index - 110 * currentIndex}`;
-            const mobileStyle = fanOut && !useDesktopLayout
-              ? {
-                transform: `translateX(${mobileTransformValue}%) translateY(calc(-25svh + 128px))`,
-              }
-              : {};
+            const mobileStyle =
+              fanOut && !useDesktopLayout
+                ? {
+                    transform: `translateX(${mobileTransformValue}%) translateY(calc(-25svh + 128px))`,
+                  }
+                : {};
             return (
               <div
                 key={card.id}
@@ -320,24 +325,24 @@ export default function Home() {
                     transform: `${
                       fanUp
                         ? `${
-                          isLargeScreen
-                            ? 'translateY(calc(-25svh + 160px))'
-                            : 'translateY(calc(-25svh + 140px))'
-                        } ${
-                          !fanOut
-                            ? `rotate(${index * 1}deg) translateX(${
-                              index * 4
-                            }px)`
-                            : ''
-                        }`
+                            isLargeScreen
+                              ? 'translateY(calc(-25svh + 160px))'
+                              : 'translateY(calc(-25svh + 140px))'
+                          } ${
+                            !fanOut
+                              ? `rotate(${index * 1}deg) translateX(${
+                                  index * 4
+                                }px)`
+                              : ''
+                          }`
                         : ''
                     } ${
                       fanOut
                         ? `${
-                          isExtraLargeScreen
-                            ? `translateX(${-450 + index * 300}px)`
-                            : `translateX(${-382 + index * 252}px)`
-                        }`
+                            isExtraLargeScreen
+                              ? `translateX(${-450 + index * 300}px)`
+                              : `translateX(${-382 + index * 252}px)`
+                          }`
                         : ''
                     }`,
                     ...mobileStyle,
