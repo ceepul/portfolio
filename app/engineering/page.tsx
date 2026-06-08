@@ -57,35 +57,6 @@ export default function EnginneringPage() {
             className="mt-12 sm:mt-20 "
           />
           <ProjectSection
-            id="bluetooth-ipod-classic"
-            title="Bluetooth iPod Classic"
-            description="World's first iPod Classic Bluetooth mod that maintains hold switch functionality through a custom aesthetic button."
-            details={[
-              'Designed a 3D printed mount and switch that integrate with existing iPod screws,  no additional hardware needed.',
-              'Mount includes a clasp that connects to the existing clip on the iPod frame. Installation of this switch does not sacrifice connection betweent he frame and backplate.',
-              'Preserves the hold switch by adding an external aesthetic button matching the original hold button design.',
-              'Requires only minimal modding of the backplate; the iPod frame is untouched.',
-              'Uses a standard Mini 7-Pin SMD Toggle Slide Switch.',
-              'Full instructions coming soon.',
-            ]}
-            images={[
-              {
-                src: '/engineering/ipod-3.jpg',
-                alt: 'Bluetooth iPod Classic mod — backplate and mount',
-              },
-              {
-                src: '/engineering/ipod-1.png',
-                alt: 'Bluetooth iPod Classic mod — front view',
-              },
-              {
-                src: '/engineering/ipod-2.png',
-                alt: 'Bluetooth iPod Classic mod — detail of custom switch',
-              },
-            ]}
-            className="pt-12 sm:pt-20"
-          />
-          <div className="mt-16 divider"></div>
-          <ProjectSection
             id="electromechanical harvester"
             title="Electro-Mechanical Harvester"
             description="Led the development of an energy harvester for an animal tracking collar, enabling sustainable power generation from animal movement."

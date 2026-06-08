@@ -52,6 +52,26 @@ export default function HobbiesPage() {
             className='mt-12 sm:mt-20'
           />
           <ProjectSection
+            id="bluetooth ipod classic"
+            title="Bluetooth iPod Classic"
+            description="World's first iPod Classic Bluetooth mod that maintains hold switch functionality through a custom aesthetic button."
+            details={[
+              'Designed a 3D printed mount and switch that integrate with existing iPod screws,  no additional hardware needed.',
+              'Mount includes a clasp that connects to the existing clip on the iPod frame. Installation of this switch does not sacrifice connection between the frame and backplate.',
+              'Preserves the hold switch by adding an external aesthetic button matching the original hold button design.',
+              'Requires only minimal modding of the backplate; the iPod frame is untouched.',
+              'Uses a standard Mini 7-Pin SMD Toggle Slide Switch.',
+              'Full instructions coming soon.',
+            ]}
+            images={[
+              { src: '/hobbies/ipod-3.jpg', alt: 'Bluetooth iPod Classic mod — backplate and mount' },
+              { src: '/hobbies/ipod-1.png', alt: 'Bluetooth iPod Classic mod — front view' },
+              { src: '/hobbies/ipod-2.png', alt: 'Bluetooth iPod Classic mod — detail of custom switch' },
+            ]}
+            className="pt-12 sm:pt-20"
+          />
+          <div className="divider mt-16"></div>
+          <ProjectSection
             id="faux nanoleaf"
             title="Faux Nanoleaf LED Panels"
             description="3D-printed LED panels with segmented WS2811 LED control for customizable patterns and effects."

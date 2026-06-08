@@ -174,13 +174,6 @@ export default function Home() {
       subtitle: 'MECHANICAL',
       dropDownItems: [
         {
-          heading: 'BLUETOOTH IPOD CLASSIC',
-          body: [
-            "World's first iPod Classic Bluetooth mod maintaining hold switch functionality.",
-            'Custom 3D printed mount and switch. No frame modifications required.',
-          ],
-        },
-        {
           heading: 'ELECTROMECHANICAL HARVESTER',
           body: [
             'Harness energy from animal movement to perpetually power GPS tracker.',
@@ -252,6 +245,13 @@ export default function Home() {
       title: 'HOBBIES',
       subtitle: 'MISC PROJECTS',
       dropDownItems: [
+        {
+          heading: 'BLUETOOTH IPOD CLASSIC',
+          body: [
+            "World's first iPod Classic Bluetooth mod maintaining hold switch functionality.",
+            'Custom 3D printed mount and switch. No frame modifications required.',
+          ],
+        },
         {
           heading: 'FAUX NANOLEAF',
           body: [
