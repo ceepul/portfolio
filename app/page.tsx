@@ -154,7 +154,7 @@ export default function Home() {
         {
           heading: 'EXPERIENCE',
           body: [
-            'Mechanical Design Engineer, i4 Product Design\nJul 25 - Oct 25',
+            'Mechanical Design Engineer, i4 Product Design\nJul 25 - Present',
             'Captain, Galcon Marine Ltd\nApr 25 - Jun 25',
             'AI Trainer, DataAnnotation\nDec 24 - Apr 25',
             'Captain, TDot Water Taxi\nJul 20 - Jun 25',
@@ -173,6 +173,13 @@ export default function Home() {
       title: 'ENGINEERING',
       subtitle: 'MECHANICAL',
       dropDownItems: [
+        {
+          heading: 'BLUETOOTH IPOD CLASSIC',
+          body: [
+            "World's first iPod Classic Bluetooth mod maintaining hold switch functionality.",
+            'Custom 3D printed mount and switch. No frame modifications required.',
+          ],
+        },
         {
           heading: 'ELECTROMECHANICAL HARVESTER',
           body: [

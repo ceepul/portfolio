@@ -13,31 +13,37 @@ export default function EnginneringPage() {
       {/* Above the fold */}
       <div className="flex flex-col items-center">
         <div className="max-w-4xl w-full p-4">
-          <div className='min-h-[calc(100svh-7rem)] flex flex-col justify-center items-start'>
-          <PageTitle
-              bgText='ENGINEERING'
-              headingText='MECHANICAL'
-              className='mt-4'
+          <div className="min-h-[calc(100svh-7rem)] flex flex-col justify-center items-start">
+            <PageTitle
+              bgText="ENGINEERING"
+              headingText="MECHANICAL"
+              className="mt-4"
             />
             <TextBox
-              text='As a mechanical engineering student, I have practical experience in designing
+              text="As a mechanical engineering student, I have practical experience in designing
                 and optimizing electromechanical systems, CAD modeling, and prototyping innovative solutions.
                 With an engineering team, I developed a movement-powered animal tracking collar, leading the design and simulation of an
                 electromagnetic harvester in COMSOL and integrating it into a reliable final system.
                 My project experience includes maze-navigating robots, automated seed planters,
                 and high-torque gear systems, leveraging tools like SolidWorks, MATLAB,
-                and Arduino to create functional and innovative designs.'
-              className='mt-4'
+                and Arduino to create functional and innovative designs."
+              className="mt-4"
             />
             <TextSkills
-              skills={['SolidWorks - Associate', 'COMSOL', 'MATLAB', 'Simulink', 'Design', 'Prototyping', '3D Printing', 'GD&T']}
-              className='my-12'
+              skills={[
+                'SolidWorks - Associate',
+                'COMSOL',
+                'MATLAB',
+                'Simulink',
+                'Design',
+                'Prototyping',
+                '3D Printing',
+                'GD&T',
+              ]}
+              className="my-12"
             />
-            <div className='w-full hidden md:flex justify-center'>
-              <ScrollCTA
-                text='Course Projects'
-                className='mt-10'
-              />
+            <div className="w-full hidden md:flex justify-center">
+              <ScrollCTA text="Course Projects" className="mt-10" />
             </div>
           </div>
         </div>
@@ -46,10 +52,39 @@ export default function EnginneringPage() {
       <div className="flex flex-col items-center bg-secondary">
         <div className="max-w-4xl w-full p-4">
           <PageTitle
-            bgText='EXPERIENCE'
-            headingText='COURSE PROJECTS'
-            className='mt-12 sm:mt-20 '
+            bgText="EXPERIENCE"
+            headingText="COURSE PROJECTS"
+            className="mt-12 sm:mt-20 "
           />
+          <ProjectSection
+            id="bluetooth-ipod-classic"
+            title="Bluetooth iPod Classic"
+            description="World's first iPod Classic Bluetooth mod that maintains hold switch functionality through a custom aesthetic button."
+            details={[
+              'Designed a 3D printed mount and switch that integrate with existing iPod screws,  no additional hardware needed.',
+              'Mount includes a clasp that connects to the existing clip on the iPod frame. Installation of this switch does not sacrifice connection betweent he frame and backplate.',
+              'Preserves the hold switch by adding an external aesthetic button matching the original hold button design.',
+              'Requires only minimal modding of the backplate; the iPod frame is untouched.',
+              'Uses a standard Mini 7-Pin SMD Toggle Slide Switch.',
+              'Full instructions coming soon.',
+            ]}
+            images={[
+              {
+                src: '/engineering/ipod-3.jpg',
+                alt: 'Bluetooth iPod Classic mod — backplate and mount',
+              },
+              {
+                src: '/engineering/ipod-1.png',
+                alt: 'Bluetooth iPod Classic mod — front view',
+              },
+              {
+                src: '/engineering/ipod-2.png',
+                alt: 'Bluetooth iPod Classic mod — detail of custom switch',
+              },
+            ]}
+            className="pt-12 sm:pt-20"
+          />
+          <div className="mt-16 divider"></div>
           <ProjectSection
             id="electromechanical harvester"
             title="Electro-Mechanical Harvester"
@@ -61,10 +96,22 @@ export default function EnginneringPage() {
               'Designed a test rig to validate real-world performance, ensuring the system met durability requirements.',
             ]}
             images={[
-              { src: '/engineering/harvester-2.png', alt: 'Image of "InfiniTrack" prototype' },
-              { src: '/engineering/harvester-3.png', alt: 'Image of "InfiniTrack" prototype on dog collar' },
-              { src: '/engineering/harvester-1.png', alt: 'Image of a COMSOL simulation showcasing the magnetic field of a magnet in a copper coil' },
-              { src: '/engineering/harvester-4.png', alt: 'Block diagram of component interactions' },
+              {
+                src: '/engineering/harvester-2.png',
+                alt: 'Image of "InfiniTrack" prototype',
+              },
+              {
+                src: '/engineering/harvester-3.png',
+                alt: 'Image of "InfiniTrack" prototype on dog collar',
+              },
+              {
+                src: '/engineering/harvester-1.png',
+                alt: 'Image of a COMSOL simulation showcasing the magnetic field of a magnet in a copper coil',
+              },
+              {
+                src: '/engineering/harvester-4.png',
+                alt: 'Block diagram of component interactions',
+              },
             ]}
             className="pt-12 sm:pt-20"
           />
@@ -80,9 +127,19 @@ export default function EnginneringPage() {
               'Optimized gear dimensions and material selection to meet high torque requirements within compact constraints.',
             ]}
             images={[
-              { src: '/engineering/gearbox-1.jpg', alt: 'Image of assembled 3D printed gearbox' },
-              { src: '/engineering/gearbox-animation.mp4', alt: 'Animation of gearbox in operation', video: true },
-              { src: '/engineering/gearbox-5.jpg', alt: 'Image of diassembled gearbox compoenents' },
+              {
+                src: '/engineering/gearbox-1.jpg',
+                alt: 'Image of assembled 3D printed gearbox',
+              },
+              {
+                src: '/engineering/gearbox-animation.mp4',
+                alt: 'Animation of gearbox in operation',
+                video: true,
+              },
+              {
+                src: '/engineering/gearbox-5.jpg',
+                alt: 'Image of diassembled gearbox compoenents',
+              },
             ]}
             flip
             className="pt-16"
@@ -99,9 +156,19 @@ export default function EnginneringPage() {
               'Integrated mechanical and electrical systems to create a cohesive and reliable final design.',
             ]}
             images={[
-              { src: '/engineering/robot-1.jpg', alt: 'Image of completed, four wheeled robot' },
-              { src: '/engineering/robot-2.jpg', alt: 'Image of wiring and soldered circuit board' },
-              { src: '/engineering/robot-video.mp4', alt: 'Video of robot completing maze autonomously', video: true },
+              {
+                src: '/engineering/robot-1.jpg',
+                alt: 'Image of completed, four wheeled robot',
+              },
+              {
+                src: '/engineering/robot-2.jpg',
+                alt: 'Image of wiring and soldered circuit board',
+              },
+              {
+                src: '/engineering/robot-video.mp4',
+                alt: 'Video of robot completing maze autonomously',
+                video: true,
+              },
             ]}
             className="py-16"
           />
