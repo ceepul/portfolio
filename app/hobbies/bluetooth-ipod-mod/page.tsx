@@ -217,6 +217,7 @@ const STEPS = [
     title: 'Install the Other Components',
     description:
       'Install all your other components. I have not gone into detail on this step as there are many good tutorials online that cover this.\n\nFor my build, I used the following components:\n- Bluetooth board: KCX_BT_EMITTER\n- iPhone 7 Plus Taptic Engine\n- 504045 Size 2000mAh LiPo Battery\n- iFlash uDual w Samsung 128gb SD Card',
+    note: 'I found the bluetooth range with the stock antenna was pretty poor. I later opted for a flat antenna from DigiKey that I stuck to the back of the screen after removing the metal sheild.',
     images: ['/hobbies/ipod-tutorial/step17.jpg'],
   },
   {
@@ -423,13 +424,14 @@ export default function IpodBluetoothMod() {
             About This Build
           </h2>
           <p className="p leading-relaxed max-w-2xl">
-            This is the first iPod classic bluetooth mod (that I know of) that
-            preserves hold switch functionality. I didn't want want to sacrifice
-            the ability to use the hold switch, so I designed this custom mount
-            and switch that integrates with the existing mounting hardware
-            inside the body of the iPod. I made sure to keep the clip that holds
-            the backplate in place, so the installation of this mod doesn't
-            affect the connection between the backplate and the body.
+            This is my take on an iPod classic bluetooth mod that preserves hold
+            switch functionality and maintains the original aesthetics of the
+            iPod. I didn't want want to sacrifice the ability to use the hold
+            switch, so I designed this custom mount and switch that integrates
+            with the existing mounting hardware inside the body of the iPod. I
+            made sure to keep the clip that holds the backplate in place, so the
+            installation of this mod doesn't affect the connection between the
+            backplate and the body.
           </p>
           <p className="p leading-relaxed max-w-2xl mt-6">
             This mod requires drilling an additional slot in the backplate to
