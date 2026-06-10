@@ -50,6 +50,7 @@ export default function AboutPage() {
                   height={600}
                   priority
                   className="rounded-2xl justify-self-center"
+                  sizes="(max-width: 768px) calc(100vw - 2rem), 400px"
                 />
               </div>
             </div>

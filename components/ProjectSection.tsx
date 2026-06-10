@@ -8,6 +8,7 @@ interface ProjectProps {
   title: string;
   description: string;
   details?: string[];
+  action?: React.ReactNode;
   images: { alt: string; src: string; video?: boolean }[];
   flip?: boolean;
   className?: string;
@@ -44,7 +45,7 @@ const useScreenSize = () => {
 };
 
 const ProjectSection: FunctionComponent<ProjectProps> = ({
-  id, title, description, details, images, flip, className,
+  id, title, description, details, action, images, flip, className,
 }) => {
   const isLargeScreen = useScreenSize();
 
@@ -55,6 +56,7 @@ const ProjectSection: FunctionComponent<ProjectProps> = ({
       className="object-cover h-full rounded-lg shadow-md"
       width={600}
       height={800}
+      sizes="(max-width: 640px) calc(100vw - 2rem), 320px"
     />
   );
 
@@ -136,6 +138,7 @@ const ProjectSection: FunctionComponent<ProjectProps> = ({
       <div>
         <div className='h1'>{title}</div>
         <h4 className='h4 mt-1'>{description}</h4>
+        {action && <div className='mt-4'>{action}</div>}
         {details && <h2 className='h2 mt-10'>Details</h2>}
         {details?.map((detail, index) => (
           <div key={index} className='flex items-start gap-1'>

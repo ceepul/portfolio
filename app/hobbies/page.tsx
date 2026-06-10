@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PageTitle from '@/components/PageTitle';
@@ -13,32 +14,40 @@ export default function HobbiesPage() {
       {/* Above the fold */}
       <div className="flex flex-col items-center">
         <div className="max-w-4xl w-full p-4">
-          <div className='min-h-[calc(100svh-7rem)] flex flex-col justify-center items-start'>
-          <PageTitle
-              bgText='HOBBIES'
-              headingText='MISC PROJECTS'
-              className='mt-4'
+          <div className="min-h-[calc(100svh-7rem)] flex flex-col justify-center items-start">
+            <PageTitle
+              bgText="HOBBIES"
+              headingText="MISC PROJECTS"
+              className="mt-4"
             />
             <TextBox
-              text='I enjoy working on hands-on projects that challenge me to learn new skills and
+              text="I enjoy working on hands-on projects that challenge me to learn new skills and
                 solve problems creatively. From designing faux Nanoleaf-style LED panels to add character
                 to my room without breaking the bank, to building DIY FPV drones, 3D printing custom parts,
                 and tackling boat upholstery, I thrive on projects that keep me experimenting and improving.
                 Beyond the shop, I love spending time with friends, balancing social outings with side
-                projects that keep me learning and growing.'
-              className='mt-4'
+                projects that keep me learning and growing."
+              className="mt-4"
             />
             <TextSkills
-              skills={['SMD Soldering', 'Circuit Design', 'PCB Design', 'LEDs', 'Prototyping', '3D Printing', 'Vacuum Forming', 'Arduino', 'FPV', 'Sewing', 'Material Patterning',
+              skills={[
+                'SMD Soldering',
+                'Circuit Design',
+                'PCB Design',
+                'LEDs',
+                'Prototyping',
+                '3D Printing',
+                'Vacuum Forming',
+                'Arduino',
+                'FPV',
+                'Sewing',
+                'Material Patterning',
                 'Wood Working',
               ]}
-              className='my-12'
+              className="my-12"
             />
-            <div className='w-full hidden md:flex justify-center'>
-              <ScrollCTA
-                text='Projects'
-                className='mt-10'
-              />
+            <div className="w-full hidden md:flex justify-center">
+              <ScrollCTA text="Projects" className="mt-10" />
             </div>
           </div>
         </div>
@@ -47,26 +56,42 @@ export default function HobbiesPage() {
       <div className="flex flex-col items-center bg-secondary">
         <div className="max-w-4xl w-full p-4">
           <PageTitle
-            bgText='PROJECTS'
-            headingText='HOBBIES'
-            className='mt-12 sm:mt-20'
+            bgText="PROJECTS"
+            headingText="HOBBIES"
+            className="mt-12 sm:mt-20"
           />
           <ProjectSection
             id="bluetooth ipod classic"
             title="Bluetooth iPod Classic"
             description="World's first iPod Classic Bluetooth mod that maintains hold switch functionality through a custom aesthetic button."
+            action={
+              <Link
+                href="/hobbies/bluetooth-ipod-mod"
+                className="button inline-block border px-4 py-2 rounded-lg text-sm transition-colors"
+              >
+                Full Tutorial →
+              </Link>
+            }
             details={[
               'Designed a 3D printed mount and switch that integrate with existing iPod screws,  no additional hardware needed.',
               'Mount includes a clasp that connects to the existing clip on the iPod frame. Installation of this switch does not sacrifice connection between the frame and backplate.',
               'Preserves the hold switch by adding an external aesthetic button matching the original hold button design.',
               'Requires only minimal modding of the backplate; the iPod frame is untouched.',
               'Uses a standard Mini 7-Pin SMD Toggle Slide Switch.',
-              'Full instructions coming soon.',
             ]}
             images={[
-              { src: '/hobbies/ipod-3.jpg', alt: 'Bluetooth iPod Classic mod — backplate and mount' },
-              { src: '/hobbies/ipod-1.png', alt: 'Bluetooth iPod Classic mod — front view' },
-              { src: '/hobbies/ipod-2.png', alt: 'Bluetooth iPod Classic mod — detail of custom switch' },
+              {
+                src: '/hobbies/ipod-3.jpg',
+                alt: 'Bluetooth iPod Classic mod — backplate and mount',
+              },
+              {
+                src: '/hobbies/ipod-1.png',
+                alt: 'Bluetooth iPod Classic mod — front view',
+              },
+              {
+                src: '/hobbies/ipod-2.png',
+                alt: 'Bluetooth iPod Classic mod — detail of custom switch',
+              },
             ]}
             className="pt-12 sm:pt-20"
           />
@@ -82,10 +107,23 @@ export default function HobbiesPage() {
               'Mounted securely with 3M double-sided tape for easy installation.',
             ]}
             images={[
-              { src: '/hobbies/leds-4.jpg', alt: 'Image of triangular LED panels lit up in red and white' },
-              { src: '/hobbies/leds-video.mp4', alt: 'Video of LED panels showing a moving rainbow effect', video: true },
-              { src: '/hobbies/leds-7.jpg', alt: 'Image of triangular LED panels lit up in purple and white' },
-              { src: '/hobbies/leds-3.jpg', alt: 'Close up image of LED panels lit up in red and white' },
+              {
+                src: '/hobbies/leds-4.jpg',
+                alt: 'Image of triangular LED panels lit up in red and white',
+              },
+              {
+                src: '/hobbies/leds-video.mp4',
+                alt: 'Video of LED panels showing a moving rainbow effect',
+                video: true,
+              },
+              {
+                src: '/hobbies/leds-7.jpg',
+                alt: 'Image of triangular LED panels lit up in purple and white',
+              },
+              {
+                src: '/hobbies/leds-3.jpg',
+                alt: 'Close up image of LED panels lit up in red and white',
+              },
             ]}
             className="pt-12 sm:pt-20"
           />
@@ -100,8 +138,14 @@ export default function HobbiesPage() {
               'Optimized tolerances for precise mating parts and minimized print time while maintaining strength.',
             ]}
             images={[
-              { src: '/hobbies/3dprint-1.jpg', alt: 'Image showing CAD model of outboard motor shifter handle in SolidWorks' },
-              { src: '/hobbies/3dprint-3.jpg', alt: 'Image of printed outboard motor shifter handle installed on engine' },
+              {
+                src: '/hobbies/3dprint-1.jpg',
+                alt: 'Image showing CAD model of outboard motor shifter handle in SolidWorks',
+              },
+              {
+                src: '/hobbies/3dprint-3.jpg',
+                alt: 'Image of printed outboard motor shifter handle installed on engine',
+              },
             ]}
             flip
             className="pt-16"
@@ -120,7 +164,10 @@ export default function HobbiesPage() {
               'Developed proficiency in FPV drone piloting, maintenance, and tuning.',
             ]}
             images={[
-              { src: '/hobbies/fpv.jpg', alt: 'Image of an FPV drone with orange propellers.' },
+              {
+                src: '/hobbies/fpv.jpg',
+                alt: 'Image of an FPV drone with orange propellers.',
+              },
             ]}
             className="pt-16"
           />
@@ -135,10 +182,23 @@ export default function HobbiesPage() {
               'Installed completed upholstery into boat.',
             ]}
             images={[
-              { src: '/hobbies/upholstery-6a.jpg', alt: 'Image showing stern of inboard outboard boat with new upholstery' },
-              { src: '/hobbies/upholstery-video.mp4', alt: 'three-sixty video showing a completed L-shaped bow cusion', video: true },
-              { src: '/hobbies/upholstery-1a.jpg', alt: 'Image of in-progress replacement of bow cushions, showing one new cushion amongst the old cushions' },
-              { src: '/hobbies/upholstery-14a.jpg', alt: 'Image of completed upholstery in the bow of a bowrider boat' },
+              {
+                src: '/hobbies/upholstery-6a.jpg',
+                alt: 'Image showing stern of inboard outboard boat with new upholstery',
+              },
+              {
+                src: '/hobbies/upholstery-video.mp4',
+                alt: 'three-sixty video showing a completed L-shaped bow cusion',
+                video: true,
+              },
+              {
+                src: '/hobbies/upholstery-1a.jpg',
+                alt: 'Image of in-progress replacement of bow cushions, showing one new cushion amongst the old cushions',
+              },
+              {
+                src: '/hobbies/upholstery-14a.jpg',
+                alt: 'Image of completed upholstery in the bow of a bowrider boat',
+              },
             ]}
             flip
             className="py-16"
