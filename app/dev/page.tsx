@@ -11,8 +11,12 @@ export default function DevPage() {
     <div>
       <Header />
       {/* Above the fold */}
-      <div className="flex flex-col items-center">
-        <div className="max-w-4xl w-full p-4">
+      <div className="relative flex flex-col items-center overflow-hidden">
+        <div
+          aria-hidden
+          className="ambient-glow -left-24 top-20 h-72 w-72 bg-accent"
+        />
+        <div className="w-full max-w-4xl p-4 sm:p-6">
           <div className='min-h-[calc(100svh-7rem)] flex flex-col justify-center items-start'>
             <PageTitle
               bgText='FULL-STACK'
@@ -47,7 +51,7 @@ export default function DevPage() {
       </div>
       {/* Below the fold */}
       <div className="flex flex-col items-center bg-secondary">
-        <div className="max-w-4xl w-full p-4">
+        <div className="w-full max-w-4xl p-4 sm:p-6">
           <PageTitle
             bgText='EXPERIENCE'
             headingText='PROJECTS'

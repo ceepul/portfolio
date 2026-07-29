@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import Reveal from '@/components/Reveal';
 
 export const metadata: Metadata = {
   title: 'iPod Classic Bluetooth Mod | Russell Fenton',
@@ -245,28 +245,29 @@ const STEPS = [
   },
 ];
 
-const URL_REGEX = /(https?:\/\/[^\s]+)/g;
+const URL_SPLIT_REGEX = /(https?:\/\/[^\s]+)/g;
+/* Separate, non-global copy: `test` on a /g regex is stateful and misfires. */
+const URL_TEST_REGEX = /^https?:\/\/[^\s]+$/;
 
 function renderWithLinks(text: string) {
   return text.split('\n').map((line, lineIdx) => {
-    const parts = line.split(URL_REGEX);
+    const parts = line.split(URL_SPLIT_REGEX);
     return (
       <span key={lineIdx}>
-        {parts.map((part, i) =>
-          URL_REGEX.test(part) ? (
+        {parts.map((part, i) => {
+          if (!URL_TEST_REGEX.test(part)) return part;
+          return (
             <a
               key={i}
               href={part}
               target="_blank"
               rel="noopener noreferrer"
-              className="underline hover:opacity-70 transition-opacity break-all"
+              className="break-all underline decoration-1 underline-offset-2 transition-colors duration-300 hover:text-accent"
             >
               {part}
             </a>
-          ) : (
-            part
-          ),
-        )}
+          );
+        })}
         {lineIdx < text.split('\n').length - 1 && '\n'}
       </span>
     );
@@ -294,26 +295,26 @@ function GuideStep({
 }: StepProps) {
   const textBlock = (
     <div>
-      <div className="flex items-baseline gap-4 mb-3">
-        <span className="bg-text text-5xl font-light leading-none select-none">
+      <div className="mb-3 flex items-baseline gap-4">
+        <span className="bg-text select-none text-5xl font-light leading-none tabular-nums">
           {String(stepNumber).padStart(2, '0')}
         </span>
         <h3 className="h1">{title}</h3>
       </div>
-      <p className="p leading-relaxed whitespace-pre-line">
+      <p className="p whitespace-pre-line leading-relaxed">
         {renderWithLinks(description)}
       </p>
       {note && (
-        <div className="mt-4 bg-secondary border-l-4 border-[#525252] px-4 py-3">
-          <span className="h3 text-xs font-semibold tracking-widest uppercase mr-2">
+        <div className="bg-secondary mt-4 rounded-r-lg border-l-[3px] border-[var(--line-strong)] px-4 py-3">
+          <span className="h3 mr-2 text-xs font-semibold uppercase tracking-widest">
             Note
           </span>
           <span className="p text-sm">{note}</span>
         </div>
       )}
       {caution && (
-        <div className="mt-4 bg-secondary border-l-4 border-foreground px-4 py-3">
-          <span className="h3 text-xs font-semibold tracking-widest uppercase mr-2">
+        <div className="bg-secondary mt-4 rounded-r-lg border-l-[3px] border-accent px-4 py-3">
+          <span className="h3 mr-2 text-xs font-semibold uppercase tracking-widest text-accent">
             Caution
           </span>
           <span className="p text-sm font-semibold">{caution}</span>
@@ -322,53 +323,47 @@ function GuideStep({
     </div>
   );
 
+  const stepImage = (src: string, index: number, aspect: string) => (
+    <div
+      key={src}
+      className={`group/media relative w-full overflow-hidden rounded-xl shadow-soft ${aspect}`}
+    >
+      <Image
+        src={src}
+        alt={`Step ${stepNumber} — image ${index + 1}`}
+        fill
+        className="object-cover transition-transform duration-700 ease-out-expo group-hover/media:scale-[1.05]"
+        sizes="(max-width: 640px) calc(50vw - 1rem), calc(min(896px, 100vw) / 2 - 1rem)"
+      />
+    </div>
+  );
+
   if (images.length === 0) {
     return (
-      <div className="py-10 border-b border-[#d4d4d4] last:border-b-0">
+      <Reveal className="border-b border-line py-10 last:border-b-0">
         {textBlock}
-      </div>
+      </Reveal>
     );
   }
 
   if (images.length === 1) {
     return (
-      <div className="py-10 border-b border-[#d4d4d4] last:border-b-0">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-start">
+      <Reveal className="border-b border-line py-10 last:border-b-0">
+        <div className="grid grid-cols-1 items-start gap-8 sm:grid-cols-2">
           {textBlock}
-          <div className="relative w-full aspect-video">
-            <Image
-              src={images[0]}
-              alt={`Step ${stepNumber}`}
-              fill
-              className="object-cover"
-              sizes="(max-width: 640px) 100vw, 50vw"
-            />
-          </div>
+          {stepImage(images[0], 0, 'aspect-video')}
         </div>
-      </div>
+      </Reveal>
     );
   }
 
   return (
-    <div className="py-10 border-b border-[#d4d4d4] last:border-b-0">
+    <Reveal className="border-b border-line py-10 last:border-b-0">
       {textBlock}
       <div className="mt-6 grid grid-cols-2 gap-4">
-        {images.map((src, i) => (
-          <div
-            key={i}
-            className={`relative w-full ${portrait ? 'aspect-[3/4]' : 'aspect-video'}`}
-          >
-            <Image
-              src={src}
-              alt={`Step ${stepNumber} — image ${i + 1}`}
-              fill
-              className="object-cover"
-              sizes="(max-width: 640px) calc(50vw - 1rem), calc(min(896px, 100vw) / 2 - 1rem)"
-            />
-          </div>
-        ))}
+        {images.map((src, i) => stepImage(src, i, portrait ? 'aspect-[3/4]' : 'aspect-video'))}
       </div>
-    </div>
+    </Reveal>
   );
 }
 
@@ -379,67 +374,73 @@ export default function IpodBluetoothMod() {
 
       {/* Hero */}
       <section
-        className="py-24"
+        className="relative overflow-hidden py-24"
         style={{
           background:
             'linear-gradient(150deg, #dc2626 0%, #f87171 50%, #7f1d1d 100%)',
         }}
       >
-        <div className="max-w-4xl mx-auto px-6">
-          <h1 className="text-[8vw] sm:text-6xl font-light leading-none text-white tracking-wide">
+        {/* Slow-moving highlight so the flat gradient has some life */}
+        <div
+          aria-hidden
+          className="ambient-glow -right-24 -top-24 h-96 w-96 bg-white/40"
+        />
+        <div className="relative mx-auto max-w-4xl px-6">
+          <h1 className="animate-fade-up text-[8vw] font-light leading-none tracking-wide text-white sm:text-6xl">
             iPod Classic
             <br />
             Bluetooth Mod
           </h1>
-          <div className="flex flex-wrap gap-8 mt-8 text-sm">
+          <div className="animate-fade-up mt-8 flex flex-wrap gap-8 text-sm [animation-delay:180ms]">
             <div className="flex flex-col gap-1">
-              <span className="text-xs tracking-widest uppercase text-white/50">
+              <span className="text-xs uppercase tracking-widest text-white/50">
                 Difficulty
               </span>
               <span className="text-white/80">Hard</span>
             </div>
-            <div className="w-px bg-white/20 self-stretch" />
+            <div className="w-px self-stretch bg-white/20" />
             <div className="flex flex-col gap-1">
-              <span className="text-xs tracking-widest uppercase text-white/50">
+              <span className="text-xs uppercase tracking-widest text-white/50">
                 Time
               </span>
               <span className="text-white/80">~4 hours</span>
             </div>
-            <div className="w-px bg-white/20 self-stretch" />
+            <div className="w-px self-stretch bg-white/20" />
             <div className="flex flex-col gap-1">
-              <span className="text-xs tracking-widest uppercase text-white/50">
+              <span className="text-xs uppercase tracking-widest text-white/50">
                 Steps
               </span>
               <span className="text-white/80">21</span>
             </div>
-            <div className="w-px bg-white/20 self-stretch" />
           </div>
         </div>
       </section>
 
       {/* About */}
       <section className="py-16">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="h2 tracking-widest uppercase mb-6">
-            About This Build
-          </h2>
-          <p className="p leading-relaxed max-w-2xl">
-            This is my take on an iPod classic bluetooth mod that preserves hold
-            switch functionality and maintains the original aesthetics of the
-            iPod. I didn't want want to sacrifice the ability to use the hold
-            switch, so I designed this custom mount and switch that integrates
-            with the existing mounting hardware inside the body of the iPod. I
-            made sure to keep the clip that holds the backplate in place, so the
-            installation of this mod doesn't affect the connection between the
-            backplate and the body.
-          </p>
-          <p className="p leading-relaxed max-w-2xl mt-6">
-            This mod requires drilling an additional slot in the backplate to
-            allow the new switch to protrude through. This is the only difficult
-            part of the installation. After installing the switch, the rest of
-            the bluetooth mod follows what is already well documented online,
-            such as the tutorial by Parts Plus Mods.
-          </p>
+        <div className="mx-auto max-w-4xl px-6">
+          <Reveal>
+            <h2 className="h2 mb-6 uppercase tracking-widest">
+              About This Build
+            </h2>
+            <p className="p max-w-2xl leading-relaxed">
+              This is my take on an iPod classic bluetooth mod that preserves hold
+              switch functionality and maintains the original aesthetics of the
+              iPod. I didn't want want to sacrifice the ability to use the hold
+              switch, so I designed this custom mount and switch that integrates
+              with the existing mounting hardware inside the body of the iPod. I
+              made sure to keep the clip that holds the backplate in place, so the
+              installation of this mod doesn't affect the connection between the
+              backplate and the body.
+            </p>
+            <p className="p mt-6 max-w-2xl leading-relaxed">
+              This mod requires drilling an additional slot in the backplate to
+              allow the new switch to protrude through. This is the only difficult
+              part of the installation. After installing the switch, the rest of
+              the bluetooth mod follows what is already well documented online,
+              such as the tutorial by Parts Plus Mods.
+            </p>
+          </Reveal>
         </div>
       </section>
 
@@ -450,33 +451,29 @@ export default function IpodBluetoothMod() {
           <h2 className="h2 tracking-widest uppercase mb-10">
             What You'll Need
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
-            <div>
-              <h3 className="h3 uppercase tracking-widest mb-6">Tools</h3>
+          <div className="grid grid-cols-1 gap-12 sm:grid-cols-2">
+            <Reveal>
+              <h3 className="h3 mb-6 uppercase tracking-widest">Tools</h3>
               <ul className="space-y-3">
                 {TOOLS.map((tool) => (
                   <li key={tool} className="flex items-start gap-3">
-                    <span className="text-[#525252] mt-1 text-xs select-none">
-                      ▸
-                    </span>
+                    <span aria-hidden className="mt-[0.6rem] h-px w-2.5 shrink-0 bg-accent" />
                     <span className="p text-sm leading-relaxed">{tool}</span>
                   </li>
                 ))}
               </ul>
-            </div>
-            <div>
-              <h3 className="h3 uppercase tracking-widest mb-6">Parts</h3>
+            </Reveal>
+            <Reveal delay={120}>
+              <h3 className="h3 mb-6 uppercase tracking-widest">Parts</h3>
               <ul className="space-y-3">
                 {PARTS.map((part) => (
                   <li key={part} className="flex items-start gap-3">
-                    <span className="text-[#525252] mt-1 text-xs select-none">
-                      ▸
-                    </span>
+                    <span aria-hidden className="mt-[0.6rem] h-px w-2.5 shrink-0 bg-accent" />
                     <span className="p text-sm leading-relaxed">{part}</span>
                   </li>
                 ))}
               </ul>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -513,16 +510,27 @@ export default function IpodBluetoothMod() {
 
       {/* That's It */}
       <div className="divider max-w-4xl mx-auto px-6" />
-      <section className="py-16 bg-secondary">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="h2 tracking-widest uppercase mb-6">That's It</h2>
-          <p className="p leading-relaxed max-w-2xl mb-8">
-            I hope you found this tutorial helpful! You can check out some of my
-            other projects on my portfolio.
-          </p>
-          <Link href="/" className="p text-sm heading-hover transition-colors">
-            ← Back to Portfolio
-          </Link>
+      <section className="bg-secondary py-16">
+        <div className="mx-auto max-w-4xl px-6">
+          <Reveal>
+            <h2 className="h2 mb-6 uppercase tracking-widest">That's It</h2>
+            <p className="p mb-8 max-w-2xl leading-relaxed">
+              I hope you found this tutorial helpful! You can check out some of my
+              other projects on my portfolio.
+            </p>
+            <Link
+              href="/"
+              className="p heading-hover group inline-flex items-center gap-2 text-sm"
+            >
+              <span
+                aria-hidden
+                className="transition-transform duration-400 ease-out-expo group-hover:-translate-x-1"
+              >
+                ←
+              </span>
+              Back to Portfolio
+            </Link>
+          </Reveal>
         </div>
       </section>
     </div>

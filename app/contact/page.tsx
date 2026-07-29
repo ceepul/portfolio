@@ -1,70 +1,85 @@
+import {
+  FiGithub, FiLinkedin, FiMail, FiPhone,
+} from 'react-icons/fi';
 import Header from '@/components/Header';
 import PageTitle from '@/components/PageTitle';
-import Image from 'next/image';
+import Reveal from '@/components/Reveal';
+
+const LINKEDIN_URL = 'https://www.linkedin.com/in/russell-fenton-760a7a299/';
+const GITHUB_URL = 'https://github.com/ceepul';
 
 export default function ContactPage() {
-  const linkedinURL = 'https://www.linkedin.com/in/russell-fenton-760a7a299/';
-  const githubURL = 'https://github.com/ceepul';
-  const instagramURL = 'https://www.instagram.com/russell_fenton/';
-
   return (
     <div>
       <Header />
       {/* Above the fold */}
-      <div className="flex flex-col items-center">
-        <div className="max-w-5xl w-full p-4 min-h-[calc(100svh-7rem)] flex items-center justify-center">
-          <div className="flex flex-col sm:flex-row items-start gap-10 sm:gap-20">
+      <div className="relative flex flex-col items-center overflow-hidden">
+        <div
+          aria-hidden
+          className="ambient-glow -left-20 top-24 h-72 w-72 bg-accent"
+        />
+        <div className="flex min-h-[calc(100svh-7rem)] w-full max-w-5xl items-center justify-center p-4 sm:p-6">
+          <div className="flex w-full flex-col items-start gap-12 sm:flex-row sm:gap-20">
             <div className="max-w-lg">
               <PageTitle
                 bgText="GET IN TOUCH"
                 headingText="CONTACT INFO"
                 className="mt-4"
               />
-              <p className="mt-10 large-body-text">
-                I am currently seeking employment and would love to hear from
-                you! Please feel free to reach out on any of my platforms.
-              </p>
+              <Reveal delay={200} y={18}>
+                <p className="large-body-text mt-10">
+                  I am currently seeking employment and would love to hear from
+                  you! Please feel free to reach out on any of my platforms.
+                </p>
+              </Reveal>
             </div>
-            <div>
-              <h2 className="h2 mt-4">CONTACT</h2>
-              <div className="mt-6 flex items-center gap-4">
-                <div className="w-5 h-5">
-                  <Image
-                    src="/email-icon.svg"
-                    alt="Email Icon"
-                    width={64}
-                    height={64}
-                  />
-                </div>
-                <a href="mailto:Russell1837@gmail.com" className="p body-hover">
-                  Russell1837@gmail.com
-                </a>
-              </div>
-              <div className="mt-4 flex items-center gap-4">
-                <div className="w-6 h-6">
-                  <Image
-                    src="/phone-icon.svg"
-                    alt="Phone Icon"
-                    width={64}
-                    height={64}
-                  />
-                </div>
-                <a href="tel:+16475758203" className="p body-hover">
-                  +1 (647) 575-8203
-                </a>
-              </div>
-              <h2 className="h2 mt-14">SOCIALS</h2>
-              <div className="mt-4">
-                <a href={linkedinURL} target="_blank" className="p body-hover">
-                  LinkedIn
-                </a>
-              </div>
-              <div className="mt-2">
-                <a href={githubURL} target="_blank" className="p body-hover">
-                  Github
-                </a>
-              </div>
-            </div>
+
+            <Reveal delay={140} y={22} className="shrink-0">
+              <h2 className="h2 mt-4 text-sm uppercase tracking-[0.2em]">CONTACT</h2>
+
+              <a
+                href="mailto:Russell1837@gmail.com"
+                className="group mt-6 flex items-center gap-4"
+              >
+                <span className="grid h-9 w-9 place-items-center rounded-full border border-line text-fg-muted transition-all duration-400 ease-out-expo group-hover:-translate-y-0.5 group-hover:border-accent group-hover:text-accent">
+                  <FiMail className="h-4 w-4" />
+                </span>
+                <span className="p body-hover">Russell1837@gmail.com</span>
+              </a>
+
+              <a href="tel:+16475758203" className="group mt-4 flex items-center gap-4">
+                <span className="grid h-9 w-9 place-items-center rounded-full border border-line text-fg-muted transition-all duration-400 ease-out-expo group-hover:-translate-y-0.5 group-hover:border-accent group-hover:text-accent">
+                  <FiPhone className="h-4 w-4" />
+                </span>
+                <span className="p body-hover">+1 (647) 575-8203</span>
+              </a>
+
+              <h2 className="h2 mt-14 text-sm uppercase tracking-[0.2em]">SOCIALS</h2>
+
+              <a
+                href={LINKEDIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group mt-6 flex items-center gap-4"
+              >
+                <span className="grid h-9 w-9 place-items-center rounded-full border border-line text-fg-muted transition-all duration-400 ease-out-expo group-hover:-translate-y-0.5 group-hover:border-accent group-hover:text-accent">
+                  <FiLinkedin className="h-4 w-4" />
+                </span>
+                <span className="p body-hover">LinkedIn</span>
+              </a>
+
+              <a
+                href={GITHUB_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group mt-4 flex items-center gap-4"
+              >
+                <span className="grid h-9 w-9 place-items-center rounded-full border border-line text-fg-muted transition-all duration-400 ease-out-expo group-hover:-translate-y-0.5 group-hover:border-accent group-hover:text-accent">
+                  <FiGithub className="h-4 w-4" />
+                </span>
+                <span className="p body-hover">Github</span>
+              </a>
+            </Reveal>
           </div>
         </div>
       </div>

@@ -1,21 +1,27 @@
 import { FunctionComponent } from 'react';
 import Link from 'next/link';
+import Reveal from './Reveal';
 
 const Footer: FunctionComponent = () => (
-
-  <footer className="shadow-md p-10 w-full">
-    <div className="flex flex-col items-center text-center space-y-6">
+  <footer className="w-full border-t border-line px-6 py-20">
+    <Reveal className="flex flex-col items-center space-y-7 text-center">
       <div>
-        <h1 className="h1">{'I\'m currently looking for work.'}</h1>
-        <h3 className='h3 mt-2'>Feel free to reach out!</h3>
+        <h2 className="h1">{'I\'m currently looking for work.'}</h2>
+        <h3 className="h3 mt-2 text-fg-muted">Feel free to reach out!</h3>
       </div>
       <Link
         href="/contact"
-        className="h2 button px-5 py-3 border-2 rounded-2xl shadow-lg transition duration-300"
+        className="button group inline-flex items-center gap-2 rounded-full border px-6 py-3"
       >
         Contact Me
+        <span
+          aria-hidden
+          className="transition-transform duration-400 ease-out-expo group-hover:translate-x-1"
+        >
+          →
+        </span>
       </Link>
-    </div>
+    </Reveal>
   </footer>
 );
 

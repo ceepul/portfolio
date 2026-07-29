@@ -12,8 +12,12 @@ export default function HobbiesPage() {
     <div>
       <Header />
       {/* Above the fold */}
-      <div className="flex flex-col items-center">
-        <div className="max-w-4xl w-full p-4">
+      <div className="relative flex flex-col items-center overflow-hidden">
+        <div
+          aria-hidden
+          className="ambient-glow -left-24 top-20 h-72 w-72 bg-accent"
+        />
+        <div className="w-full max-w-4xl p-4 sm:p-6">
           <div className="min-h-[calc(100svh-7rem)] flex flex-col justify-center items-start">
             <PageTitle
               bgText="HOBBIES"
@@ -54,7 +58,7 @@ export default function HobbiesPage() {
       </div>
       {/* Below the fold */}
       <div className="flex flex-col items-center bg-secondary">
-        <div className="max-w-4xl w-full p-4">
+        <div className="w-full max-w-4xl p-4 sm:p-6">
           <PageTitle
             bgText="PROJECTS"
             headingText="HOBBIES"
@@ -67,9 +71,15 @@ export default function HobbiesPage() {
             action={
               <Link
                 href="/hobbies/bluetooth-ipod-mod"
-                className="button inline-block border px-4 py-2 rounded-lg text-sm transition-colors"
+                className="button group inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm"
               >
-                Full Tutorial →
+                Full Tutorial
+                <span
+                  aria-hidden
+                  className="transition-transform duration-400 ease-out-expo group-hover:translate-x-1"
+                >
+                  →
+                </span>
               </Link>
             }
             details={[

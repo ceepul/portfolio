@@ -2,20 +2,105 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================
+   Design tokens
+   ============================================================ */
+
 :root {
+  /* Surfaces */
   --background: #ffffff;
-  --foreground: #1a1a1a;
+  --surface: #f4f4f5;
+
+  /* Type */
+  --foreground: #141416;
+  --fg-strong: #09090b;
+  --fg-muted: #52525b;
+  --fg-subtle: #8b8b93;
+  --fg-ghost: #dcdce0;
+
+  /* Lines */
+  --line: #e4e4e7;
+  --line-strong: #d4d4d8;
+
+  /* Accent */
+  --accent: #d8453a;
+  --accent-contrast: #ffffff;
+  --accent-soft: rgba(216, 69, 58, 0.1);
+
+  /* Elevation */
+  --shadow-sm: 0 1px 2px rgba(9, 9, 11, 0.05), 0 2px 8px rgba(9, 9, 11, 0.04);
+  --shadow-md: 0 4px 12px rgba(9, 9, 11, 0.07), 0 12px 32px rgba(9, 9, 11, 0.06);
+  --shadow-lg: 0 12px 28px rgba(9, 9, 11, 0.1), 0 30px 60px rgba(9, 9, 11, 0.1);
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+
+  --dur-fast: 180ms;
+  --dur-base: 320ms;
+  --dur-slow: 620ms;
+  --dur-slower: 900ms;
 }
 
 [data-theme='dark'] {
-  --background: #1a1a1a;
-  --foreground: #ededed;
+  --background: #121214;
+  --surface: #191920;
+
+  --foreground: #ededf0;
+  --fg-strong: #ffffff;
+  --fg-muted: #a1a1aa;
+  --fg-subtle: #71717a;
+  --fg-ghost: #2b2b33;
+
+  --line: #27272e;
+  --line-strong: #3a3a44;
+
+  --accent: #ff6a5e;
+  --accent-contrast: #16100f;
+  --accent-soft: rgba(255, 106, 94, 0.14);
+
+  /* Kept tight on purpose: a wide soft shadow over a near-black background
+     reads as a grey halo around the element rather than as depth. Edge
+     definition in dark mode comes from the hairline ring on each surface. */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.55);
+  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+
+html {
+  scroll-behavior: smooth;
+  /* Keep in-page anchors clear of the sticky header */
+  scroll-padding-top: 6rem;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-josefin-sans), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  transition:
+    background-color var(--dur-base) var(--ease-out-quint),
+    color var(--dur-base) var(--ease-out-quint);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
 .scrollbar-hide {
@@ -26,135 +111,333 @@ body {
   display: none; /* Chrome, Safari, and Opera */
 }
 
-.bg-secondary {
-  background-color: #f5f5f5;
-}
+/* ============================================================
+   Surfaces & type scale
+   ============================================================ */
 
-[data-theme='dark'] .bg-secondary {
-  background-color: #171717;
+.bg-secondary {
+  background-color: var(--surface);
 }
 
 .bg-text {
-  color: #d4d4d4
-}
-
-[data-theme='dark'] .bg-text {
-  color: #404040;
+  color: var(--fg-ghost);
 }
 
 .h1 {
   font-size: 1.75rem;
   font-weight: 400;
-  color: #000000;
+  letter-spacing: -0.015em;
+  color: var(--fg-strong);
 }
 
 .h2 {
   font-size: 1rem;
   font-weight: 400;
-  color: #000000;
+  color: var(--fg-strong);
 }
 
 .h3 {
   font-size: 0.875rem;
   line-height: 1.25rem;
-  color: #000000
+  color: var(--fg-strong);
 }
 
 .h4 {
   font-size: 1.25rem;
   font-weight: 300;
-  color: #525252;
+  color: var(--fg-muted);
 }
 
 .h5 {
   font-size: 1rem;
   font-weight: 300;
-  color: #525252;
+  color: var(--fg-muted);
 }
 
 .p {
   font-size: 1rem;
   font-weight: 400;
-  color: #525252;  
+  line-height: 1.6;
+  color: var(--fg-muted);
 }
 
 .large-body-text {
   font-size: 1.5rem;
-  line-height: 2rem;
+  line-height: 2.1rem;
   font-weight: 300;
-  color: #525252;
+  color: var(--fg-muted);
 }
 
-[data-theme='dark'] .h1,
-[data-theme='dark'] .h2,
-[data-theme='dark'] .h3 {
-  color: #ffffff;
-}
+/* ============================================================
+   Interactive text
+   ============================================================ */
 
-[data-theme='dark'] .h4,
-[data-theme='dark'] .h5,
-[data-theme='dark'] .p,
-[data-theme='dark'] .large-body-text {
-  color: #a3a3a3;
+.heading-hover,
+.body-hover {
+  transition: color var(--dur-fast) var(--ease-out-quint);
 }
 
 .heading-hover:hover {
-  color: #525252;
-}
-
-[data-theme='dark'] .heading-hover:hover {
-  color: #d4d4d4;
+  color: var(--accent);
 }
 
 .body-hover:hover {
-  color: #737373;
+  color: var(--accent);
 }
 
-[data-theme='dark'] .body-hover:hover {
-  color: #d4d4d4;
+/* Animated underline that wipes in from the left.
+   Deliberately does not set `display` — this file is loaded after Tailwind's
+   utilities, so doing so would override `hidden`/`sm:inline-block`. */
+.link-underline {
+  position: relative;
 }
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform var(--dur-base) var(--ease-out-expo);
+}
+
+.link-underline:hover::after,
+.link-underline:focus-visible::after,
+.link-underline[data-active='true']::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
 
 .button {
-  border-color: #262626;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border-color: var(--fg-strong);
   font-size: 1rem;
   font-weight: 400;
-  color: #000000;
+  color: var(--fg-strong);
+  transition:
+    color var(--dur-base) var(--ease-out-quint),
+    border-color var(--dur-base) var(--ease-out-quint),
+    transform var(--dur-base) var(--ease-out-expo),
+    box-shadow var(--dur-base) var(--ease-out-expo);
 }
 
-[data-theme='dark'] .button {
-  border-color: #ffffff;
-  border-width: 1px;
-  font-size: 1rem;
-  font-weight: 400;
-  color: #ffffff;
+/* Fill sweeps up from the bottom rather than snapping on. Uses the accent so
+   buttons match every other hover state on the site. */
+.button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--accent);
+  transform: translateY(101%);
+  transition: transform var(--dur-base) var(--ease-out-expo);
 }
 
-.button:hover {
-  background-color: #262626;
-  color: #ffffff;
+.button:hover,
+.button:focus-visible {
+  color: var(--accent-contrast);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
-[data-theme='dark'] .button:hover {
-  background-color: #ffffff;
-  color: #000000;
+.button:hover::before,
+.button:focus-visible::before {
+  transform: translateY(0);
 }
+
+.button:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ============================================================
+   Misc components
+   ============================================================ */
 
 .text-bubble {
-  background-color: #d4d4d4;
-  color: #000000;
+  background-color: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--fg-strong);
   font-weight: 300;
+  transition:
+    transform var(--dur-base) var(--ease-spring),
+    border-color var(--dur-base) var(--ease-out-quint),
+    color var(--dur-base) var(--ease-out-quint),
+    box-shadow var(--dur-base) var(--ease-out-expo);
 }
 
-[data-theme='dark'] .text-bubble {
-  background-color: #262626;
-  color: #ffffff;
+.text-bubble:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: var(--shadow-sm);
 }
 
 .divider {
-  border-top-width: 2px;
-  border-color: #d4d4d4;
+  border-top-width: 1px;
+  border-color: var(--line-strong);
 }
 
-[data-theme='dark'] .divider {
-  border-color: #404040;
+.surface-card {
+  background-color: var(--background);
+  border: 1px solid var(--line);
+  transition:
+    transform var(--dur-base) var(--ease-out-expo),
+    border-color var(--dur-base) var(--ease-out-quint),
+    box-shadow var(--dur-base) var(--ease-out-expo);
+}
+
+/* Sticky header: transparent at rest, frosted once the page moves */
+.header-scrolled {
+  background-color: color-mix(in srgb, var(--background) 88%, transparent);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  box-shadow: var(--shadow-sm);
+}
+
+@supports not (background-color: color-mix(in srgb, white 50%, transparent)) {
+  .header-scrolled {
+    background-color: var(--background);
+  }
+}
+
+/* Fades the tail of an overflowing column instead of hard-clipping it */
+.fade-bottom {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0,
+    #000 calc(100% - 48px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0,
+    #000 calc(100% - 48px),
+    transparent 100%
+  );
+}
+
+/* Horizontal snap rail used by the mobile/tablet card carousel */
+.snap-rail {
+  display: flex;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.snap-rail::-webkit-scrollbar {
+  display: none;
+}
+
+.snap-rail > * {
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  flex: 0 0 auto;
+}
+
+/* ============================================================
+   Motion utilities
+   ============================================================ */
+
+/* Scroll reveal — see components/Reveal.tsx */
+[data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y, 22px), 0) scale(var(--reveal-s, 1));
+  transition:
+    opacity var(--dur-slow) var(--ease-out-quint),
+    transform var(--dur-slow) var(--ease-out-expo);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+[data-reveal='in'] {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(3%, -4%, 0) scale(1.06);
+  }
+  66% {
+    transform: translate3d(-3%, 3%, 0) scale(0.97);
+  }
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+.animate-float-y {
+  animation: float-y 2.4s var(--ease-in-out-quart) infinite;
+}
+
+/* Soft ambient colour wash used behind hero content */
+.ambient-glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(100px);
+  opacity: 0.16;
+  pointer-events: none;
+  animation: drift 22s ease-in-out infinite;
+}
+
+[data-theme='dark'] .ambient-glow {
+  opacity: 0.26;
+}
+
+/* ============================================================
+   Accessibility
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
 }
