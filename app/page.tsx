@@ -75,7 +75,9 @@ export default function Home() {
         <main className="relative overflow-x-hidden">
           {/* Sized so the first card always peeks above the fold — the rail is
               the invitation to keep going, not a hidden second screen */}
-          <section className="relative flex min-h-[calc(100svh-16rem)] flex-col justify-center px-6 sm:px-10 md:min-h-[58svh]">
+          {/* `items-center` shrinks the mark to its content width and centres
+              the block, keeping FENTON's indent intact — same as the deck */}
+          <section className="relative flex min-h-[calc(100svh-16rem)] flex-col items-center justify-center px-6 sm:px-10 md:min-h-[58svh]">
             <AmbientGlow />
             <HeroName className="relative z-10" />
           </section>
@@ -90,7 +92,7 @@ export default function Home() {
 
       {/* Pre-hydration: hold the name so there is no layout jump on load */}
       {mode === null && (
-        <main className="relative flex min-h-[calc(100svh-5rem)] flex-col justify-center px-6 sm:px-10">
+        <main className="relative flex min-h-[calc(100svh-5rem)] flex-col items-center justify-center px-6 sm:px-10">
           <HeroName />
         </main>
       )}
